@@ -69,7 +69,8 @@ export default function MotionLogo() {
 			role='img'
 			variants={svgVariants}
 			initial='hidden'
-			animate='visible'
+			whileInView='visible'
+			viewport={{ once: true }}
 		>
 			<title>{`Psychopomp Comics`}</title>
 			<g>
