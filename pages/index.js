@@ -21,6 +21,7 @@ const SoCLogoContainer = styled(motion.div)`
 	right: 5%;
 	width: 33.3%;
 	z-idex: 2;
+	min-width: 25rem;
 
 	@media (max-width: ${(props) => props.theme.breakpoints.xl}) {
 		bottom: 10%;
@@ -38,15 +39,31 @@ const PsychoDescriptionContainer = styled.div`
 	& > div + div {
 		margin-left: ${(props) => props.theme.spaces.lg};
 	}
+
+	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
+		flex-wrap: wrap;
+		max-width: 27rem;
+	}
 `;
 
 const PsychoDescriptionImage = styled(motion.div)`
 	width: 20rem;
 	flex-shrink: 0;
+
+	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
+		width: 100%;
+		flex-shrink: initial;
+	}
 `;
 
 const PsychoDescriptionText = styled.div`
 	flex-shrink: 1;
+
+	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
+		width: 100%;
+		flex-shrink: initial;
+		margin-top: ${({ theme }) => theme.spaces.xl};
+	}
 `;
 
 const ThreeUpContainer = styled.div`
@@ -58,6 +75,15 @@ const ThreeUpContainer = styled.div`
 	grid-gap: ${({ theme }) => theme.spaces.xl};
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-areas: 'item item item';
+
+	@media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+		max-width: 27rem;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'item'
+			'item'
+			'item';
+	}
 `;
 
 const ThreeUpItem = styled.article`
