@@ -1,31 +1,155 @@
-import ComingSoon from '../components/styles/ComingSoon.styled';
 import styled from 'styled-components';
-import ComingSoonImage from '../components/ComingSoonImage';
+import { motion } from 'framer-motion';
 import MotionHeader from '../components/styles/MotionHeader.styled';
 import MotionMain from '../components/styles/MotionMain.styled';
 import MotionFooter from '../components/Footer';
+import StyledSection from '../components/styles/StyledSection.styled';
+import SectionContainer from '../components/styles/SectionContainer.styled';
+import Image from 'next/image';
+import SoCBanner from '../images/seed-of-cain/banner.jpg';
+import SoCLogo from '../images/seed-of-cain/logo.png';
+import {
+	RobotIconHexagon,
+	BlockchainIconHexagon,
+	MicrochipIconHexagon,
+} from '../components/HexagonIcons';
+import LogoWithText from '../components/LogoWithText';
 
-const Title = styled.h1`
-	color: var(--text1);
-	text-align: center;
+const SoCLogoContainer = styled(motion.div)`
+	position: absolute;
+	bottom: 25%;
+	right: 5%;
+	width: 33.3%;
+	z-idex: 2;
+
+	@media (max-width: ${(props) => props.theme.breakpoints.xl}) {
+		bottom: 10%;
+	}
 `;
 
-const SignUp = styled.h2`
-	margin: 2.4rem auto;
+const PsychoDescriptionContainer = styled.div`
+	display: flex;
+	align-items: center;
+	margin-top: ${(props) => props.theme.spaces.xl};
+	max-width: 72rem;
+	margin-left: auto;
+	margin-right: auto;
+
+	& > div + div {
+		margin-left: ${(props) => props.theme.spaces.lg};
+	}
+`;
+
+const PsychoDescriptionImage = styled(motion.div)`
+	width: 20rem;
+	flex-shrink: 0;
+`;
+
+const PsychoDescriptionText = styled.div`
+	flex-shrink: 1;
+`;
+
+const ThreeUpContainer = styled.div`
+	margin-top: ${(props) => props.theme.spaces.xxl};
+	max-width: 90rem;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-gap: ${({ theme }) => theme.spaces.xl};
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: 'item item item';
+`;
+
+const ThreeUpItem = styled.article`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+`;
+
+const ThreeUpImageContainer = styled.div`
+	max-width: 15rem;
+	margin-left: auto;
+	margin-right: auto;
 `;
 
 export default function Home() {
 	return (
 		<>
 			<MotionHeader>
-				<Title>Coming Soon</Title>
+				<Image
+					src={SoCBanner}
+					alt='Seed of Cain Promo Banner showing Colonel Frost standing in rubble with a city behind him'
+					width='6075'
+					height='3417'
+				/>
+				<SoCLogoContainer
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{
+						delay: 1,
+						duration: 1,
+					}}
+				>
+					<Image
+						src={SoCLogo}
+						alt='Seed of Cain Logo'
+						width='3076'
+						height='1649'
+					/>
+				</SoCLogoContainer>
 			</MotionHeader>
 			<MotionMain>
-				<ComingSoon>
-					<ComingSoonImage />
-					{/* <SignUp>Sign up to receive email updates</SignUp>
-					<NewsletterSubscribe /> */}
-				</ComingSoon>
+				<StyledSection>
+					<SectionContainer>
+						<PsychoDescriptionContainer>
+							<PsychoDescriptionImage>
+								<LogoWithText />
+							</PsychoDescriptionImage>
+							<PsychoDescriptionText>
+								<h2>A New Kind of Comic Studio</h2>
+								<hr />
+								<p>
+									{
+										'Psychopomp Comics will guide you into another realm. We are digitally native, NFT-powered and artist-centric. We use these values to disrupt the industry and provide unique experiene that bridges the legacy and digital world'
+									}
+								</p>
+							</PsychoDescriptionText>
+						</PsychoDescriptionContainer>
+						<ThreeUpContainer>
+							<ThreeUpItem>
+								<ThreeUpImageContainer>
+									<MicrochipIconHexagon />
+								</ThreeUpImageContainer>
+								<h2>Digitally Native</h2>
+								<p>
+									Our comics are free to read on our website, and we will
+									continue to experiment with online story consumption
+								</p>
+							</ThreeUpItem>
+							<ThreeUpItem>
+								<ThreeUpImageContainer>
+									<BlockchainIconHexagon />
+								</ThreeUpImageContainer>
+								<h2>NFT-Powered</h2>
+								<p>
+									Since our content is free, our main revenue stream is through
+									digital collectibles on the Solana blockchain
+								</p>
+							</ThreeUpItem>
+							<ThreeUpItem>
+								<ThreeUpImageContainer>
+									<RobotIconHexagon />
+								</ThreeUpImageContainer>
+								<h2>Artist-Centric</h2>
+								<p>
+									With smart contract technology we are able to share profits
+									and royalties with the artists that helped create our stories
+									and IP
+								</p>
+							</ThreeUpItem>
+						</ThreeUpContainer>
+					</SectionContainer>
+				</StyledSection>
 			</MotionMain>
 			<MotionFooter />
 		</>
