@@ -17,7 +17,6 @@ export const StyledMotionNavbar = styled(motion.nav)`
     * {
         background-color: var(--surface1);
     }
-    margin: 0 0 ${(props) => props.theme.spaces.lg} 0;
     @media only screen and (max-width: ${(props) =>
 			props.theme.breakpoints.sm}) {
         margin: 0;
