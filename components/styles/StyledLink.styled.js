@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import NoScrollLink from '../NoScrollLink';
+import NoScrollLink from '../NoScrollLink.tsx';
 
 const StyledPrimaryLink = styled.div`
 	display: inline-flex;
