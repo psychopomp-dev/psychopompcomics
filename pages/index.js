@@ -7,6 +7,7 @@ import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import Image from 'next/image';
 import SoCBanner from '../images/seed-of-cain/banner.jpg';
+import SoCPillar from '../images/seed-of-cain/pillar.jpg';
 import SoCLogo from '../images/seed-of-cain/logo.png';
 import {
 	RobotIconHexagon,
@@ -14,6 +15,20 @@ import {
 	MicrochipIconHexagon,
 } from '../components/HexagonIcons';
 import LogoWithText from '../components/LogoWithText';
+
+const SoCBannerContainer = styled.div`
+	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+		display: none;
+	}
+`;
+
+const SoCPillarContainer = styled.div`
+	display: none;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+		display: block;
+	}
+`;
 
 const SoCLogoContainer = styled(motion.div)`
 	position: absolute;
@@ -102,12 +117,22 @@ export default function Home() {
 	return (
 		<>
 			<MotionHeader>
-				<Image
-					src={SoCBanner}
-					alt='Seed of Cain Promo Banner showing Colonel Frost standing in rubble with a city behind him'
-					width='6075'
-					height='3417'
-				/>
+				<SoCBannerContainer>
+					<Image
+						src={SoCBanner}
+						alt='Seed of Cain Promo Banner showing Colonel Frost standing in rubble with a city behind him'
+						width='6075'
+						height='3417'
+					/>
+				</SoCBannerContainer>
+				<SoCPillarContainer>
+					<Image
+						src={SoCPillar}
+						alt='Seed of Cain Promo Banner showing Colonel Frost standing in rubble with a Cog and the city behind him'
+						width='2700'
+						height='3000'
+					/>
+				</SoCPillarContainer>
 				<SoCLogoContainer
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
