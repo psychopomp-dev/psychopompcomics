@@ -25,7 +25,7 @@ export default function App({ Component, pageProps, router }) {
 				<GlobalStyle />
 				<MotionConfig reducedMotion='user'>
 					<MenuProvider>
-						{process.env.NODE_ENV !== 'production' ? <MotionNavbar /> : null}
+						<MotionNavbar />
 					</MenuProvider>
 					<AnimatePresence exitBeforeEnter>
 						<Component {...pageProps} canonical={url} key={url} />

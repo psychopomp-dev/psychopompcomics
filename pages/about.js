@@ -233,5 +233,3 @@ export default function About() {
 		</>
 	);
 }
-
-export const getServerSideProps = DevRoutes;

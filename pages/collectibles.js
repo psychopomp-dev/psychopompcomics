@@ -180,5 +180,3 @@ export default function Collectibles() {
 		</>
 	);
 }
-
-export const getServerSideProps = DevRoutes;
