@@ -130,7 +130,7 @@ export default function Home() {
 						src={SoCPillar}
 						alt='Seed of Cain Promo Banner showing Colonel Frost standing in rubble with a Cog and the city behind him'
 						width='2700'
-						height='3000'
+						height='3600'
 					/>
 				</SoCPillarContainer>
 				<SoCLogoContainer
