@@ -57,17 +57,17 @@ const ButtonContainerPrimary = styled.div`
 		text-decoration: none;
 		color: var(--text-on-brand);
 		border: none;
-		height: ${(props) => props.theme.spaces.xl};
-		min-width: ${(props) => props.theme.spaces.xxl.replace('rem', '') * 2}rem;
-		line-height: ${(props) => props.theme.spaces.xl};
-		padding: 0 ${(props) => props.theme.spaces.lg};
+		height: ${({ theme }) => theme.spaces.xl};
+		min-width: ${({ theme }) => theme.spaces.xxl.replace('rem', '') * 2}rem;
+		line-height: ${({ theme }) => theme.spaces.xl};
+		padding: 0 ${({ theme }) => theme.spaces.lg};
 		cursor: pointer;
 		transition: background-color 300ms ease;
 		font-weight: bold;
 	}
 
 	& > svg {
-		height: ${(props) => props.theme.spaces.xl};
+		height: ${({ theme }) => theme.spaces.xl};
 	}
 
 	&:hover {
@@ -129,16 +129,16 @@ const Triangle = styled.div`
 `;
 
 const TriangleLeftPrimary = styled(Triangle)`
-	border-width: ${(props) => props.theme.spaces.xl.replace('rem', '') / 2}rem
-		${(props) => getTriangleWidth(props.theme.spaces.xl.replace('rem', ''))}rem
-		${(props) => props.theme.spaces.xl.replace('rem', '') / 2}rem 0;
+	border-width: ${({ theme }) => theme.spaces.xl.replace('rem', '') / 2}rem
+		${({ theme }) => getTriangleWidth(theme.spaces.xl.replace('rem', ''))}rem
+		${({ theme }) => theme.spaces.xl.replace('rem', '') / 2}rem 0;
 	border-color: transparent var(--brand) transparent transparent;
 `;
 
 const TriangleRightPrimary = styled(Triangle)`
-	border-width: ${(props) => props.theme.spaces.xl.replace('rem', '') / 2}rem 0
-		${(props) => props.theme.spaces.xl.replace('rem', '') / 2}rem
-		${(props) => getTriangleWidth(props.theme.spaces.xl.replace('rem', ''))}rem;
+	border-width: ${({ theme }) => theme.spaces.xl.replace('rem', '') / 2}rem 0
+		${({ theme }) => theme.spaces.xl.replace('rem', '') / 2}rem
+		${({ theme }) => getTriangleWidth(theme.spaces.xl.replace('rem', ''))}rem;
 	border-color: transparent transparent transparent var(--brand);
 `;
 
@@ -149,10 +149,10 @@ const ButtonTest = styled.a`
 	text-decoration: none;
 	color: var(--text-on-brand);
 	border: none;
-	height: ${(props) => props.theme.spaces.xl};
-	min-width: ${(props) => props.theme.spaces.xxl.replace('rem', '') * 2}rem;
-	line-height: ${(props) => props.theme.spaces.xl};
-	padding: 0 ${(props) => props.theme.spaces.lg};
+	height: ${({ theme }) => theme.spaces.xl};
+	min-width: ${({ theme }) => theme.spaces.xxl.replace('rem', '') * 2}rem;
+	line-height: ${({ theme }) => theme.spaces.xl};
+	padding: 0 ${({ theme }) => theme.spaces.lg};
 	cursor: pointer;
 	transition: background-color 300ms ease;
 	font-weight: bold;
@@ -172,23 +172,23 @@ function LinkPrimary(props) {
 
 const ButtonContainerPrimarySm = styled(ButtonContainerPrimary)`
 	& a {
-		font-size: ${(props) => props.theme.fonts.sizes.xs};
-		height: ${(props) => props.theme.spaces.lg};
-		min-width: ${(props) => props.theme.spaces.xxl.replace('rem', '')}rem;
-		line-height: ${(props) => props.theme.spaces.lg};
+		font-size: ${({ theme }) => theme.fonts.sizes.xs};
+		height: ${({ theme }) => theme.spaces.lg};
+		min-width: ${({ theme }) => theme.spaces.xxl.replace('rem', '')}rem;
+		line-height: ${({ theme }) => theme.spaces.lg};
 	}
 `;
 
 const TriangleLeftPrimarySm = styled(TriangleLeftPrimary)`
-	border-width: ${(props) => props.theme.spaces.lg.replace('rem', '') / 2}rem
-		${(props) => getTriangleWidth(props.theme.spaces.lg.replace('rem', ''))}rem
-		${(props) => props.theme.spaces.lg.replace('rem', '') / 2}rem 0;
+	border-width: ${({ theme }) => theme.spaces.lg.replace('rem', '') / 2}rem
+		${({ theme }) => getTriangleWidth(theme.spaces.lg.replace('rem', ''))}rem
+		${({ theme }) => theme.spaces.lg.replace('rem', '') / 2}rem 0;
 `;
 
 const TriangleRightPrimarySm = styled(TriangleRightPrimary)`
-	border-width: ${(props) => props.theme.spaces.lg.replace('rem', '') / 2}rem 0
-		${(props) => props.theme.spaces.lg.replace('rem', '') / 2}rem
-		${(props) => getTriangleWidth(props.theme.spaces.lg.replace('rem', ''))}rem;
+	border-width: ${({ theme }) => theme.spaces.lg.replace('rem', '') / 2}rem 0
+		${({ theme }) => theme.spaces.lg.replace('rem', '') / 2}rem
+		${({ theme }) => getTriangleWidth(theme.spaces.lg.replace('rem', ''))}rem;
 `;
 
 export function LinkPrimarySm(props) {
@@ -203,25 +203,25 @@ export function LinkPrimarySm(props) {
 
 const ButtonContainerPrimaryLg = styled(ButtonContainerPrimary)`
 	& a {
-		font-size: ${(props) => props.theme.fonts.sizes.md};
-		height: ${(props) => props.theme.spaces.lg.replace('rem', '') * 2}rem;
-		min-width: ${(props) => props.theme.spaces.xxl.replace('rem', '') * 2}rem;
-		line-height: ${(props) => props.theme.spaces.lg.replace('rem', '') * 2}rem;
+		font-size: ${({ theme }) => theme.fonts.sizes.md};
+		height: ${({ theme }) => theme.spaces.lg.replace('rem', '') * 2}rem;
+		min-width: ${({ theme }) => theme.spaces.xxl.replace('rem', '') * 2}rem;
+		line-height: ${({ theme }) => theme.spaces.lg.replace('rem', '') * 2}rem;
 	}
 `;
 
 const TriangleLeftPrimaryLg = styled(TriangleLeftPrimary)`
-	border-width: ${(props) => props.theme.spaces.lg.replace('rem', '')}rem
-		${(props) =>
-			getTriangleWidth(props.theme.spaces.lg.replace('rem', '') * 2)}rem
-		${(props) => props.theme.spaces.lg.replace('rem', '')}rem 0;
+	border-width: ${({ theme }) => theme.spaces.lg.replace('rem', '')}rem
+		${({ theme }) =>
+			getTriangleWidth(theme.spaces.lg.replace('rem', '') * 2)}rem
+		${({ theme }) => theme.spaces.lg.replace('rem', '')}rem 0;
 `;
 
 const TriangleRightPrimaryLg = styled(TriangleRightPrimary)`
-	border-width: ${(props) => props.theme.spaces.lg.replace('rem', '')}rem 0
-		${(props) => props.theme.spaces.lg.replace('rem', '')}rem
-		${(props) =>
-			getTriangleWidth(props.theme.spaces.lg.replace('rem', '') * 2)}rem;
+	border-width: ${({ theme }) => theme.spaces.lg.replace('rem', '')}rem 0
+		${({ theme }) => theme.spaces.lg.replace('rem', '')}rem
+		${({ theme }) =>
+			getTriangleWidth(theme.spaces.lg.replace('rem', '') * 2)}rem;
 `;
 
 export function LinkPrimaryLg(props) {
@@ -309,13 +309,13 @@ export function LinkPrimaryOutline(props) {
 
 const ButtonContainerPrimaryOutlineSm = styled(ButtonContainerPrimaryOutline)`
 	& > svg {
-		height: ${(props) => props.theme.spaces.lg};
+		height: ${({ theme }) => theme.spaces.lg};
 	}
 	& a {
-		font-size: ${(props) => props.theme.fonts.sizes.xs};
-		height: ${(props) => props.theme.spaces.lg};
-		min-width: ${(props) => props.theme.spaces.xxl.replace('rem', '')}rem;
-		line-height: ${(props) => props.theme.spaces.lg};
+		font-size: ${({ theme }) => theme.fonts.sizes.xs};
+		height: ${({ theme }) => theme.spaces.lg};
+		min-width: ${({ theme }) => theme.spaces.xxl.replace('rem', '')}rem;
+		line-height: ${({ theme }) => theme.spaces.lg};
 	}
 `;
 
@@ -355,13 +355,13 @@ export function LinkPrimaryOutlineSm(props) {
 
 const ButtonContainerPrimaryOutlineLg = styled(ButtonContainerPrimaryOutline)`
 	& > svg {
-		height: ${(props) => props.theme.spaces.lg.replace('rem', '') * 2}rem;
+		height: ${({ theme }) => theme.spaces.lg.replace('rem', '') * 2}rem;
 	}
 	& a {
-		font-size: ${(props) => props.theme.fonts.sizes.md};
-		height: ${(props) => props.theme.spaces.lg.replace('rem', '') * 2}rem;
-		min-width: ${(props) => props.theme.spaces.xxl.replace('rem', '') * 2}rem;
-		line-height: ${(props) => props.theme.spaces.lg.replace('rem', '') * 2}rem;
+		font-size: ${({ theme }) => theme.fonts.sizes.md};
+		height: ${({ theme }) => theme.spaces.lg.replace('rem', '') * 2}rem;
+		min-width: ${({ theme }) => theme.spaces.xxl.replace('rem', '') * 2}rem;
+		line-height: ${({ theme }) => theme.spaces.lg.replace('rem', '') * 2}rem;
 	}
 `;
 

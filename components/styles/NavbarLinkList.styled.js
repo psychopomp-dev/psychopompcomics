@@ -12,7 +12,7 @@ export const StyledMotionNavLinkList = styled(motion.ul)`
 		align-items: center;
 
 		& > div > a {
-			font-size: ${(props) => props.theme.fonts.sizes.ml};
+			font-size: ${({ theme }) => theme.fonts.sizes.ml};
 		}
 
 		&:last-child {
@@ -26,13 +26,13 @@ export const StyledMotionNavLinkList = styled(motion.ul)`
 		margin: 0 1rem;
 		height: 80%;
 	}
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		li:last-child {
 			display: initial;
 		}
 	}
 
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		position: fixed;
 		top: 10%;
 		left: 0;
@@ -47,11 +47,11 @@ export const StyledMotionNavLinkList = styled(motion.ul)`
 		}
 
 		li {
-			padding: ${(props) => props.theme.spaces.ml};
+			padding: ${({ theme }) => theme.spaces.ml};
 		}
 
 		li:last-child {
-			margin-bottom: ${(props) => props.theme.spaces.lg};
+			margin-bottom: ${({ theme }) => theme.spaces.lg};
 		}
 
 		li:last-child * {

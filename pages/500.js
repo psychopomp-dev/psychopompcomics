@@ -30,7 +30,7 @@ const FiveZeroZeroMain = styled.main`
 	align-items: center;
 	text-align: center;
 	p {
-		padding: ${(props) => props.theme.spaces.md};
+		padding: ${({ theme }) => theme.spaces.md};
 	}
 `;
 
@@ -38,10 +38,10 @@ const MotionImageContainer = styled(motion.div)`
 	position: relative;
 	max-width: 60rem;
 	width: 100%;
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.lg}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
 		max-width: 34rem;
 	}
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		max-width: 26rem;
 	}
 `;

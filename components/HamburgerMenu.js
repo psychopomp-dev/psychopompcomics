@@ -9,14 +9,13 @@ export const HamburgerMenu = {
 		background: transparent;
 		outline: none;
 		z-index: 1;
-		width: ${(props) => props.theme.spaces.xxl.replace('rem', '') * 1.2}rem;
-		padding: ${(props) => props.theme.spaces.sm};
+		width: ${({ theme }) => theme.spaces.xxl.replace('rem', '') * 1.2}rem;
+		padding: ${({ theme }) => theme.spaces.sm};
 		& * {
 			stroke: var(--brand);
 			stroke-width: 1.5;
 		}
-		@media only screen and (max-width: ${(props) =>
-				props.theme.breakpoints.sm}) {
+		@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 			display: block;
 		}
 	`,

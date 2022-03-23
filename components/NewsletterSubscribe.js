@@ -25,27 +25,27 @@ const NewsletterSubscribe = ({ className }) => {
 
 export const NavNewsletterSubscribe = styled(NewsletterSubscribe)`
 	margin: auto auto;
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.lg}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
 		max-width: 30.4rem;
 		* {
-			font-size: ${(props) => props.theme.fonts.sizes.xxs};
+			font-size: ${({ theme }) => theme.fonts.sizes.xxs};
 		}
 		a {
 			min-width: 9rem;
 		}
 	}
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		display: none;
 	}
 `;
 
 export const MobileNavNewsletterSubscribe = styled(NavNewsletterSubscribe)`
 	display: flex;
-	padding: 0 ${(props) => props.theme.spaces.xl}
-		${(props) => props.theme.spaces.xl} ${(props) => props.theme.spaces.xl};
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	padding: 0 ${({ theme }) => theme.spaces.xl} ${({ theme }) => theme.spaces.xl}
+		${({ theme }) => theme.spaces.xl};
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		flex-direction: column;
-		padding: 0 0 ${(props) => props.theme.spaces.xl};
+		padding: 0 0 ${({ theme }) => theme.spaces.xl};
 	}
 `;
 

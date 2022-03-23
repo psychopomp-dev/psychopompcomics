@@ -12,9 +12,9 @@ import { MobileNavNewsletterSubscribe } from './NewsletterSubscribe';
 import { PrimaryLink } from './styles/StyledLink.styled';
 
 const SocialContainer = styled.div`
-	margin: ${(props) => props.theme.spaces.md} auto;
+	margin: ${({ theme }) => theme.spaces.md} auto;
 	p {
-		margin-bottom: ${(props) => props.theme.spaces.md};
+		margin-bottom: ${({ theme }) => theme.spaces.md};
 	}
 `;
 
@@ -107,11 +107,11 @@ const NavInnerContainer = styled.div`
 	margin-right: auto;
 	display: flex;
 	justify-content: center;
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
 		width: 100%;
-		padding-bottom: ${(props) => props.theme.spaces.lg};
+		padding-bottom: ${({ theme }) => theme.spaces.lg};
 	}
-	@media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		justify-content: flex-end;
 	}
 `;

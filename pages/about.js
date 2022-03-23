@@ -16,8 +16,8 @@ import tr3mulantPic from '../images/core-members/tr3mulant.jpg';
 
 const AboutHeader = styled(MotionHeader)`
 	text-align: center;
-	padding: ${(props) => props.theme.spaces.xxl}
-		${(props) => props.theme.spaces.lg} ${(props) => props.theme.spaces.xl};
+	padding: ${({ theme }) => theme.spaces.xxl} ${({ theme }) => theme.spaces.lg}
+		${({ theme }) => theme.spaces.xl};
 `;
 
 const AboutMain = styled(MotionMain)`
@@ -26,12 +26,12 @@ const AboutMain = styled(MotionMain)`
 `;
 
 const CoreTeamContainer = styled(motion.div)`
-	margin-top: ${(props) => props.theme.spaces.ml};
+	margin-top: ${({ theme }) => theme.spaces.ml};
 	display: grid;
 	grid-template-areas:
 		'card card'
 		'card card';
-	gap: ${(props) => props.theme.spaces.ml};
+	gap: ${({ theme }) => theme.spaces.ml};
 	grid-template-rows: 1fr 1fr;
 	grid-template-columns: 1fr 1fr;
 	max-width: 42rem;
@@ -39,13 +39,13 @@ const CoreTeamContainer = styled(motion.div)`
 	margin-left: auto;
 	margin-right: auto;
 
-	@media (max-width: ${(props) => props.theme.breakpoints.xs}) {
+	@media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
 		grid-template-areas:
 			'card'
 			'card'
 			'card'
 			'card';
-		gap: ${(props) => props.theme.spaces.ml};
+		gap: ${({ theme }) => theme.spaces.ml};
 		grid-template-rows: 1fr;
 		grid-template-columns: 1fr;
 		max-width: 22rem;
@@ -56,10 +56,10 @@ const CoreTeamMember = styled(motion.section)`
 	background-color: var(--surface1);
 	border: 0.1rem solid hsl(var(--brand-hue) 10% 50% / 15%);
 	border-radius: 1rem;
-	padding: ${(props) => props.theme.spaces.ml};
+	padding: ${({ theme }) => theme.spaces.ml};
 	box-shadow: var(--box-shadow-md);
 	h4 + h4 {
-		margin-top: ${(props) => props.theme.spaces.xs};
+		margin-top: ${({ theme }) => theme.spaces.xs};
 	}
 `;
 

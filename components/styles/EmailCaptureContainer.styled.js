@@ -29,10 +29,10 @@ const EmailCaptureContainer = styled.article`
 		display: none;
 	}
 
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		& a {
-			min-width: ${(props) =>
-				props.theme.spaces.xxl.replace('rem', '') * 1.25}rem;
+			min-width: ${({ theme }) =>
+				theme.spaces.xxl.replace('rem', '') * 1.25}rem;
 		}
 	}
 `;

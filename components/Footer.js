@@ -13,12 +13,12 @@ const LogoTextContainer = styled.div`
 	margin-right: 6rem;
 	justify-self: end;
 	max-width: 40%;
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
 		margin-right: 0;
-		padding: ${(props) => props.theme.spaces.sm};
+		padding: ${({ theme }) => theme.spaces.sm};
 		max-width: 22rem;
-		margin: ${(props) => props.theme.spaces.md} auto
-			${(props) => props.theme.spaces.lg};
+		margin: ${({ theme }) => theme.spaces.md} auto
+			${({ theme }) => theme.spaces.lg};
 	}
 `;
 
@@ -27,9 +27,9 @@ const SocialContainer = styled.div`
 	grid-row-start: 1;
 	justify-self: start;
 	p {
-		margin-bottom: ${(props) => props.theme.spaces.md};
+		margin-bottom: ${({ theme }) => theme.spaces.md};
 	}
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		grid-column-start: 1;
 		grid-row-start: 2;
 		justify-self: center;
@@ -40,15 +40,15 @@ const IconContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	div + div {
-		margin-left: ${(props) => props.theme.spaces.md};
+		margin-left: ${({ theme }) => theme.spaces.md};
 	}
 `;
 
 const SocialList = styled.ul`
 	list-style: none;
-	padding: ${(props) => props.theme.spaces.md};
+	padding: ${({ theme }) => theme.spaces.md};
 	li {
-		padding: ${(props) => props.theme.spaces.md};
+		padding: ${({ theme }) => theme.spaces.md};
 	}
 `;
 
@@ -88,11 +88,11 @@ const InnerContainer = styled(motion.div)`
 	grid-template-areas:
 		'area area'
 		'area area';
-	gap: ${(props) => props.theme.spaces.ml};
+	gap: ${({ theme }) => theme.spaces.ml};
 	grid-template-rows: 1fr 0.1fr;
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
-	@media only screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		grid-template-areas:
 			'area'
 			'area'

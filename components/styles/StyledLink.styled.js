@@ -6,7 +6,7 @@ const StyledPrimaryLink = styled.div`
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	padding: ${(props) => props.theme.spaces.md};
+	padding: ${({ theme }) => theme.spaces.md};
 
 	a {
 		text-transform: uppercase;
@@ -22,46 +22,46 @@ const StyledPrimaryLink = styled.div`
 
 const StyledPrimaryLinkLg = styled(StyledPrimaryLink)`
 	a {
-		font-size: ${(props) => props.theme.fonts.sizes.lg};
-		height: ${(props) => props.theme.spaces.lg};
-		min-width: ${(props) => props.theme.spaces.lg};
-		line-height: ${(props) => props.theme.spaces.lg};
+		font-size: ${({ theme }) => theme.fonts.sizes.lg};
+		height: ${({ theme }) => theme.spaces.lg};
+		min-width: ${({ theme }) => theme.spaces.lg};
+		line-height: ${({ theme }) => theme.spaces.lg};
 	}
 `;
 
 const StyledPrimaryLinkMd = styled(StyledPrimaryLink)`
 	a {
-		font-size: ${(props) => props.theme.fonts.sizes.md};
-		height: ${(props) => props.theme.spaces.md};
-		min-width: ${(props) => props.theme.spaces.md};
-		line-height: ${(props) => props.theme.spaces.md};
+		font-size: ${({ theme }) => theme.fonts.sizes.md};
+		height: ${({ theme }) => theme.spaces.md};
+		min-width: ${({ theme }) => theme.spaces.md};
+		line-height: ${({ theme }) => theme.spaces.md};
 	}
 `;
 
 const StyledPrimaryLinkXs = styled(StyledPrimaryLink)`
 	a {
-		font-size: ${(props) => props.theme.fonts.sizes.xs};
-		height: ${(props) => props.theme.spaces.xs};
-		min-width: ${(props) => props.theme.spaces.xs};
-		line-height: ${(props) => props.theme.spaces.xs};
+		font-size: ${({ theme }) => theme.fonts.sizes.xs};
+		height: ${({ theme }) => theme.spaces.xs};
+		min-width: ${({ theme }) => theme.spaces.xs};
+		line-height: ${({ theme }) => theme.spaces.xs};
 	}
 `;
 
 const StyledPrimaryLinkSm = styled(StyledPrimaryLink)`
 	a {
-		font-size: ${(props) => props.theme.fonts.sizes.sm};
-		height: ${(props) => props.theme.spaces.sm};
-		min-width: ${(props) => props.theme.spaces.sm};
-		line-height: ${(props) => props.theme.spaces.sm};
+		font-size: ${({ theme }) => theme.fonts.sizes.sm};
+		height: ${({ theme }) => theme.spaces.sm};
+		min-width: ${({ theme }) => theme.spaces.sm};
+		line-height: ${({ theme }) => theme.spaces.sm};
 	}
 `;
 
 const StyledPrimaryLinkXl = styled(StyledPrimaryLink)`
 	a {
-		font-size: ${(props) => props.theme.fonts.sizes.xl};
-		height: ${(props) => props.theme.spaces.xl};
-		min-width: ${(props) => props.theme.spaces.xl};
-		line-height: ${(props) => props.theme.spaces.xl};
+		font-size: ${({ theme }) => theme.fonts.sizes.xl};
+		height: ${({ theme }) => theme.spaces.xl};
+		min-width: ${({ theme }) => theme.spaces.xl};
+		line-height: ${({ theme }) => theme.spaces.xl};
 	}
 `;
 

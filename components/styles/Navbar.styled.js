@@ -12,18 +12,17 @@ export const StyledMotionNavbar = styled(motion.nav)`
     align-items: center;
     background-color: var(--surface1);
     box-shadow: var(--box-shadow-ms);
-    padding: ${(props) => props.theme.spaces.md} ${(props) =>
-	props.theme.spaces.lg};
+    padding: ${({ theme }) => theme.spaces.md} ${({ theme }) =>
+	theme.spaces.lg};
     * {
         background-color: var(--surface1);
     }
-    @media only screen and (max-width: ${(props) =>
-			props.theme.breakpoints.sm}) {
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
         margin: 0;
-        padding-bottom: ${(props) => props.theme.spaces.lg};
+        padding-bottom: ${({ theme }) => theme.spaces.lg};
     }
-    @media only screen and (max-width: ${(props) =>
-			props.theme.breakpoints.xxs}) {
+    @media only screen and (max-width: ${({ theme }) =>
+			theme.breakpoints.xxs}) {
         padding-bottom: 0;
     }
 `;
