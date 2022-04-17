@@ -107,12 +107,14 @@ const NavInnerContainer = styled.div`
 	margin-right: auto;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
 		width: 100%;
 		padding-bottom: var(--space-lg);
 	}
 	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-		justify-content: flex-end;
+		justify-content: space-between;
+		padding-bottom: initial;
 	}
 `;
 

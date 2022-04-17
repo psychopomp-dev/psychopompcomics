@@ -17,44 +17,26 @@ export const HamburgerMenu = {
 		}
 		@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 			display: block;
+
+			svg {
+				height: auto;
+				width: 4rem;
+			}
 		}
 	`,
 	CloseMenuIcon: () => {
 		return (
-			<svg
-				height='auto'
-				width='100%'
-				xmlns='http://www.w3.org/2000/svg'
-				viewBox='0 0 100 100'
-			>
-				<path d='M 33,33 L 66,66' />
-				<path d='M 33,66 L 66,33' />
-				<polyline
-					points='50,15 80,33 80,66 50,85 20,66 20,33 50,15'
-					strokeLinecap='round'
-					fill='none'
-					stroke-linejoing='miter'
-				/>
+			<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 70'>
+				<path d='M13 18l33 33m-33 0l33-33' />
+				<path d='M30 0l30 18v33L30 70 0 51V18L30 0' fill='none' />
 			</svg>
 		);
 	},
 	OpenMenuIcon: () => {
 		return (
-			<svg
-				height='auto'
-				width='100%'
-				xmlns='http://www.w3.org/2000/svg'
-				viewBox='0 0 100 100'
-			>
-				<path d='M 30 39 H 69' />
-				<path d='M 30 49.5 H 69' />
-				<path d='M 30 60 H 69' />
-				<polyline
-					points='50,15 80,33 80,66 50,85 20,66 20,33 50,15'
-					strokeLinecap='round'
-					fill='none'
-					stroke-linejoing='miter'
-				/>
+			<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 70'>
+				<path d='M10 24h39M10 34.5h39M10 45h39' />
+				<path d='M30 0l30 18v33L30 70 0 51V18L30 0' fill='none' />
 			</svg>
 		);
 	},
