@@ -11,7 +11,7 @@ export const HamburgerMenu = {
 		z-index: 1;
 		& * {
 			stroke: var(--brand);
-			stroke-width: 2;
+			stroke-width: 1;
 		}
 		@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 			display: block;
