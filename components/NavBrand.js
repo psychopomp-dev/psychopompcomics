@@ -6,13 +6,23 @@ const NavBrandContainer = styled.div`
 	position: absolute;
 	left: 0;
 	top: 0;
-	height: 8rem;
 	display: inline-block;
 	z-index: 1;
 
 	svg {
-		height: 100%;
-		width: auto;
+		height: auto;
+		width: 7.26rem;
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+		position: initial;
+		top: initial;
+		left: initial;
+
+		svg {
+			height: auto;
+			width: 4rem;
+		}
 	}
 `;
 

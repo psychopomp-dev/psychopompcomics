@@ -17,8 +17,10 @@ export const StyledMotionNavbar = styled(m.nav)`
         background-color: var(--surface1);
     }
     @media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-        margin: 0;
-        padding-bottom: var(--space-lg);
+        margin: 0 0 -1.2rem;
+        padding-bottom: var(--space-sm);
+        padding-top: var(--space-sm);
+        box-shadow: var(--box-shadow-xs);
     }
     @media only screen and (max-width: ${({ theme }) =>
 			theme.breakpoints.xxs}) {

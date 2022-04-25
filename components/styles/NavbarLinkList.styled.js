@@ -34,10 +34,11 @@ export const StyledMotionNavLinkList = styled(m.ul)`
 
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
 		position: fixed;
-		top: 10%;
+		padding-top: 5.8rem;
+		top: 0;
 		left: 0;
 		width: 100%;
-		height: 90%;
+		height: 100vh;
 		flex-direction: column;
 		justify-content: flex-start;
 		margin-top: 0;
