@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import dynamic from 'next/dynamic';
 import MotionFooter from '../components/Footer';
-import MotionHeader from '../components/styles/MotionHeader.styled';
 import MotionMain from '../components/styles/MotionMain.styled';
 import { DevRoutes } from '../utils/dev_routes';
+import CainIsComingHeader from '../components/styles/CainIsComingHeader.styled';
 const DynamicRadio = dynamic(() => import('../components/Radio'));
 const DynamicIntelReport = dynamic(() => import('../components/IntelReport'));
 import { useTheme } from 'styled-components';
@@ -12,36 +12,6 @@ import cainIsComing from '../images/seed-of-cain/cain-is-coming.jpg';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import { TwoUp, TwoUpContainer } from '../components/styles/TwoUp.styled';
-
-const sixteenByNineStyles = css`
-	max-height: initial;
-	height: initial;
-	aspect-ratio: 16 / 9;
-`;
-
-const CainIsComingHeader = styled(MotionHeader)`
-	text-align: center;
-	padding: var(--space-xxl) var(--space-lg) var(--space-xl);
-	height: calc(100vh - 11.325rem);
-	max-height: calc(100vw * (9 / 16));
-	margin-bottom: var(--space-xxl);
-
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-		${sixteenByNineStyles}
-	}
-
-	@media only screen and (orientation: portrait) {
-		${sixteenByNineStyles}
-	}
-`;
-
-const Title = styled.h1`
-	text-align: center;
-	color: var(--text1);
-	margin: 0 0 3.2rem;
-	position: relative;
-	z-index: 2;
-`;
 
 const IntelContainer = styled.div`
 	width: 100%;
