@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import dynamic from 'next/dynamic';
-import MotionFooter from '../components/Footer';
+const DynamicMotionFooter = dynamic(() => import('../components/Footer'));
 import MotionMain from '../components/styles/MotionMain.styled';
 import { DevRoutes } from '../utils/dev_routes';
 import CainIsComingHeader from '../components/styles/CainIsComingHeader.styled';
@@ -80,7 +80,7 @@ export default function Comics() {
 					</SectionContainer>
 				</StyledSection>
 			</MotionMain>
-			<MotionFooter />
+			<DynamicMotionFooter />
 		</>
 	);
 }
