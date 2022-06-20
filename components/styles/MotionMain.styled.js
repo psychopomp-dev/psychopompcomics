@@ -16,6 +16,10 @@ export default function MotionMain(props) {
 			initial='hidden'
 			animate='visible'
 			exit='exit'
+			transition={{
+				type: 'linear',
+				when: 'beforeChildren',
+			}}
 			{...props}
 		/>
 	);

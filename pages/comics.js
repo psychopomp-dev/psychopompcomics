@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import dynamic from 'next/dynamic';
-const DynamicMotionFooter = dynamic(() => import('../components/Footer'));
+const DynamicFooter = dynamic(() => import('../components/Footer'));
 import MotionMain from '../components/styles/MotionMain.styled';
 import { DevRoutes } from '../utils/dev_routes';
 import CainIsComingHeader from '../components/styles/CainIsComingHeader.styled';
@@ -12,6 +12,7 @@ import cainIsComing from '../images/seed-of-cain/cain-is-coming.jpg';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import { TwoUp, TwoUpContainer } from '../components/styles/TwoUp.styled';
+import { MotionH2 } from '../components/styles/MotionHeadings.styled';
 
 const IntelContainer = styled.div`
 	width: 100%;
@@ -26,24 +27,24 @@ export default function Comics() {
 	const theme = useTheme();
 	return (
 		<>
-			<CainIsComingHeader>
-				<Image
-					src={cainIsComing}
-					alt='Cain is coming'
-					layout='fill'
-					objectFit='cover'
-					objectPosition='bottom'
-					sizes='100vw'
-					placeholder='blur'
-				/>
-			</CainIsComingHeader>
 			<MotionMain>
+				<CainIsComingHeader>
+					<Image
+						src={cainIsComing}
+						alt='Cain is coming'
+						layout='fill'
+						objectFit='cover'
+						objectPosition='bottom'
+						sizes='100vw'
+						placeholder='blur'
+					/>
+				</CainIsComingHeader>
 				<StyledSection>
 					<SectionContainer>
 						<TwoUpContainer>
 							<TwoUp>
-								<h2>Something is Here</h2>
-								<p>{`As I sat at my desk my phone started going off. News notifications, texts from friends and Twitter mentions. Something big had happened with Levitron Systems' Cogs in MY CITY. Our internet was out so I poured myself a whiskey and pulled out the emergency Radio. For once growing up in a prepper household paid off. Many of the stations were offline but I found a newsbroadcast on 1120am. I should probably check the other stations for news.`}</p>
+								<MotionH2>Something is Here</MotionH2>
+								<p>{`As I sat at my desk my phone started going off. News notifications, texts from friends and mentions. Something big had happened with Levitron Systems' Cogs in MY CITY. Our internet was out so I poured myself a whiskey and pulled out the emergency Radio. For once growing up in a prepper household paid off. Many of the stations were offline but I found a newsbroadcast on 1120am. I should probably check the other stations for news.`}</p>
 							</TwoUp>
 							<TwoUp>
 								<DynamicRadio />
@@ -62,7 +63,7 @@ export default function Comics() {
 								</IntelContainer>
 							</TwoUp>
 							<TwoUp>
-								<h2>Collected Intel</h2>
+								<MotionH2>Collected Intel</MotionH2>
 								<p>
 									Things got bad, really bad. I lost track of time. I spent my
 									days, weeks and months scurrying from one hiding place to
@@ -80,7 +81,7 @@ export default function Comics() {
 					</SectionContainer>
 				</StyledSection>
 			</MotionMain>
-			<DynamicMotionFooter />
+			<DynamicFooter />
 		</>
 	);
 }

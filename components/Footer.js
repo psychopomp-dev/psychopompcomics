@@ -3,7 +3,7 @@ import { m } from 'framer-motion';
 import LogoTextImage from '../components/LogoTextImage';
 import { MobileNavNewsletterSubscribe } from './NewsletterSubscribe';
 import {
-	StyledMotionFooter,
+	StyledFooter,
 	StyledCopyrightContainer,
 	StyledCopyright,
 } from './styles/MotionFooter.styled';
@@ -101,7 +101,7 @@ const InnerContainer = styled(m.div)`
 	}
 `;
 
-export default function MotionFooter() {
+export default function Footer() {
 	const theme = useTheme();
 
 	const footerVariants = {
@@ -132,13 +132,7 @@ export default function MotionFooter() {
 		},
 	};
 	return (
-		<StyledMotionFooter
-			initial='hidden'
-			whileInView='visible'
-			viewport={{ once: true }}
-			variants={footerVariants}
-			exit={theme.motion.pageTransitionVariants.exit}
-		>
+		<StyledFooter>
 			<InnerContainer variants={footerChildrenVariants}>
 				<LogoTextContainer>
 					<LogoTextImage />
@@ -146,6 +140,6 @@ export default function MotionFooter() {
 				<CopyRight />
 				<FooterSocialContainer />
 			</InnerContainer>
-		</StyledMotionFooter>
+		</StyledFooter>
 	);
 }

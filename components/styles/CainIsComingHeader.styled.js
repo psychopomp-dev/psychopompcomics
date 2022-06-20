@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import MotionHeader from './MotionHeader.styled';
+import StyledHeader from './Header.styled';
 
 const sixteenByNineStyles = css`
 	max-height: initial;
@@ -7,7 +7,7 @@ const sixteenByNineStyles = css`
 	aspect-ratio: 16 / 9;
 `;
 
-const CainIsComingHeader = styled(MotionHeader)`
+const CainIsComingHeader = styled(StyledHeader)`
 	text-align: center;
 	padding: var(--space-xxl) var(--space-lg) var(--space-xl);
 	height: calc(100vh - 11.325rem);

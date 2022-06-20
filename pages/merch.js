@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MotionFooter from '../components/Footer';
-import MotionHeader from '../components/styles/MotionHeader.styled';
+import Footer from '../components/Footer';
+import StyledHeader from '../components/styles/Header.styled';
 import MotionMain from '../components/styles/MotionMain.styled';
 import { DevRoutes } from '../utils/dev_routes';
 
@@ -13,11 +13,12 @@ const Title = styled.h1`
 export default function Merch() {
 	return (
 		<>
-			<MotionHeader>
-				<Title>Merch</Title>
-			</MotionHeader>
-			<MotionMain />
-			<MotionFooter />
+			<MotionMain>
+				<StyledHeader>
+					<Title>Merch</Title>
+				</StyledHeader>
+			</MotionMain>
+			<Footer />
 		</>
 	);
 }

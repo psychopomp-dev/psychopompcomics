@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import MotionFooter from '../components/Footer';
-import MotionHeader from '../components/styles/MotionHeader.styled';
+import Footer from '../components/Footer';
+import StyledHeader from '../components/styles/Header.styled';
 import MotionMain from '../components/styles/MotionMain.styled';
 import { DevRoutes } from '../utils/dev_routes';
 
@@ -13,11 +13,12 @@ const Title = styled.h1`
 export default function News() {
 	return (
 		<>
-			<MotionHeader>
-				<Title>News</Title>
-			</MotionHeader>
-			<MotionMain />
-			<MotionFooter />
+			<MotionMain>
+				<StyledHeader>
+					<Title>News</Title>
+				</StyledHeader>
+			</MotionMain>
+			<Footer />
 		</>
 	);
 }

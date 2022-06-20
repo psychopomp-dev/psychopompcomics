@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import NoScrollLink from './NoScrollLink';
 import styled from 'styled-components';
 import MotionLogo from './styles/MotionLogo.styled';
 
@@ -29,11 +29,11 @@ const NavBrandContainer = styled.div`
 export const NavBrand = ({ onClick }) => {
 	return (
 		<NavBrandContainer>
-			<Link href='/'>
+			<NoScrollLink href='/'>
 				<a onClick={onClick}>
 					<MotionLogo />
 				</a>
-			</Link>
+			</NoScrollLink>
 		</NavBrandContainer>
 	);
 };

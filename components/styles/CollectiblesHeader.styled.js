@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { m } from 'framer-motion';
-import MotionHeader from './MotionHeader.styled';
+import StyledHeader from './Header.styled';
 import Image from 'next/image';
 import ruinsImg from '../../images/ruins.jpg';
 import { StartSwiperAutoPlay } from '../VanthSwiper';
 
-const CollectiblesHeader = styled(MotionHeader)`
+const CollectiblesHeader = styled(StyledHeader)`
 	padding: var(--space-xxxl) var(--space-lg);
 	text-align: center;
 `;

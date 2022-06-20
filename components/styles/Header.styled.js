@@ -1,7 +1,6 @@
 import styled, { useTheme } from 'styled-components';
-import { m } from 'framer-motion';
 
-const StyledHeader = styled(m.header)`
+const StyledHeader = styled.header`
 	width: 100%;
 	max-width: 100%;
 	position: relative;

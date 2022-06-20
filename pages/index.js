@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-import MotionHeader from '../components/styles/MotionHeader.styled';
+import StyledHeader from '../components/styles/Header.styled';
 import MotionMain from '../components/styles/MotionMain.styled';
-import MotionFooter from '../components/Footer';
+import Footer from '../components/Footer';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import SeedOfCainHero from '../components/styles/SeedOfCainHero.styled';
@@ -15,10 +15,10 @@ const DynamicThreeUpNft = dynamic(() =>
 export default function Home() {
 	return (
 		<>
-			<MotionHeader>
-				<SeedOfCainHero />
-			</MotionHeader>
 			<MotionMain>
+				<StyledHeader>
+					<SeedOfCainHero />
+				</StyledHeader>
 				<StyledSection>
 					<SectionContainer>
 						<DynamicPsychoDescription />
@@ -26,7 +26,7 @@ export default function Home() {
 					</SectionContainer>
 				</StyledSection>
 			</MotionMain>
-			<MotionFooter />
+			<Footer />
 		</>
 	);
 }
