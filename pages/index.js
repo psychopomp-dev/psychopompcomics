@@ -5,6 +5,9 @@ import Footer from '../components/Footer';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import SeedOfCainHero from '../components/styles/SeedOfCainHero.styled';
+import { m } from 'framer-motion';
+import { FadeInDelay } from '../components/themes/MotionVariants';
+
 const DynamicPsychoDescription = dynamic(() =>
 	import('../components/styles/PsychoDescription.styled')
 );
@@ -21,7 +24,14 @@ export default function Home() {
 				</StyledHeader>
 				<StyledSection>
 					<SectionContainer>
-						<DynamicPsychoDescription />
+						<m.div
+							variants={FadeInDelay}
+							initial='hidden'
+							whileInView='visible'
+							viewport='viewport'
+						>
+							<DynamicPsychoDescription />
+						</m.div>
 						<DynamicThreeUpNft />
 					</SectionContainer>
 				</StyledSection>
