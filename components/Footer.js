@@ -6,7 +6,7 @@ import {
 	StyledFooter,
 	StyledCopyrightContainer,
 	StyledCopyright,
-} from './styles/MotionFooter.styled';
+} from './styles/Footer.styled';
 import { DiscordIcon, TwitterIcon } from './SocialIcons';
 
 const LogoTextContainer = styled.div`
