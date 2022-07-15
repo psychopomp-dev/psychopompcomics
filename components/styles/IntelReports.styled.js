@@ -4,6 +4,7 @@ const TabletContainer = styled.div`
 width: 100%;
 max-width: 240rem;
 aspect-ratio: 16 / 9;
+overflow: hidden;
 position: relative;
 display: flex;
 padding: 10% 20% 0 9.5%;
@@ -16,6 +17,12 @@ padding: 10% 20% 0 9.5%;
 	overflow: scroll;
 	scrollbar-width: none;
 	padding: var(--space-ms) var(--space-ms) var(--space-xxl);
+
+	&::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+}
 	
 	.classification,
 	p {
