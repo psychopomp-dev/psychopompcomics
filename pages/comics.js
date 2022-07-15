@@ -12,7 +12,8 @@ import cainIsComing from '../images/seed-of-cain/cain-is-coming.jpg';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import { TwoUp, TwoUpContainer } from '../components/styles/TwoUp.styled';
-import { MotionH2 } from '../components/styles/MotionHeadings.styled';
+import { m } from 'framer-motion';
+import { FadeInLeft } from '../components/themes/MotionVariants';
 
 const IntelContainer = styled.div`
 	width: 100%;
@@ -43,7 +44,14 @@ export default function Comics() {
 					<SectionContainer>
 						<TwoUpContainer>
 							<TwoUp>
-								<MotionH2>Something is Here</MotionH2>
+								<m.h2
+									variants={FadeInLeft}
+									initial='hidden'
+									whileInView='visible'
+									viewport='viewport'
+								>
+									Something is Here
+								</m.h2>
 								<p>{`As I sat at my desk my phone started going off. News notifications, texts from friends and mentions. Something big had happened with Levitron Systems' Cogs in MY CITY. Our internet was out so I poured myself a whiskey and pulled out the emergency Radio. For once growing up in a prepper household paid off. Many of the stations were offline but I found a newsbroadcast on 1120am. I should probably check the other stations for news.`}</p>
 							</TwoUp>
 							<TwoUp>
@@ -63,7 +71,14 @@ export default function Comics() {
 								</IntelContainer>
 							</TwoUp>
 							<TwoUp>
-								<MotionH2>Collected Intel</MotionH2>
+								<m.h2
+									variants={FadeInLeft}
+									initial='hidden'
+									whileInView='visible'
+									viewport='viewport'
+								>
+									Collected Intel
+								</m.h2>
 								<p>
 									Things got bad, really bad. I lost track of time. I spent my
 									days, weeks and months scurrying from one hiding place to
@@ -85,5 +100,3 @@ export default function Comics() {
 		</>
 	);
 }
-
-export const getServerSideProps = DevRoutes;
