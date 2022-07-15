@@ -69,7 +69,6 @@ export default function App({ Component, pageProps }) {
 						</MenuProvider>
 						<AnimatePresence
 							exitBeforeEnter
-							initial={false}
 							onExitComplete={handleExitComplete}
 						>
 							<Component {...pageProps} canonical={url} key={router.route} />
