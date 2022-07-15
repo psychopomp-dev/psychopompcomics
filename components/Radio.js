@@ -306,7 +306,7 @@ export default function Radio() {
 						<source src='/video/transmission-1.mp4' type='video/mp4' />
 					</video>
 					<video id='1230am' loop>
-						<source src='/video/transmission1.mp4' type='video/mp4' />
+						<source src='/video/transmission-2.mp4' type='video/mp4' />
 					</video>
 					<video id='static' loop>
 						<source src='/video/radio-static.mp4' type='video/mp4' />
