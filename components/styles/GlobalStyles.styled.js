@@ -203,7 +203,6 @@ export const GlobalStyle = createGlobalStyle`
 
 	#__next {
 		display: grid;
-		grid-gap: ${({ theme }) => theme.spaces.md};
 		grid-template-rows: auto auto 1fr auto;
 		grid-template-areas:
 			'nav'

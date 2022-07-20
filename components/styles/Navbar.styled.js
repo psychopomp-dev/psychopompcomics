@@ -13,7 +13,6 @@ export const StyledMotionNavbar = styled(m.nav)`
     background-color: var(--surface1);
     box-shadow: var(--box-shadow-ms);
     padding: var(--space-md) ${({ theme }) => theme.spaces.lg};
-    margin-bottom: calc(-1 * var(--space-md));
     * {
         background-color: var(--surface1);
     }

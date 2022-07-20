@@ -5,6 +5,7 @@ const StyledHeader = styled.header`
 	max-width: 100%;
 	position: relative;
 	overflow: hidden;
+	margin-bottom: var(--space-md);
 `;
 
 export default function MotionHeader(props) {
