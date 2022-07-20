@@ -5,6 +5,11 @@ const TwoUpContainer = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 
+	@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+		flex-direction: ${(props) =>
+			props.reverseOnCollapse ? 'column-reverse' : 'column'};
+	}
+
 	& > *:first-child {
 		border-right: ${(props) =>
 			props.divided ? '0.1rem solid var(--surface4)' : 'none'};
@@ -15,7 +20,7 @@ const TwoUpContainer = styled.div`
 `;
 
 const TwoUp = styled.article`
-	width: 50%;
+	width: ${(props) => (props.twoUpWidth ? `${props.twoUpWidth}` : '50%')};
 	padding-left: var(--space-xl);
 	padding-right: var(--space-xl);
 	margin-bottom: initial;
