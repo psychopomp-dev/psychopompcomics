@@ -3,6 +3,7 @@ import { A11y, Navigation, Keyboard } from 'swiper';
 import Image from 'next/image';
 import TabImg from '../images/intel-reports/intel-tablet.png';
 import TabGreenLightImg from '../images/intel-reports/intel-tablet-green-light.png';
+import TabScreenOverlayImg from '../images/intel-reports/intel-tablet-screen-overlay.png';
 import { useRef, useCallback } from 'react';
 import IntelBriefs from '../data/IntelBriefs';
 import {
@@ -98,6 +99,13 @@ export default function IntelReport({ sizes }) {
 						</SwiperSlide>
 					))}
 				</Swiper>
+				<Image
+					src={TabScreenOverlayImg}
+					alt='Intel Tablet Screen Overlay'
+					layout='fill'
+					objectFit='cover'
+					sizes={sizes}
+				/>
 				<SwiperButtonPrev onClick={handlePrev} />
 				<SwiperButtonNext onClick={handleNext} />
 				<ScrollButtonDown onClick={HandleDownClick} />

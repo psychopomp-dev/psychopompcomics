@@ -43,7 +43,7 @@ export default function Comics() {
 				<StyledSection>
 					<SectionContainer>
 						<TwoUpContainer>
-							<TwoUp>
+							<TwoUp twoUpWidth='33%'>
 								<m.h2
 									variants={FadeInLeft}
 									initial='hidden'
@@ -54,7 +54,7 @@ export default function Comics() {
 								</m.h2>
 								<p>{`As I sat at my desk my phone started going off. News notifications, texts from friends and mentions. Something big had happened with Levitron Systems' Cogs in MY CITY. Our internet was out so I poured myself a whiskey and pulled out the emergency Radio. For once growing up in a prepper household paid off. Many of the stations were offline but I found a newsbroadcast on 1120am. I should probably check the other stations for news.`}</p>
 							</TwoUp>
-							<TwoUp>
+							<TwoUp twoUpWidth='67%'>
 								<DynamicRadio />
 							</TwoUp>
 						</TwoUpContainer>
@@ -62,15 +62,15 @@ export default function Comics() {
 				</StyledSection>
 				<StyledSection xxxlTop>
 					<SectionContainer>
-						<TwoUpContainer>
-							<TwoUp>
+						<TwoUpContainer reverseOnCollapse={true}>
+							<TwoUp twoUpWidth='67%'>
 								<IntelContainer>
 									<DynamicIntelReport
-										sizes={`(max-width: ${theme.breakpoints.sm}) 100vw, 240rem`}
+										sizes={`(max-width: ${theme.breakpoints.xxs}) 74.3vw, (max-width: ${theme.breakpoints.xs}) 83.3vw, (max-width: ${theme.breakpoints.sm}) 87.5vw, (max-width: ${theme.breakpoints.md}) 90.3vw, (max-width: 1311px) 60.5vw, 79.36rem`}
 									/>
 								</IntelContainer>
 							</TwoUp>
-							<TwoUp>
+							<TwoUp twoUpWidth='33%'>
 								<m.h2
 									variants={FadeInLeft}
 									initial='hidden'

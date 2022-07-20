@@ -3,14 +3,14 @@ import styled from 'styled-components';
 const TabletContainer = styled.div`
 width: 100%;
 max-width: 240rem;
-aspect-ratio: 16 / 9;
+aspect-ratio: 1217 / 815;
 overflow: hidden;
 position: relative;
 display: flex;
-padding: 10% 20% 0 9.5%;
+padding: 10% 20.5% 11.5% 9.8%;
 
 .swiper {
-	mask-image: linear-gradient(to bottom, black 0%,  black 075%, transparent 90%);
+	mask-image: linear-gradient(to bottom, black 0%,  black 080%, transparent 98%);
 }
 
 .swiper-slide {
@@ -88,27 +88,27 @@ const TabletButton = styled.button`
 `;
 
 const SwiperButton = styled(TabletButton)`
-	top: 18%;
+	top: 13.9%;
 `;
 
 const SwiperButtonPrev = styled(SwiperButton)`
-	right: 12.5%;
+	right: 12.9%;
 `;
 
 const SwiperButtonNext = styled(SwiperButton)`
-	right: 6.7%;
+	right: 7.6%;
 `;
 
 const ScrollButton = styled(TabletButton)`
-	right: 9.5%;
+	right: 10.2%;
 `;
 
 const ScrollButtonDown = styled(ScrollButton)`
-	top: 23.5%;
+	top: 18%;
 `;
 
 const ScrollButtonUp = styled(ScrollButton)`
-	top: 12.5%;
+	top: 10%;
 `;
 
 export {
