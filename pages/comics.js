@@ -25,6 +25,7 @@ const IntelContainer = styled.div`
 
 export default function Comics() {
 	const theme = useTheme();
+	const imageSizes = `(max-width: ${theme.breakpoints.xxs}) 89.7vw, (max-width: ${theme.breakpoints.xs}) 93.3vw, (max-width: ${theme.breakpoints.sm}) 95vw, (max-width: ${theme.breakpoints.md}) 96.1vw, (max-width: 1311px) 60.5vw, 952.3px`;
 	return (
 		<>
 			<MotionMain>
@@ -54,7 +55,7 @@ export default function Comics() {
 								<p>{`As I sat at my desk my phone started going off. News notifications, texts from friends and mentions. Something big had happened with Levitron Systems' Cogs in MY CITY. Our internet was out so I poured myself a whiskey and pulled out the emergency Radio. For once growing up in a prepper household paid off. Many of the stations were offline but I found a newsbroadcast on 1120am. I should probably check the other stations for news.`}</p>
 							</TwoUp>
 							<TwoUp twoUpWidth='67%'>
-								<DynamicRadio />
+								<DynamicRadio sizes={imageSizes} />
 							</TwoUp>
 						</TwoUpContainer>
 					</SectionContainer>
@@ -64,9 +65,7 @@ export default function Comics() {
 						<TwoUpContainer reverseOnCollapse={true}>
 							<TwoUp twoUpWidth='67%'>
 								<IntelContainer>
-									<DynamicIntelReport
-										sizes={`(max-width: ${theme.breakpoints.xxs}) 74.3vw, (max-width: ${theme.breakpoints.xs}) 83.3vw, (max-width: ${theme.breakpoints.sm}) 87.5vw, (max-width: ${theme.breakpoints.md}) 90.3vw, (max-width: 1311px) 60.5vw, 79.36rem`}
-									/>
+									<DynamicIntelReport sizes={imageSizes} />
 								</IntelContainer>
 							</TwoUp>
 							<TwoUp twoUpWidth='33%'>
