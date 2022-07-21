@@ -6,6 +6,10 @@ const StyledSection = styled.section`
 	padding-left: var(--space-ml);
 	padding-right: var(--space-ml);
 	overflow: hidden;
+
+	& + & {
+		margin-top: var(--space-xxxl);
+	}
 `;
 
 export default StyledSection;

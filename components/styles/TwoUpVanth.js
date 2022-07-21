@@ -3,6 +3,8 @@ import { TwoUp, TwoUpContainer } from './TwoUp.styled';
 import Image from 'next/image';
 import vanthImg from '../../images/vanth.svg';
 import LinkPrimary from './StyledButton.styled';
+import { m } from 'framer-motion';
+import { FadeInLeft } from '../themes/MotionVariants';
 
 const VanthTwoUp = styled(TwoUpContainer)`
 	align-items: center;
@@ -24,7 +26,14 @@ export default function VanthTwoUpContainer() {
 		<VanthTwoUp>
 			<TwoUp>
 				<div>
-					<h2>{'Vanth are the Key'}</h2>
+					<m.h2
+						variants={FadeInLeft}
+						initial='hidden'
+						whileInView='visible'
+						viewport='viewport'
+					>
+						{'Vanth are the Key'}
+					</m.h2>
 					<p>{'Buying a Vanth unlocks:'}</p>
 					<ul>
 						<li>
@@ -46,15 +55,22 @@ export default function VanthTwoUpContainer() {
 							}
 						</li>
 					</ul>
-					<LinkPrimary href='#'>
-						<a
-							href='https://exchange.art/collections/Vanth/nfts'
-							target='_blank'
-							rel='noreferrer'
-						>
-							Find your spirit guide
-						</a>
-					</LinkPrimary>
+					<m.div
+						variants={FadeInLeft}
+						initial='hidden'
+						whileInView='visible'
+						viewport='viewport'
+					>
+						<LinkPrimary href='#'>
+							<a
+								href='https://exchange.art/collections/Vanth/nfts'
+								target='_blank'
+								rel='noreferrer'
+							>
+								Find your spirit guide
+							</a>
+						</LinkPrimary>
+					</m.div>
 				</div>
 			</TwoUp>
 			<TwoUp>

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import StyledCollectiblesHeader from '../components/styles/CollectiblesHeader.styled';
 import MotionMain from '../components/styles/MotionMain.styled';
-const DynamicMotionFooter = dynamic(() => import('../components/Footer'));
+const DynamicFooter = dynamic(() => import('../components/Footer'));
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 const DynamicVanthSwiper = dynamic(() => import('../components/VanthSwiper'), {
@@ -17,8 +17,8 @@ const DynamicVanthTwoUpContainer = dynamic(() =>
 export default function Collectibles() {
 	return (
 		<>
-			<StyledCollectiblesHeader />
 			<MotionMain>
+				<StyledCollectiblesHeader />
 				<StyledSection>
 					<SectionContainer>
 						<DynamicVanthSwiper />
@@ -31,7 +31,7 @@ export default function Collectibles() {
 					</SectionContainer>
 				</StyledSection>
 			</MotionMain>
-			<DynamicMotionFooter />
+			<DynamicFooter />
 		</>
 	);
 }

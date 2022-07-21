@@ -14,8 +14,20 @@ import {
 	domAnimation,
 } from 'framer-motion';
 import './_app.css';
+import { useRouter } from 'next/router';
 
-export default function App({ Component, pageProps, router }) {
+function handleExitComplete() {
+	if (typeof window !== 'undefined') {
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'instant',
+		});
+	}
+}
+
+export default function App({ Component, pageProps }) {
+	const router = useRouter();
 	const [theme, setTheme] = useState('dark');
 	const url = `${
 		process.env.NODE_ENV == 'production'
@@ -55,8 +67,11 @@ export default function App({ Component, pageProps, router }) {
 						<MenuProvider>
 							<MotionNavbar />
 						</MenuProvider>
-						<AnimatePresence exitBeforeEnter>
-							<Component {...pageProps} canonical={url} key={url} />
+						<AnimatePresence
+							exitBeforeEnter
+							onExitComplete={handleExitComplete}
+						>
+							<Component {...pageProps} canonical={url} key={router.route} />
 						</AnimatePresence>
 					</MotionConfig>
 				</LazyMotion>

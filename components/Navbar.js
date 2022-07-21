@@ -9,7 +9,8 @@ import { DiscordIcon, TwitterIcon } from './SocialIcons';
 import { StyledMotionNavbar } from '../components/styles/Navbar.styled';
 import { StyledMotionNavLinkList } from '../components/styles/NavbarLinkList.styled';
 import { MobileNavNewsletterSubscribe } from './NewsletterSubscribe';
-import { PrimaryLink } from './styles/StyledLink.styled';
+import { PrimaryLink, PrimaryLinkNoScroll } from './styles/StyledLink.styled';
+import { PrimaryLinkLgNoScroll } from './styles/StyledLink.styled';
 
 const SocialContainer = styled.div`
 	margin: var(--space-md) auto;
@@ -40,7 +41,7 @@ const MobileSocialContainer = () => {
 const MotionNavLinks = ({ openmenu, mobile, onClick }) => {
 	const links = [
 		'about',
-		// 'comics',
+		'comics',
 		'collectibles',
 		// 'characters',
 		// 'artists',
@@ -87,9 +88,9 @@ const MotionNavLinks = ({ openmenu, mobile, onClick }) => {
 		>
 			{links.map((link) => (
 				<li key={link}>
-					<PrimaryLink onClick={onClick} href={`/${link}`}>
+					<PrimaryLinkNoScroll onClick={onClick} href={`/${link}`}>
 						{link}
-					</PrimaryLink>
+					</PrimaryLinkNoScroll>
 				</li>
 			))}
 			<li>

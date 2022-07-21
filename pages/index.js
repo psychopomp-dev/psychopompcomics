@@ -1,10 +1,13 @@
 import dynamic from 'next/dynamic';
-import MotionHeader from '../components/styles/MotionHeader.styled';
+import StyledHeader from '../components/styles/Header.styled';
 import MotionMain from '../components/styles/MotionMain.styled';
-import MotionFooter from '../components/Footer';
+import Footer from '../components/Footer';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import SeedOfCainHero from '../components/styles/SeedOfCainHero.styled';
+import { m } from 'framer-motion';
+import { FadeInDelay } from '../components/themes/MotionVariants';
+
 const DynamicPsychoDescription = dynamic(() =>
 	import('../components/styles/PsychoDescription.styled')
 );
@@ -15,18 +18,25 @@ const DynamicThreeUpNft = dynamic(() =>
 export default function Home() {
 	return (
 		<>
-			<MotionHeader>
-				<SeedOfCainHero />
-			</MotionHeader>
 			<MotionMain>
+				<StyledHeader>
+					<SeedOfCainHero />
+				</StyledHeader>
 				<StyledSection>
 					<SectionContainer>
-						<DynamicPsychoDescription />
+						<m.div
+							variants={FadeInDelay}
+							initial='hidden'
+							whileInView='visible'
+							viewport='viewport'
+						>
+							<DynamicPsychoDescription />
+						</m.div>
 						<DynamicThreeUpNft />
 					</SectionContainer>
 				</StyledSection>
 			</MotionMain>
-			<MotionFooter />
+			<Footer />
 		</>
 	);
 }

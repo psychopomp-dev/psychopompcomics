@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import MotionHeader from './MotionHeader.styled';
+import StyledHeader from './Header.styled';
 import LogoTextImage from '../LogoTextImage';
 
-const AboutHeader = styled(MotionHeader)`
+const AboutHeader = styled(StyledHeader)`
 	text-align: center;
 	padding: var(--space-xxl) var(--space-lg) var(--space-xl);
 `;

@@ -3,6 +3,7 @@ import { TwoUp, TwoUpContainer } from './TwoUp.styled';
 import Image from 'next/image';
 import twitterVanth from '../../images/vanth/IMG_5841.jpeg';
 import { m } from 'framer-motion';
+import { FadeInLeftDelayXl } from '../themes/MotionVariants';
 
 const VanthImageWrapper = styled(m.div)`
 	& > * {
@@ -49,7 +50,14 @@ export default function LegendTwoUpContainer() {
 				</VanthImageWrapper>
 			</TwoUp>
 			<TwoUp>
-				<h2>Beings of Legend</h2>
+				<m.h2
+					variants={FadeInLeftDelayXl}
+					initial='hidden'
+					whileInView='visible'
+					viewport='viewport'
+				>
+					Beings of Legend
+				</m.h2>
 				<p>{`In a time before Homer wrote his epic poems the Iliad and the Odyssey, legend tells of Vanth, the first spirit guide—or psychopomp—to the underworld.  Sometimes pictured with Charun the boatman, the benevolent Vanth would lead the dead along ancient paths, her torch held high lighting the way.  At a gate as old as the world itself she would produce a key and unlock the way to the underworld.`}</p>
 				<p>{`Ancient writings have described the chthonic goddess as being “in the company of other Vanth,” suggesting Vanth can take many forms or is not singular.  Perhaps she receded from myth and memory because she preferred to take the shape of the beasts and birds so often identified as psychopomps, such as the wolves and the ravens and the deer of the dead.`}</p>
 				<p>{`Perhaps.`}</p>

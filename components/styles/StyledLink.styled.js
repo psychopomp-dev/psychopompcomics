@@ -118,11 +118,7 @@ export function PrimaryLinkMd(props) {
 export function PrimaryLinkNoScroll(props) {
 	return (
 		<StyledPrimaryLink>
-			<NoScrollLink
-				href={props.href}
-				passHref={props.passHref}
-				scroll={props.scroll}
-			>
+			<NoScrollLink href={props.href} passHref={props.passHref}>
 				<a onClick={props.onClick}>{props.children}</a>
 			</NoScrollLink>
 		</StyledPrimaryLink>
@@ -132,11 +128,7 @@ export function PrimaryLinkNoScroll(props) {
 export function PrimaryLinkXsNoScroll(props) {
 	return (
 		<StyledPrimaryLinkXs>
-			<NoScrollLink
-				href={props.href}
-				passHref={props.passHref}
-				scroll={props.scroll}
-			>
+			<NoScrollLink href={props.href} passHref={props.passHref}>
 				<a onClick={props.onClick}>{props.children}</a>
 			</NoScrollLink>
 		</StyledPrimaryLinkXs>
@@ -146,11 +138,7 @@ export function PrimaryLinkXsNoScroll(props) {
 export function PrimaryLinkSmNoScroll(props) {
 	return (
 		<StyledPrimaryLinkSm>
-			<NoScrollLink
-				href={props.href}
-				passHref={props.passHref}
-				scroll={props.scroll}
-			>
+			<NoScrollLink href={props.href} passHref={props.passHref}>
 				<a onClick={props.onClick}>{props.children}</a>
 			</NoScrollLink>
 		</StyledPrimaryLinkSm>
@@ -160,11 +148,7 @@ export function PrimaryLinkSmNoScroll(props) {
 export function PrimaryLinkMdNoScroll(props) {
 	return (
 		<StyledPrimaryLinkMd>
-			<NoScrollLink
-				href={props.href}
-				passHref={props.passHref}
-				scroll={props.scroll}
-			>
+			<NoScrollLink href={props.href} passHref={props.passHref}>
 				<a onClick={props.onClick}>{props.children}</a>
 			</NoScrollLink>
 		</StyledPrimaryLinkMd>
@@ -174,11 +158,7 @@ export function PrimaryLinkMdNoScroll(props) {
 export function PrimaryLinkLgNoScroll(props) {
 	return (
 		<StyledPrimaryLinkLg>
-			<NoScrollLink
-				href={props.href}
-				passHref={props.passHref}
-				scroll={props.scroll}
-			>
+			<NoScrollLink href={props.href} passHref={props.passHref}>
 				<a onClick={props.onClick}>{props.children}</a>
 			</NoScrollLink>
 		</StyledPrimaryLinkLg>

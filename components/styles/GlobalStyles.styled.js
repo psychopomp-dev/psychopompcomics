@@ -203,18 +203,15 @@ export const GlobalStyle = createGlobalStyle`
 
 	#__next {
 		display: grid;
-		grid-gap: ${({ theme }) => theme.spaces.md};
 		grid-template-rows: auto auto 1fr auto;
 		grid-template-areas:
 			'nav'
-			'header'
 			'main'
 			'footer'
 		;
 		min-height: 100vh;
 
 		& > nav {grid-area: nav; }
-		& > header {grid-area: header; }
 		& > main {grid-area: main; }
 		& > footer {grid-area: footer; }
 	}
