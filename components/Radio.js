@@ -65,7 +65,7 @@ const DialContainer = function (props) {
 	);
 };
 
-export default function Radio() {
+export default function Radio({ sizes }) {
 	/* Dial controls */
 	const mousePosition = useMousePosition();
 	const [mouseDown, setMouseDown] = useState(false);
@@ -215,7 +215,7 @@ export default function Radio() {
 					layout='fill'
 					objectFit='cover'
 					objectPosition='bottom'
-					sizes={`(max-width: 1000px) 100vw, 100rem`}
+					sizes={sizes}
 					placeholder='blur'
 				/>
 				<Image
@@ -225,7 +225,7 @@ export default function Radio() {
 					layout='fill'
 					objectFit='cover'
 					objectPosition='bottom'
-					sizes={`(max-width: 1000px) 100vw, 100rem`}
+					sizes={sizes}
 					placeholder='blur'
 				/>
 				<FreqIndicator>
