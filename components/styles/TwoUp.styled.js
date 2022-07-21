@@ -26,6 +26,8 @@ const TwoUp = styled.article`
 	margin-bottom: initial;
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+		padding-left: 0;
+		padding-right: 0;
 		margin-bottom: var(--space-xxl);
 		width: 100%;
 	}
