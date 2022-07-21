@@ -14,6 +14,10 @@ const CainIsComingHeader = styled(StyledHeader)`
 	max-height: calc(100vw * (9 / 16));
 	margin-bottom: var(--space-xxl);
 
+	@media only screen and (min-aspect-ratio: 18/9) {
+		${sixteenByNineStyles}
+	}
+
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
 		${sixteenByNineStyles}
 	}
