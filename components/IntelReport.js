@@ -106,10 +106,12 @@ export default function IntelReport({ sizes }) {
 					objectFit='cover'
 					sizes={sizes}
 				/>
-				<SwiperButtonPrev onClick={handlePrev} />
-				<SwiperButtonNext onClick={handleNext} />
-				<ScrollButtonDown onClick={HandleDownClick} />
-				<ScrollButtonUp onClick={HandleUpClick} />
+				<SwiperButtonPrev onClick={handlePrev}>Next</SwiperButtonPrev>
+				<SwiperButtonNext onClick={handleNext}>Previous</SwiperButtonNext>
+				<ScrollButtonDown onClick={HandleDownClick}>
+					Scroll Down
+				</ScrollButtonDown>
+				<ScrollButtonUp onClick={HandleUpClick}>Scroll Up</ScrollButtonUp>
 			</TabletContainer>
 		</>
 	);
