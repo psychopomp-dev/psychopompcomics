@@ -79,7 +79,10 @@ const AddressContainer = styled.div`
 
 const TabletButton = styled.button`
 	appearance: none;
-	opacity: 0;
+	background-color: transparent;
+	color: transparent;
+	font-size: 0;
+	border: none;
 	cursor: pointer;
 	width: 2%;
 	aspect-ratio: 1 / 1;
@@ -88,15 +91,15 @@ const TabletButton = styled.button`
 `;
 
 const SwiperButton = styled(TabletButton)`
-	top: 13.9%;
+	top: 13.5%;
 `;
 
 const SwiperButtonPrev = styled(SwiperButton)`
-	right: 12.9%;
+	right: 13.2%;
 `;
 
 const SwiperButtonNext = styled(SwiperButton)`
-	right: 7.6%;
+	right: 7.5%;
 `;
 
 const ScrollButton = styled(TabletButton)`
@@ -108,7 +111,7 @@ const ScrollButtonDown = styled(ScrollButton)`
 `;
 
 const ScrollButtonUp = styled(ScrollButton)`
-	top: 10%;
+	top: 9.4%;
 `;
 
 export {
