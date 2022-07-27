@@ -21,7 +21,8 @@ function handleExitComplete() {
 		window.scrollTo({
 			top: 0,
 			left: 0,
-			behavior: 'instant',
+			// NOTE: Only possibilities are 'auto' and 'smooth'
+			// behavior: 'instant',
 		});
 	}
 }
