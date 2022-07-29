@@ -28,7 +28,6 @@ export default function Home() {
 							variants={FadeInDelay}
 							initial='hidden'
 							whileInView='visible'
-							// viewport='viewport'
 						>
 							<DynamicPsychoDescription />
 						</m.div>

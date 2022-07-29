@@ -21,8 +21,8 @@ function handleExitComplete() {
 		window.scrollTo({
 			top: 0,
 			left: 0,
-			// NOTE: Only possibilities are 'auto' and 'smooth'
-			// behavior: 'instant',
+			// @ts-ignore TODO: Update this to a valid value once it is not supported by Chrome and Firefox
+			behavior: 'instant',
 		});
 	}
 }
