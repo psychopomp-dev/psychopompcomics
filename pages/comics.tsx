@@ -48,7 +48,6 @@ export default function Comics() {
 									variants={FadeInLeft}
 									initial='hidden'
 									whileInView='visible'
-									viewport='viewport'
 								>
 									Something is Here
 								</m.h2>
@@ -73,7 +72,6 @@ export default function Comics() {
 									variants={FadeInLeft}
 									initial='hidden'
 									whileInView='visible'
-									viewport='viewport'
 								>
 									Collected Intel
 								</m.h2>

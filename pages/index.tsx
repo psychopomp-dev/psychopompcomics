@@ -8,11 +8,11 @@ import SeedOfCainHero from '../components/styles/SeedOfCainHero.styled';
 import { m } from 'framer-motion';
 import { FadeInDelay } from '../components/themes/MotionVariants';
 
-const DynamicPsychoDescription = dynamic(() =>
-	import('../components/styles/PsychoDescription.styled')
+const DynamicPsychoDescription = dynamic(
+	() => import('../components/styles/PsychoDescription.styled')
 );
-const DynamicThreeUpNft = dynamic(() =>
-	import('../components/styles/ThreeUpNft.styled')
+const DynamicThreeUpNft = dynamic(
+	() => import('../components/styles/ThreeUpNft.styled')
 );
 
 export default function Home() {
@@ -28,7 +28,6 @@ export default function Home() {
 							variants={FadeInDelay}
 							initial='hidden'
 							whileInView='visible'
-							viewport='viewport'
 						>
 							<DynamicPsychoDescription />
 						</m.div>

@@ -7,11 +7,11 @@ import SectionContainer from '../components/styles/SectionContainer.styled';
 const DynamicVanthSwiper = dynamic(() => import('../components/VanthSwiper'), {
 	ssr: false,
 });
-const DynamicLegendTwoUpContainer = dynamic(() =>
-	import('../components/styles/TwoUpLegend.styled')
+const DynamicLegendTwoUpContainer = dynamic(
+	() => import('../components/styles/TwoUpLegend.styled')
 );
-const DynamicVanthTwoUpContainer = dynamic(() =>
-	import('../components/styles/TwoUpVanth')
+const DynamicVanthTwoUpContainer = dynamic(
+	() => import('../components/styles/TwoUpVanth')
 );
 
 export default function Collectibles() {
