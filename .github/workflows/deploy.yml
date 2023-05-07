@@ -62,6 +62,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: 'docker-compose.prod.yml'
           target: '~/psychopompcomics'
+          timeout: 120s
 
       - name: Deploy via SSH action
         uses: appleboy/ssh-action@master
