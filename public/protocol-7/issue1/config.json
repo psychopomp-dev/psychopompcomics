@@ -319,7 +319,7 @@
 			"panels": [
         {
           "center": { "x": 1052, "y": 442 },
-          "dimensions": { "w": 1831, "h": 7778 },
+          "dimensions": { "w": 1831, "h": 778 },
           "shape": "Rectangle",
           "transitionIn": "slide",
           "transitionOut": "slide"
