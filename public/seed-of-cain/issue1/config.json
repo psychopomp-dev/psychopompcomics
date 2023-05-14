@@ -1,7 +1,7 @@
 {
   "pages": [
     {
-      "imageUrl": "seed-of-cain/issue1/page0/0.png",
+      "imageUrl": "seed-of-cain/issue1/0.png",
       "panels": [],
       "pageDimensions": {
         "w": 2700,
@@ -9,7 +9,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page1/1.png",
+      "imageUrl": "seed-of-cain/issue1/1.png",
       "panels": [
         {
           "center": {
@@ -83,7 +83,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page2/2.png",
+      "imageUrl": "seed-of-cain/issue1/2.png",
       "panels": [
         {
           "center": {
@@ -131,7 +131,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page3/3.png",
+      "imageUrl": "seed-of-cain/issue1/3.png",
       "panels": [
         {
           "center": {
@@ -192,7 +192,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page4/4.png",
+      "imageUrl": "seed-of-cain/issue1/4.png",
       "panels": [
         {
           "center": {
@@ -279,7 +279,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page5/5.png",
+      "imageUrl": "seed-of-cain/issue1/5.png",
       "panels": [
         {
           "center": {
@@ -353,7 +353,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page6/6.png",
+      "imageUrl": "seed-of-cain/issue1/6.png",
       "panels": [
         {
           "center": {
@@ -427,7 +427,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page7/7.png",
+      "imageUrl": "seed-of-cain/issue1/7.png",
       "panels": [
         {
           "center": {
@@ -488,7 +488,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page8/8.png",
+      "imageUrl": "seed-of-cain/issue1/8.png",
       "panels": [
         {
           "center": {
@@ -588,7 +588,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page9/9.png",
+      "imageUrl": "seed-of-cain/issue1/9.png",
       "panels": [
         {
           "center": {
@@ -675,7 +675,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page10/10.png",
+      "imageUrl": "seed-of-cain/issue1/10.png",
       "panels": [
         {
           "center": {
@@ -775,7 +775,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page11/11.png",
+      "imageUrl": "seed-of-cain/issue1/11.png",
       "panels": [
         {
           "center": {
@@ -849,7 +849,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page12/12.png",
+      "imageUrl": "seed-of-cain/issue1/12.png",
       "panels": [
         {
           "center": {
@@ -924,7 +924,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page13/13.png",
+      "imageUrl": "seed-of-cain/issue1/13.png",
       "panels": [
         {
             "center": {
@@ -985,7 +985,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page14/14.png",
+      "imageUrl": "seed-of-cain/issue1/14.png",
       "panels": [
         {
             "center": {
@@ -1059,7 +1059,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page15/15.png",
+      "imageUrl": "seed-of-cain/issue1/15.png",
       "panels": [
         {
             "center": {
@@ -1146,7 +1146,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page16/16.png",
+      "imageUrl": "seed-of-cain/issue1/16.png",
       "panels": [
         {
             "center": {
@@ -1246,7 +1246,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page17/17.png",
+      "imageUrl": "seed-of-cain/issue1/17.png",
       "panels": [
         {
             "center": {
@@ -1307,7 +1307,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page18/18.png",
+      "imageUrl": "seed-of-cain/issue1/18.png",
       "panels": [
         {
             "center": {
@@ -1381,7 +1381,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page19/19.png",
+      "imageUrl": "seed-of-cain/issue1/19.png",
       "panels": [
         {
             "center": {
@@ -1481,7 +1481,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page20/20.png",
+      "imageUrl": "seed-of-cain/issue1/20.png",
       "panels": [
         {
             "center": {
@@ -1568,7 +1568,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page21/21.png",
+      "imageUrl": "seed-of-cain/issue1/21.png",
       "panels": [
         {
             "center": {
@@ -1655,7 +1655,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page22/22.png",
+      "imageUrl": "seed-of-cain/issue1/22.png",
       "panels": [
         {
             "center": {
@@ -1742,7 +1742,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page23/23.png",
+      "imageUrl": "seed-of-cain/issue1/23.png",
       "panels": [
         {
             "center": {
@@ -1829,7 +1829,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page24/24.png",
+      "imageUrl": "seed-of-cain/issue1/24.png",
       "panels": [
         {
             "center": {
@@ -1903,7 +1903,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page25/25.png",
+      "imageUrl": "seed-of-cain/issue1/25.png",
       "panels": [
         {
             "center": {
@@ -1964,7 +1964,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page26/26.png",
+      "imageUrl": "seed-of-cain/issue1/26.png",
       "panels": [
         {
             "center": {
@@ -2051,7 +2051,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page27/27.png",
+      "imageUrl": "seed-of-cain/issue1/27.png",
       "panels": [
         {
             "center": {
@@ -2125,7 +2125,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page28/28.png",
+      "imageUrl": "seed-of-cain/issue1/28.png",
       "panels": [
         {
             "center": {
@@ -2199,7 +2199,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page29/29.png",
+      "imageUrl": "seed-of-cain/issue1/29.png",
       "panels": [
         {
             "center": {
@@ -2260,7 +2260,7 @@
       }
     },
     {
-      "imageUrl": "seed-of-cain/issue1/page30/30.png",
+      "imageUrl": "seed-of-cain/issue1/30.png",
       "panels": [
         {
             "center": {
