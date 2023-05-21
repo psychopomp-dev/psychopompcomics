@@ -1,82 +1,86 @@
 import Page from './Page';
 
 class Book {
-    pages: Page[];
-    currentPage: number;
+	pages: Page[];
+	// currentPage: number;
 
-    constructor(pages: Page[]) {
-        this.pages = pages;
-        this.currentPage = 0;
-    }
+	constructor(pages: Page[]) {
+		this.pages = pages;
+	}
 
-    nextPage() {
-        if (this.currentPage < this.pages.length - 1) this.currentPage++;
-    }
+	nextPage(currentPage: number) {
+		if (currentPage < this.pages.length - 1) return currentPage++;
+	}
 
-    hasNextPage() {
-        return this.currentPage < this.pages.length - 1;
-    }
+	hasNextPage(currentPage: number) {
+		return currentPage < this.pages.length - 1;
+	}
 
-    prevPage() {
-        if (this.currentPage > 0) this.currentPage--;
-    }
+	prevPage(currentPage: number) {
+		if (currentPage > 0) return currentPage--;
+	}
 
-    hasPrevPage() {
-        return this.currentPage > 0;
-    }
+	hasPrevPage(currentPage: number) {
+		return currentPage > 0;
+	}
 
-    setPage(pageIdx: number) {
-        if (this.pages[pageIdx] !== undefined) this.currentPage = pageIdx;
-    }
+	setPage(pageIdx: number) {
+		if (this.pages[pageIdx] !== undefined) return pageIdx;
+	}
 
-    getPage(pageIdx: number) {
-        if (this.pages[pageIdx] === undefined) throw new Error(`Page ${pageIdx} does not exist`);
-        return this.pages[pageIdx];
-    }
+	getPage(pageIdx: number) {
+		if (this.pages[pageIdx] === undefined)
+			throw new Error(`Page ${pageIdx} does not exist`);
+		return this.pages[pageIdx];
+	}
 
-    getCurrentPage() {
-        return this.getPage(this.currentPage);
-    }
+	getCurrentPage(pageIdx: number) {
+		return this.getPage(pageIdx);
+	}
 
-    getPages() {
-        return this.pages;
-    }
+	getPages() {
+		return this.pages;
+	}
 
-    goToFirstPage() {
-        this.setPage(0);
-    }
+	goToFirstPage() {
+		return this.setPage(0);
+	}
 
-    goToLastPage() {
-        this.setPage(this.pages.length - 1);
-    }
+	goToLastPage() {
+		return this.setPage(this.pages.length - 1);
+	}
 
-    goToPage(pageIdx: number) {
-        this.setPage(pageIdx);
-    }
+	goToPage(pageIdx: number) {
+		return this.setPage(pageIdx);
+	}
 
-    goToStartOfPage(pageIdx: number) {
-        this.setPage(pageIdx);
-        this.getCurrentPage().goToWholePagePanel();
-    }
+	goToStartOfPage(pageIdx: number) {
+		this.setPage(pageIdx);
+		return this.getCurrentPage(pageIdx).goToWholePagePanel(-1);
+	}
 
-    goToEndOfPage(pageIdx: number) {
-        this.setPage(pageIdx);
-        this.getCurrentPage().goToLastPanel();
-    }
+	goToEndOfPage(pageIdx: number) {
+		this.setPage(pageIdx);
+		return this.getCurrentPage(pageIdx).goToLastPanel(
+			this.getCurrentPage(pageIdx).panels.length
+		);
+	}
 
-    goToNext() {
-        if (this.hasNextPage()) {
-            this.nextPage(); //set the next page in array
-            this.getCurrentPage().goToWholePagePanel(); //set the panel to be the first
-        }
-    }
+	goToNext(currentPage: number) {
+		if (this.hasNextPage(currentPage)) {
+			this.nextPage(currentPage); //set the next page in array
+			return this.getCurrentPage(currentPage).goToWholePagePanel(-1); //set the panel to be the first
+		}
+	}
 
-    goToPrev() {
-        if (this.hasPrevPage()) {
-            this.prevPage(); //set the prev page in array
-            this.getCurrentPage().goToLastPanel(); //set the panel to be the last
-        }
-    }
+	goToPrev(currentPage: number) {
+		if (this.hasPrevPage(currentPage)) {
+			this.prevPage(currentPage); //set the prev page in array
+			return this.getCurrentPage(currentPage).goToLastPanel(
+				this.getCurrentPage(currentPage).panels.length
+			); //set the panel to be the last
+		}
+	}
 }
 
 export default Book;
