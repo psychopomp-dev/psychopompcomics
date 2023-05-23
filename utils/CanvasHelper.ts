@@ -9,31 +9,36 @@ import Page from '../components/comicReader/Page';
  * @param canvasPropsStart: DrawImageProps  Initial offset x, offset y, width and heigt of the image
  * @param canvasPropsEnd: DrawImageProps  Final offset x, offset y, width and heigt of the image
  */
-export function zoomPan(canvas: HTMLCanvasElement, imgUrl: string, canvasPropsStart: DrawImageProps, canvasPropsEnd: DrawImageProps) {
-    const ctx = canvas.getContext('2d');
-    if (ctx) {
-        const img = new Image();
-        img.onload = () => {
-            window.requestAnimationFrame(function () {
-                animateCanvasMove(
-                    ctx,
-                    canvasPropsStart.offsetX,
-                    canvasPropsEnd.offsetX,
-                    canvasPropsStart.offsetY,
-                    canvasPropsEnd.offsetY,
-                    canvasPropsStart.scaledWidth,
-                    canvasPropsEnd.scaledWidth,
-                    canvasPropsStart.scaledHeight,
-                    canvasPropsEnd.scaledHeight,
-                    0,
-                    60,
-                    1,
-                    img
-                );
-            });
-        };
-        img.src = imgUrl;
-    }
+export function zoomPan(
+	canvas: HTMLCanvasElement,
+	imgUrl: string,
+	canvasPropsStart: DrawImageProps,
+	canvasPropsEnd: DrawImageProps
+) {
+	const ctx = canvas.getContext('2d');
+	if (ctx) {
+		const img = new Image();
+		img.onload = () => {
+			window.requestAnimationFrame(function () {
+				animateCanvasMove(
+					ctx,
+					canvasPropsStart.offsetX,
+					canvasPropsEnd.offsetX,
+					canvasPropsStart.offsetY,
+					canvasPropsEnd.offsetY,
+					canvasPropsStart.scaledWidth,
+					canvasPropsEnd.scaledWidth,
+					canvasPropsStart.scaledHeight,
+					canvasPropsEnd.scaledHeight,
+					0,
+					60,
+					1,
+					img
+				);
+			});
+		};
+		img.src = imgUrl;
+	}
 }
 
 /**
@@ -54,41 +59,73 @@ export function zoomPan(canvas: HTMLCanvasElement, imgUrl: string, canvasPropsSt
  * @param img:  HTMLImageElement  The image to draw on the canvas
  */
 function animateCanvasMove(
-    ctx: CanvasRenderingContext2D,
-    x1: number,
-    x2: number,
-    y1: number,
-    y2: number,
-    scaledWidth1: number,
-    scaledWidth2: number,
-    scaledHeight1: number,
-    scaledHeight2: number,
-    current: number,
-    max: number,
-    delta: number,
-    img: HTMLImageElement
+	ctx: CanvasRenderingContext2D,
+	x1: number,
+	x2: number,
+	y1: number,
+	y2: number,
+	scaledWidth1: number,
+	scaledWidth2: number,
+	scaledHeight1: number,
+	scaledHeight2: number,
+	current: number,
+	max: number,
+	delta: number,
+	img: HTMLImageElement
 ) {
-    if (current < max) {
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        current += delta;
-        const t: number = current / max;
-        const tEazy = easeInOutCubic(t);
-        ctx.drawImage(img, lerp(x1, x2, tEazy), lerp(y1, y2, tEazy), lerp(scaledWidth1, scaledWidth2, tEazy), lerp(scaledHeight1, scaledHeight2, tEazy));
-        window.requestAnimationFrame(function () {
-            animateCanvasMove(ctx, x1, x2, y1, y2, scaledWidth1, scaledWidth2, scaledHeight1, scaledHeight2, current, max, delta, img);
-        });
-    }
+	if (current < max) {
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		current += delta;
+		const t: number = current / max;
+		const tEazy = easeInOutCubic(t);
+		ctx.drawImage(
+			img,
+			lerp(x1, x2, tEazy),
+			lerp(y1, y2, tEazy),
+			lerp(scaledWidth1, scaledWidth2, tEazy),
+			lerp(scaledHeight1, scaledHeight2, tEazy)
+		);
+		window.requestAnimationFrame(function () {
+			animateCanvasMove(
+				ctx,
+				x1,
+				x2,
+				y1,
+				y2,
+				scaledWidth1,
+				scaledWidth2,
+				scaledHeight1,
+				scaledHeight2,
+				current,
+				max,
+				delta,
+				img
+			);
+		});
+	}
 }
 
-export function jumpToPanel(canvas: HTMLCanvasElement, page: Page, panelIndex: number) {
-    const img = new Image();
-    img.onload = () => {
-        const props = getDrawImagePropsFromPage(page, canvas, panelIndex);
-        const ctx = canvas.getContext('2d');
-        ctx?.clearRect(0, 0, canvas.width, canvas.height);
-        ctx?.drawImage(img, props.offsetX, props.offsetX, props.scaledWidth, props.scaledHeight);
-    };
-    img.src = page.imageUrl;
+export function jumpToPanel(
+	canvas: HTMLCanvasElement,
+	page: Page,
+	panelIndex: number
+) {
+	const img = new Image();
+	img.onload = () => {
+		const props = getDrawImagePropsFromPage(page, canvas, panelIndex);
+		console.log(props);
+		const ctx = canvas.getContext('2d');
+		console.log(img);
+		// ctx?.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.drawImage(
+			img,
+			props.offsetX,
+			props.offsetX,
+			props.scaledWidth,
+			props.scaledHeight
+		);
+	};
+	img.src = page.imageUrl;
 }
 
 /**
@@ -99,23 +136,35 @@ export function jumpToPanel(canvas: HTMLCanvasElement, page: Page, panelIndex: n
  * @param panelIndex: number  Index of panel to draw on the canvas, -1 is the whole image while >=0 is a panel
  * @returns DrawImageProps
  */
-export function getDrawImagePropsFromPage(page: Page, canvas: HTMLCanvasElement, panelIndex: number = -1): DrawImageProps {
-    const width = panelIndex === -1 ? page.pageDimensions.width : page.getPanel(panelIndex).panelDimensions.width;
-    const height = panelIndex === -1 ? page.pageDimensions.height : page.getPanel(panelIndex).panelDimensions.height;
-    const centerX = panelIndex === -1 ? width / 2 : page.getPanel(panelIndex).center.x;
-    const centerY = panelIndex === -1 ? height / 2 : page.getPanel(panelIndex).center.y;
+export function getDrawImagePropsFromPage(
+	page: Page,
+	canvas: HTMLCanvasElement,
+	panelIndex: number = -1
+): DrawImageProps {
+	const width =
+		panelIndex === -1
+			? page.pageDimensions.width
+			: page.getPanel(panelIndex).panelDimensions.width;
+	const height =
+		panelIndex === -1
+			? page.pageDimensions.height
+			: page.getPanel(panelIndex).panelDimensions.height;
+	const centerX =
+		panelIndex === -1 ? width / 2 : page.getPanel(panelIndex).center.x;
+	const centerY =
+		panelIndex === -1 ? height / 2 : page.getPanel(panelIndex).center.y;
 
-    const imageToCanvasScale = getImageToCanvasScale(width, height, canvas);
-    const offsetX = getImageOffset(canvas.width, centerX, imageToCanvasScale);
-    const offsetY = getImageOffset(canvas.height, centerY, imageToCanvasScale);
-    const scaledWidth = page.pageDimensions.width * imageToCanvasScale;
-    const scaledHeight = page.pageDimensions.height * imageToCanvasScale;
-    return {
-        offsetX,
-        offsetY,
-        scaledWidth,
-        scaledHeight
-    };
+	const imageToCanvasScale = getImageToCanvasScale(width, height, canvas);
+	const offsetX = getImageOffset(canvas.width, centerX, imageToCanvasScale);
+	const offsetY = getImageOffset(canvas.height, centerY, imageToCanvasScale);
+	const scaledWidth = page.pageDimensions.width * imageToCanvasScale;
+	const scaledHeight = page.pageDimensions.height * imageToCanvasScale;
+	return {
+		offsetX,
+		offsetY,
+		scaledWidth,
+		scaledHeight,
+	};
 }
 
 /**
@@ -125,10 +174,14 @@ export function getDrawImagePropsFromPage(page: Page, canvas: HTMLCanvasElement,
  * @param canvas: HTMLCanvasElement Canvas on which to scale the image
  * @returns
  */
-export function getImageToCanvasScale(imageW: number, imageHeight: number, canvas: HTMLCanvasElement): number {
-    let scaleX = canvas.width / imageW;
-    let scaleY = canvas.height / imageHeight;
-    return Math.min(scaleX, scaleY);
+export function getImageToCanvasScale(
+	imageW: number,
+	imageHeight: number,
+	canvas: HTMLCanvasElement
+): number {
+	let scaleX = canvas.width / imageW;
+	let scaleY = canvas.height / imageHeight;
+	return Math.min(scaleX, scaleY);
 }
 
 /**
@@ -138,8 +191,12 @@ export function getImageToCanvasScale(imageW: number, imageHeight: number, canva
  * @param imageToCanvasScale: number  Scale percentage that will fit the image/panel to the canvas
  * @returns number  The provided axis offest for drawImage that will center on the provided point
  */
-export function getImageOffset(canvasSideLength: number, centerCoord: number, imageToCanvasScale: number): number {
-    return canvasSideLength / 2 - centerCoord * imageToCanvasScale;
+export function getImageOffset(
+	canvasSideLength: number,
+	centerCoord: number,
+	imageToCanvasScale: number
+): number {
+	return canvasSideLength / 2 - centerCoord * imageToCanvasScale;
 }
 
 /**
@@ -148,13 +205,16 @@ export function getImageOffset(canvasSideLength: number, centerCoord: number, im
  * @param dimension: Dimension (width | height)
  * @returns number  The dimension value in pixels to use for the canvas
  */
-export function getCanvasDimension(canvas: HTMLCanvasElement, dimension: Dimension): number {
-    const pixelRatio = window.devicePixelRatio;
-    if (dimension.valueOf() === 'width') {
-        return canvas.getBoundingClientRect().width * pixelRatio;
-    } else {
-        return canvas.getBoundingClientRect().height * pixelRatio;
-    }
+export function getCanvasDimension(
+	canvas: HTMLCanvasElement,
+	dimension: Dimension
+): number {
+	const pixelRatio = window.devicePixelRatio;
+	if (dimension.valueOf() === 'width') {
+		return canvas.getBoundingClientRect().width * pixelRatio;
+	} else {
+		return canvas.getBoundingClientRect().height * pixelRatio;
+	}
 }
 
 /**
@@ -163,7 +223,7 @@ export function getCanvasDimension(canvas: HTMLCanvasElement, dimension: Dimensi
  * @returns number
  */
 function easeInOutCubic(x: number): number {
-    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+	return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 }
 
 /**
@@ -174,5 +234,5 @@ function easeInOutCubic(x: number): number {
  * @returns number: current interpolation between numbers
  */
 function lerp(p1: number, p2: number, t: number): number {
-    return p1 + (p2 - p1) * t;
+	return p1 + (p2 - p1) * t;
 }
