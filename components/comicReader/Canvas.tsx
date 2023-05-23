@@ -64,10 +64,10 @@ export const Canvas = (props: CanvasProps) => {
 					getImageToCanvasScale(comicImage.width, comicImage.height, current)
 				);
 
-				console.log('comicImage.width', comicImage.width);
-				console.log('comicImage.height', comicImage.height);
-				console.log('current.height', current.height);
-				console.log('current.height', current.height);
+				// console.log('comicImage.width', comicImage.width);
+				// console.log('comicImage.height', comicImage.height);
+				// console.log('current.height', current.height);
+				// console.log('current.height', current.height);
 
 				ctx.drawImage(
 					comicImage,

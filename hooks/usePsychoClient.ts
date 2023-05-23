@@ -32,16 +32,14 @@ function handleResize(
 		if (ctx) {
 			ctx.canvas.height = getCanvasDimension(canvas, Dimension.Height);
 			ctx.canvas.width = getCanvasDimension(canvas, Dimension.Width);
-			// ctx.canvas.style.width = current.getBoundingClientRect().width + 'px';
-			// ctx.canvas.style.height = current.getBoundingClientRect().height + 'px';
 
 			const { offsetX, offsetY, scaledWidth, scaledHeight } =
 				getDrawImagePropsFromPage(page, canvas, panelIndex);
 
-			console.log('comicImage.width', comicImage.width);
-			console.log('comicImage.height', comicImage.height);
-			console.log('current.height', canvas.height);
-			console.log('current.height', canvas.height);
+			// console.log('comicImage.width', comicImage.width);
+			// console.log('comicImage.height', comicImage.height);
+			// console.log('current.height', canvas.height);
+			// console.log('current.height', canvas.height);
 
 			ctx.drawImage(
 				comicImage,
@@ -95,8 +93,6 @@ export const usePsychoClient = (
 				}
 			});
 
-			// Add the following code to adjust `allowSlideNext` and `allowSlidePrev`
-			// when the window is resized:
 			if (swiperRef.current) {
 				const swiper = swiperRef.current;
 				const { currentPage, currentPageIndex } = getPageInfo(
@@ -118,11 +114,9 @@ export const usePsychoClient = (
 			}
 		};
 
-		// add the event listener
 		window.addEventListener('resize', debounce(handleResizeEvent, 100));
 
 		return () => {
-			// remove the event listener when the component is unmounted
 			window.removeEventListener('resize', debounce(handleResizeEvent, 100));
 		};
 	}, [psychoClient, canvasRefs, panelIdxRefs, getPageInfo]);
@@ -189,10 +183,13 @@ export const usePsychoClient = (
 				swiper.activeIndex
 			);
 			if (!swiper.allowSlideNext) {
-				panelIdxRefs.current[currentPageIndex] = currentPage.goToNextPanel(
-					panelIdxRefs.current[currentPageIndex]
-				);
-				handlePanelUpdate(swiper, book, currentPageIndex);
+				const currentPanelIndex = panelIdxRefs.current[currentPageIndex];
+				// Ensure the panel index doesn't exceed the length of the panels array
+				if (currentPanelIndex < currentPage.panels.length - 1) {
+					panelIdxRefs.current[currentPageIndex] =
+						currentPage.goToNextPanel(currentPanelIndex);
+					handlePanelUpdate(swiper, book, currentPageIndex);
+				}
 			}
 			if (
 				!swiper.allowSlideNext &&
@@ -211,18 +208,22 @@ export const usePsychoClient = (
 				book,
 				swiper.activeIndex
 			);
+			let currentPanelIndex = panelIdxRefs.current[currentPageIndex];
+
 			if (!swiper.allowSlidePrev) {
-				panelIdxRefs.current[currentPageIndex] = currentPage.goToPrevPanel(
-					panelIdxRefs.current[currentPageIndex]
-				);
-				handlePanelUpdate(swiper, book, currentPageIndex);
+				// If the current panel index is not the whole page index, go to previous panel
+				if (currentPanelIndex > wholePageIndex) {
+					panelIdxRefs.current[currentPageIndex] =
+						currentPage.goToPrevPanel(currentPanelIndex);
+					handlePanelUpdate(swiper, book, currentPageIndex);
+					currentPanelIndex = panelIdxRefs.current[currentPageIndex];
+				}
 			}
+
+			// If we're at the whole page index, allow to slide to the previous page
 			if (
-				!swiper.allowSlidePrev &&
-				book.hasPrevPage(swiper.realIndex) &&
-				book
-					.getCurrentPage(swiper.realIndex)
-					.isOnPageImage(panelIdxRefs.current[currentPageIndex])
+				currentPanelIndex === wholePageIndex &&
+				book.hasPrevPage(swiper.realIndex)
 			) {
 				swiper.allowSlidePrev = true;
 			}
