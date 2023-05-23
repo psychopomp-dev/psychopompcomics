@@ -1,5 +1,9 @@
 import Panel from './Panel';
-import { zoomPan, getDrawImagePropsFromPage } from '../../utils/CanvasHelper';
+import {
+	zoomPan,
+	getDrawImagePropsFromPage,
+	jumpToPanel,
+} from '../../utils/CanvasHelper';
 
 export interface PageDimension {
 	width: number;
@@ -60,7 +64,7 @@ class Page {
 		return this.panels.length > 0;
 	}
 
-	goToNextPanel(currentPanel: number) {
+	goToNextPanel(currentPanel: number): number {
 		if (this.hasNextPanel(currentPanel)) {
 			currentPanel = this.nextPanel(currentPanel);
 			console.log('currentPanel NOW: ' + currentPanel);
@@ -68,7 +72,7 @@ class Page {
 		}
 	}
 
-	goToPrevPanel(currentPanel: number) {
+	goToPrevPanel(currentPanel: number): number {
 		if (this.hasPrevPanel(currentPanel)) {
 			currentPanel = this.prevPanel(currentPanel);
 			console.log('currentPanel NOW: ' + currentPanel);
@@ -76,7 +80,7 @@ class Page {
 		}
 	}
 
-	goToPanel(from: number, to: number) {
+	goToPanel(from: number, to: number): number {
 		if (this?.ref?.current) {
 			const canvasPropsOld = getDrawImagePropsFromPage(
 				this,
@@ -95,7 +99,7 @@ class Page {
 		}
 	}
 
-	nextPanel(currentPanel: number) {
+	nextPanel(currentPanel: number): number {
 		return this.goToPanel(currentPanel, currentPanel + 1);
 	}
 
@@ -103,7 +107,7 @@ class Page {
 		return currentPanel < this.panels.length - 1;
 	}
 
-	prevPanel(currentPanel: number) {
+	prevPanel(currentPanel: number): number {
 		return this.goToPanel(currentPanel, currentPanel - 1);
 	}
 
@@ -127,7 +131,7 @@ class Page {
 		return this.getPanel(currentPanel);
 	}
 
-	goToFirstPanel(currentPanel: number) {
+	goToFirstPanel(currentPanel: number): number {
 		if (this.hasPanels()) {
 			this.goToPanel(currentPanel, 0);
 			currentPanel = 0;
@@ -135,17 +139,28 @@ class Page {
 		return currentPanel;
 	}
 
-	goToLastPanel(currentPanel: number) {
+	goToLastPanel(currentPanel: number): number {
 		if (this.hasPanels()) {
 			currentPanel = this.goToPanel(currentPanel, this.panels.length - 1);
 		}
 		return currentPanel;
 	}
 
-	goToWholePagePanel(currentPanel: number) {
+	goToWholePagePanel(currentPanel: number): number {
 		this.goToPanel(currentPanel, -1);
 		console.log('currentPanel NOW whole page Panel: ' + -1);
 		return -1;
+	}
+
+	goToPanelInstant(panelIdx: number): number {
+		if (this.panels[panelIdx] === undefined && panelIdx !== -1)
+			throw new Error(
+				`Panel index out of range, given ${panelIdx}, must be between 0 and ${this.panels.length}`
+			);
+		console.log(this.ref.current);
+		this.goToPanel(panelIdx, panelIdx);
+
+		return panelIdx;
 	}
 }
 
