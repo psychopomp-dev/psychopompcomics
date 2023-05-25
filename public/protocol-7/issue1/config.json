@@ -1,7 +1,7 @@
 {
 	"pages": [
 		{
-			"imageUrl": "protocol-7/issue1/0.jpg",
+			"imageUrl": "/protocol-7/issue1/0.jpg",
 			"panels": [],
 			"pageDimensions": {
 				"w": 1988,
@@ -9,7 +9,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/1.jpg",
+			"imageUrl": "/protocol-7/issue1/1.jpg",
 			"panels": [],
 			"pageDimensions": {
 				"w": 1988,
@@ -17,7 +17,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/2.jpg",
+			"imageUrl": "/protocol-7/issue1/2.jpg",
 			"panels": [
 				{
 					"center": { "x": 339, "y": 276 },
@@ -82,7 +82,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/3.jpg",
+			"imageUrl": "/protocol-7/issue1/3.jpg",
 			"panels": [
 				{
 					"center": { "x": 872, "y": 781 },
@@ -105,7 +105,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/4.jpg",
+			"imageUrl": "/protocol-7/issue1/4.jpg",
 			"panels": [
 				{
 					"center": { "x": 1028, "y": 628 },
@@ -135,7 +135,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/5.jpg",
+			"imageUrl": "/protocol-7/issue1/5.jpg",
 			"panels": [
 				{
 					"center": { "x": 521, "y": 595 },
@@ -165,7 +165,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/6.jpg",
+			"imageUrl": "/protocol-7/issue1/6.jpg",
 			"panels": [
 				{
 					"center": { "x": 941, "y": 712 },
@@ -195,7 +195,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/7.jpg",
+			"imageUrl": "/protocol-7/issue1/7.jpg",
 			"panels": [
 				{
 					"center": { "x": 1004, "y": 889 },
@@ -218,7 +218,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/8.jpg",
+			"imageUrl": "/protocol-7/issue1/8.jpg",
 			"panels": [
 				{
 					"center": { "x": 686, "y": 574 },
@@ -248,7 +248,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/9.jpg",
+			"imageUrl": "/protocol-7/issue1/9.jpg",
 			"panels": [],
 			"pageDimensions": {
 				"w": 1988,
@@ -256,7 +256,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/10.jpg",
+			"imageUrl": "/protocol-7/issue1/10.jpg",
 			"panels": [
 				{
 					"center": { "x": 422, "y": 301 },
@@ -293,7 +293,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/11.jpg",
+			"imageUrl": "/protocol-7/issue1/11.jpg",
 			"panels": [
 				{
 					"center": { "x": 980, "y": 592 },
@@ -323,7 +323,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/12.jpg",
+			"imageUrl": "/protocol-7/issue1/12.jpg",
 			"panels": [
 				{
 					"center": { "x": 1052, "y": 442 },
@@ -353,7 +353,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/13.jpg",
+			"imageUrl": "/protocol-7/issue1/13.jpg",
 			"panels": [
 				{
 					"center": { "x": 620, "y": 400 },
@@ -376,7 +376,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/14.jpg",
+			"imageUrl": "/protocol-7/issue1/14.jpg",
 			"panels": [],
 			"pageDimensions": {
 				"w": 1988,
@@ -384,7 +384,7 @@
 			}
 		},
 		{
-			"imageUrl": "protocol-7/issue1/15.jpg",
+			"imageUrl": "/protocol-7/issue1/15.jpg",
 			"panels": [],
 			"pageDimensions": {
 				"w": 1988,
