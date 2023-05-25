@@ -167,7 +167,7 @@ export const PsychoReader = ({
 							</SwiperSlide>
 						);
 					})}
-				<SwiperSlide />
+				{/* <SwiperSlide /> */}
 				<FullScreenToggle
 					ButtonComponent={FullscreenButton}
 					handleFullscreen={handleFullscreen}

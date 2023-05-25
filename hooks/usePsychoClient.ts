@@ -14,7 +14,7 @@ import debounce from '../utils/debounce';
 
 const wholePageIndex = -1;
 
-// @todo: move this to a helper
+// @todo: move this to a helper and check if it's a valid page
 function handleResize(
 	canvas: HTMLCanvasElement,
 	page: Page,
