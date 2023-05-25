@@ -1,42 +1,48 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
-import { InferGetServerSidePropsType} from "next";
-import PsychoReader from "../components/comicReader/PsychoReader";
-import PsychoReaderConfig from "../components/comicReader/PsychoReaderConfig";
-import { IConfig } from "../components/comicReader/IConfig";
+import { InferGetServerSidePropsType } from 'next';
+import PsychoReader from '../components/comicReader/PsychoReader';
+import PsychoReaderConfig from '../components/comicReader/PsychoReaderConfig';
+import { IConfig } from '../components/comicReader/IConfig';
 import MotionMain from '../components/styles/MotionMain.styled';
 
 const PsychoReaderMain = styled(MotionMain)`
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 12.5rem);
-`
+	position: relative;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 12.5rem);
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+		height: calc(100vh - 6.5rem);
+	}
+`;
 
 export async function getServerSideProps() {
-  const readerConfig: IConfig = await PsychoReaderConfig('public/seed-of-cain/issue1/config.json');
-  return {
-    props: {
-      psychoReaderConfig: JSON.parse(JSON.stringify(readerConfig)),
-    },
-  };
+	const readerConfig: IConfig = await PsychoReaderConfig(
+		'public/seed-of-cain/issue1/config.json'
+	);
+	return {
+		props: {
+			psychoReaderConfig: JSON.parse(JSON.stringify(readerConfig)),
+		},
+	};
 }
 
 const Home = (
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
+	props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-  const { psychoReaderConfig } = props;
+	const { psychoReaderConfig } = props;
 
-  return (
-    <>
-    <PsychoReaderMain>
-      <PsychoReader psychoReaderConfig={psychoReaderConfig} />
-    </PsychoReaderMain>
-  </>
-  );
+	return (
+		<>
+			<PsychoReaderMain>
+				<PsychoReader psychoReaderConfig={psychoReaderConfig} />
+			</PsychoReaderMain>
+		</>
+	);
 };
 
 export default Home;

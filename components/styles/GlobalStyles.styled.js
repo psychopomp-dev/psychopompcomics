@@ -68,6 +68,8 @@ export const GlobalStyle = createGlobalStyle`
 		--font-size-xl:  ${({ theme }) => theme.fonts.sizes.xl};
 		--font-size-xxl:  ${({ theme }) => theme.fonts.sizes.xxl};
 		--font-size-xxxl:  ${({ theme }) => theme.fonts.sizes.xxxl};
+
+		--z-index-fullscreen: 101;
 	}
 
 	/* Box sizing rules */
