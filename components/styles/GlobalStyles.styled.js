@@ -180,7 +180,7 @@ export const GlobalStyle = createGlobalStyle`
 		font-feature-settings: "kern";
 
 		background: ${({ theme }) => theme.texturedBackground};
-		background-size: 4rem 6rem;
+		background-size: ${({ theme }) => theme.texturedBackgroundSize};
 
 		&::after {
 			position: absolute;
