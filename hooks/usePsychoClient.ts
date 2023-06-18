@@ -121,6 +121,10 @@ export const usePsychoClient = (
 			debounce(doResize, 100)();
 		};
 
+		const handleFullscreenEvent = () => {
+			handleResizeEvent();
+		};
+
 		const doResize = () => {
 			psychoClient.book.pages.forEach((page, index) => {
 				const canvas = canvasRefs.current[index]?.current;
@@ -147,9 +151,11 @@ export const usePsychoClient = (
 		};
 
 		window.addEventListener('resize', handleResizeEvent);
+		document.addEventListener('fullscreenchange', handleFullscreenEvent);
 
 		return () => {
 			window.removeEventListener('resize', handleResizeEvent);
+			document.removeEventListener('fullscreenchange', handleFullscreenEvent);
 		};
 	}, [psychoClient, canvasRefs, panelIdxRefs, getPageInfo, swiperRef]);
 

@@ -238,9 +238,7 @@ export const themeDark = {
 		linear-gradient(var(--surface1) 14%,rgba(0,0,0,0) 0, rgba(0,0,0,0) 85%,var(--surface1) 0)0 0,
 		linear-gradient(150deg,var(--surface1) 24%,var(--surface0) 0,var(--surface0) 26%,rgba(0,0,0,0) 0,rgba(0,0,0,0) 74%,var(--surface0) 0,var(--surface0) 76%,var(--surface1) 0)0 0,
 		linear-gradient(30deg,var(--surface1) 24%,var(--surface0) 0,var(--surface0) 26%,rgba(0,0,0,0) 0,rgba(0,0,0,0) 74%,var(--surface0) 0,var(--surface0) 76%,var(--surface1) 0)0 0,
-		linear-gradient(90deg,var(--surface0) 2%,var(--surface1) 0,var(--surface1) 98%,var(--surface0) 0%)0 0 var(--surface1);
-		background-size: 4rem 6rem;
-	`,
+		linear-gradient(90deg,var(--surface0) 2%,var(--surface1) 0,var(--surface1) 98%,var(--surface0) 0%)0 0 var(--surface1)`,
 };
 
 export const themeLight = {
@@ -387,6 +385,5 @@ export const themeLight = {
 		linear-gradient(var(--surface0) 14%,rgba(0,0,0,0) 0, rgba(0,0,0,0) 85%,var(--surface0) 0)0 0,
 		linear-gradient(150deg,var(--surface0) 24%,var(--surface2) 0,var(--surface2) 26%,rgba(0,0,0,0) 0,rgba(0,0,0,0) 74%,var(--surface2) 0,var(--surface2) 76%,var(--surface0) 0)0 0,
 		linear-gradient(30deg,var(--surface0) 24%,var(--surface2) 0,var(--surface2) 26%,rgba(0,0,0,0) 0,rgba(0,0,0,0) 74%,var(--surface2) 0,var(--surface2) 76%,var(--surface0) 0)0 0,
-		linear-gradient(90deg,var(--surface2) 2%,var(--surface0) 0,var(--surface0) 98%,var(--surface2) 0%)0 0 var(--surface0);
-		background-size: 4rem 6rem;`,
+		linear-gradient(90deg,var(--surface2) 2%,var(--surface0) 0,var(--surface0) 98%,var(--surface2) 0%)0 0 var(--surface0)`
 };
