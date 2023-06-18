@@ -8,6 +8,7 @@ import Swiper from 'swiper';
 import {
 	getCanvasDimension,
 	getDrawImagePropsFromPage,
+	drawCanvas,
 } from '../utils/CanvasHelper';
 import { Dimension } from 'components/comicReader/DimensionType';
 import debounce from '../utils/debounce';
@@ -20,38 +21,7 @@ function handleResize(
 	page: Page,
 	panelIndex: number
 ): void {
-	// update the canvas dimensions
-	canvas.width = getCanvasDimension(canvas, Dimension.Width);
-	canvas.height = getCanvasDimension(canvas, Dimension.Height);
-	// redraw the current panel
-	let ctx: CanvasRenderingContext2D | null | undefined =
-		canvas.getContext('2d');
-	const comicImage = new Image();
-
-	comicImage.onload = () => {
-		if (ctx) {
-			ctx.canvas.height = getCanvasDimension(canvas, Dimension.Height);
-			ctx.canvas.width = getCanvasDimension(canvas, Dimension.Width);
-
-			const { offsetX, offsetY, scaledWidth, scaledHeight } =
-				getDrawImagePropsFromPage(page, canvas, panelIndex);
-
-			// console.log('comicImage.width', comicImage.width);
-			// console.log('comicImage.height', comicImage.height);
-			// console.log('current.height', canvas.height);
-			// console.log('current.height', canvas.height);
-
-			ctx.drawImage(
-				comicImage,
-				offsetX,
-				offsetY,
-				scaledWidth, //scales the image up/down to fit the canvas
-				scaledHeight //scales the image up/down to fit the canvas
-			);
-		}
-	};
-
-	comicImage.src = page.imageUrl;
+	drawCanvas(canvas, page, panelIndex);
 }
 
 function shouldAllowSlideNext(
