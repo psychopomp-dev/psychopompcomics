@@ -92,6 +92,7 @@ const themeCommon = {
 			exit: { opacity: 0, x: 0, y: -100 },
 		},
 	},
+	texturedBackgroundSize: ' 4rem 6rem',
 };
 
 export const themeDark = {
