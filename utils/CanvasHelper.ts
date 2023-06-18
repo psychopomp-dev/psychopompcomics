@@ -1,6 +1,7 @@
 import { Dimension } from '../components/comicReader/DimensionType';
 import { DrawImageProps } from '../components/comicReader/IDrawImageProps';
 import Page from '../components/comicReader/Page';
+import { loadImageAndCache } from './imageCache';
 
 /**
  *
@@ -9,7 +10,7 @@ import Page from '../components/comicReader/Page';
  * @param canvasPropsStart: DrawImageProps  Initial offset x, offset y, width and heigt of the image
  * @param canvasPropsEnd: DrawImageProps  Final offset x, offset y, width and heigt of the image
  */
-export function zoomPan(
+export async function zoomPan(
 	canvas: HTMLCanvasElement,
 	imgUrl: string,
 	canvasPropsStart: DrawImageProps,
@@ -17,27 +18,24 @@ export function zoomPan(
 ) {
 	const ctx = canvas.getContext('2d');
 	if (ctx) {
-		const img = new Image();
-		img.onload = () => {
-			window.requestAnimationFrame(function () {
-				animateCanvasMove(
-					ctx,
-					canvasPropsStart.offsetX,
-					canvasPropsEnd.offsetX,
-					canvasPropsStart.offsetY,
-					canvasPropsEnd.offsetY,
-					canvasPropsStart.scaledWidth,
-					canvasPropsEnd.scaledWidth,
-					canvasPropsStart.scaledHeight,
-					canvasPropsEnd.scaledHeight,
-					0,
-					60,
-					1,
-					img
-				);
-			});
-		};
-		img.src = imgUrl;
+		const img = await loadImageAndCache(imgUrl);
+		window.requestAnimationFrame(function () {
+			animateCanvasMove(
+				ctx,
+				canvasPropsStart.offsetX,
+				canvasPropsEnd.offsetX,
+				canvasPropsStart.offsetY,
+				canvasPropsEnd.offsetY,
+				canvasPropsStart.scaledWidth,
+				canvasPropsEnd.scaledWidth,
+				canvasPropsStart.scaledHeight,
+				canvasPropsEnd.scaledHeight,
+				0,
+				60,
+				1,
+				img
+			);
+		});
 	}
 }
 
@@ -105,27 +103,24 @@ function animateCanvasMove(
 	}
 }
 
-export function jumpToPanel(
+export async function jumpToPanel(
 	canvas: HTMLCanvasElement,
 	page: Page,
 	panelIndex: number
 ) {
-	const img = new Image();
-	img.onload = () => {
-		const props = getDrawImagePropsFromPage(page, canvas, panelIndex);
-		console.log(props);
-		const ctx = canvas.getContext('2d');
-		console.log(img);
-		// ctx?.clearRect(0, 0, canvas.width, canvas.height);
-		ctx.drawImage(
-			img,
-			props.offsetX,
-			props.offsetX,
-			props.scaledWidth,
-			props.scaledHeight
-		);
-	};
-	img.src = page.imageUrl;
+	const img = await loadImageAndCache(page.imageUrl);
+	const props = getDrawImagePropsFromPage(page, canvas, panelIndex);
+	console.log(props);
+	const ctx = canvas.getContext('2d');
+	console.log(img);
+	// ctx?.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.drawImage(
+		img,
+		props.offsetX,
+		props.offsetX,
+		props.scaledWidth,
+		props.scaledHeight
+	);
 }
 
 /**
@@ -214,6 +209,36 @@ export function getCanvasDimension(
 		return canvas.getBoundingClientRect().width * pixelRatio;
 	} else {
 		return canvas.getBoundingClientRect().height * pixelRatio;
+	}
+}
+
+export async function drawCanvas(
+	canvas: HTMLCanvasElement,
+	page: Page,
+	panelIndex: number
+): Promise<void> {
+	// update the canvas dimensions
+	canvas.width = getCanvasDimension(canvas, Dimension.Width);
+	canvas.height = getCanvasDimension(canvas, Dimension.Height);
+	// redraw the current panel
+	let ctx: CanvasRenderingContext2D | null | undefined =
+		canvas.getContext('2d');
+	const img = await loadImageAndCache(page.imageUrl);
+
+	if (ctx) {
+		ctx.canvas.height = getCanvasDimension(canvas, Dimension.Height);
+		ctx.canvas.width = getCanvasDimension(canvas, Dimension.Width);
+
+		const { offsetX, offsetY, scaledWidth, scaledHeight } =
+			getDrawImagePropsFromPage(page, canvas, panelIndex);
+
+		ctx.drawImage(
+			img,
+			offsetX,
+			offsetY,
+			scaledWidth, //scales the image up/down to fit the canvas
+			scaledHeight //scales the image up/down to fit the canvas
+		);
 	}
 }
 
