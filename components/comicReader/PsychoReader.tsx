@@ -33,14 +33,33 @@ const SwiperContainer = styled.div`
 	}
 
 	&.fullscreen {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		overflow: hidden;
 		z-index: var(--z-index-fullscreen);
 		background: ${({ theme }) => theme.texturedBackground};
+		background-size: 4rem 6rem;
+
+		&::after {
+			position: absolute;
+			content: '';
+			background: linear-gradient(
+				rgba(
+					${({ theme }) => theme.surface1.rgb.r},
+					${({ theme }) => theme.surface1.rgb.g},
+					${({ theme }) => theme.surface1.rgb.b},
+					1
+				),
+				rgba(
+					${({ theme }) => theme.surface1.rgb.r},
+					${({ theme }) => theme.surface1.rgb.g},
+					${({ theme }) => theme.surface1.rgb.b},
+					0.75
+				)
+			);
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+		}
 	}
 `;
 
@@ -105,16 +124,65 @@ export const PsychoReader = ({
 	const isFullScreenRef = useRef(false);
 	const swiperContainerRef = useRef(null);
 
+	// const handleFullscreen = () => {
+	// 	if (swiperContainerRef.current) {
+	// 		if (isFullScreenRef.current) {
+	// 			swiperContainerRef.current.classList.remove('fullscreen');
+	// 		} else {
+	// 			swiperContainerRef.current.classList.add('fullscreen');
+	// 		}
+	// 		isFullScreenRef.current =
+	// 			swiperContainerRef.current.classList.contains('fullscreen');
+	// 		window.dispatchEvent(new Event('resize'));
+	// 	}
+	// };
+
 	const handleFullscreen = () => {
+		const onFullscreenChange = () => {
+			if (
+				document.fullscreenElement === swiperContainerRef.current ||
+				(document as any).webkitFullscreenElement === swiperContainerRef.current
+			) {
+				// We're in fullscreen mode
+				swiperContainerRef.current.classList.add('fullscreen');
+			} else {
+				// We've exited fullscreen mode
+				swiperContainerRef.current.classList.remove('fullscreen');
+				// Clean up the event listener
+				document.removeEventListener('fullscreenchange', onFullscreenChange);
+				document.removeEventListener(
+					'webkitfullscreenchange',
+					onFullscreenChange
+				);
+			}
+		};
+
 		if (swiperContainerRef.current) {
 			if (isFullScreenRef.current) {
-				swiperContainerRef.current.classList.remove('fullscreen');
+				// Exit fullscreen mode
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				} else if ((document as any).webkitExitFullscreen) {
+					/* Safari */
+					(document as any).webkitExitFullscreen();
+				}
 			} else {
-				swiperContainerRef.current.classList.add('fullscreen');
+				// Enter fullscreen mode
+				if (swiperContainerRef.current.requestFullscreen) {
+					swiperContainerRef.current.requestFullscreen();
+				} else if (
+					(swiperContainerRef.current as any).webkitRequestFullscreen
+				) {
+					/* Safari */
+					(swiperContainerRef.current as any).webkitRequestFullscreen();
+				}
 			}
-			isFullScreenRef.current =
-				swiperContainerRef.current.classList.contains('fullscreen');
-			window.dispatchEvent(new Event('resize'));
+			// We're toggling, so just invert the current value
+			isFullScreenRef.current = !isFullScreenRef.current;
+
+			// Add event listener to wait for the transition
+			document.addEventListener('fullscreenchange', onFullscreenChange);
+			document.addEventListener('webkitfullscreenchange', onFullscreenChange);
 		}
 	};
 
