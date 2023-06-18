@@ -1,4 +1,4 @@
-import React, { MouseEvent, PropsWithRef, useEffect, useState } from 'react';
+import React, { MouseEvent, PropsWithRef, useEffect } from 'react';
 import Page from './Page';
 import { drawCanvas } from '../../utils/CanvasHelper';
 import styled from 'styled-components';
