@@ -124,19 +124,6 @@ export const PsychoReader = ({
 	const isFullScreenRef = useRef(false);
 	const swiperContainerRef = useRef(null);
 
-	// const handleFullscreen = () => {
-	// 	if (swiperContainerRef.current) {
-	// 		if (isFullScreenRef.current) {
-	// 			swiperContainerRef.current.classList.remove('fullscreen');
-	// 		} else {
-	// 			swiperContainerRef.current.classList.add('fullscreen');
-	// 		}
-	// 		isFullScreenRef.current =
-	// 			swiperContainerRef.current.classList.contains('fullscreen');
-	// 		window.dispatchEvent(new Event('resize'));
-	// 	}
-	// };
-
 	const handleFullscreen = () => {
 		const onFullscreenChange = () => {
 			if (

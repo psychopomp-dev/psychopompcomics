@@ -5,12 +5,7 @@ import { IConfig } from '../components/comicReader/IConfig';
 import Book from '../components/comicReader/Book';
 import Page from '../components/comicReader/Page';
 import Swiper from 'swiper';
-import {
-	getCanvasDimension,
-	getDrawImagePropsFromPage,
-	drawCanvas,
-} from '../utils/CanvasHelper';
-import { Dimension } from 'components/comicReader/DimensionType';
+import { drawCanvas } from '../utils/CanvasHelper';
 import debounce from '../utils/debounce';
 
 const wholePageIndex = -1;
