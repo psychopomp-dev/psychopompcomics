@@ -1,6 +1,9 @@
 // usePsychoClient.ts
 import { useEffect, useRef, useCallback } from 'react';
-import { Client } from '../components/comicReader/PsychoClient';
+import {
+	Client,
+	PsychoReaderClient,
+} from '../components/comicReader/PsychoClient';
 import { IConfig } from '../components/comicReader/IConfig';
 import Book from '../components/comicReader/Book';
 import Page from '../components/comicReader/Page';
@@ -52,7 +55,12 @@ export const usePsychoClient = (
 	psychoReaderConfig: IConfig,
 	debug: boolean
 ) => {
-	const psychoClient = Client(psychoReaderConfig);
+	const psychoClientRef = useRef<PsychoReaderClient>();
+	if (!psychoClientRef.current) {
+		psychoClientRef.current = Client(psychoReaderConfig);
+	}
+	const psychoClient = psychoClientRef.current;
+
 	const canvasRefs = useRef<Array<React.RefObject<HTMLCanvasElement>>>([]);
 	const panelIdxRefs = useRef<Array<number>>([]);
 	const swiperRef = useRef<Swiper | null>(null);
@@ -143,10 +151,6 @@ export const usePsychoClient = (
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 			}
 			debouncedResize();
-		};
-
-		const handleFullscreenEvent = () => {
-			handleResizeEvent();
 		};
 
 		const doResize = () => {
