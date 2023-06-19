@@ -74,6 +74,33 @@ export const usePsychoClient = (
 		return { currentPage, currentPageIndex };
 	}, []);
 
+	const doResize = () => {
+		psychoClient.book.pages.forEach((page, index) => {
+			const canvas = canvasRefs.current[index]?.current;
+			const currentPanel = panelIdxRefs.current[index];
+
+			if (canvas && typeof currentPanel === 'number') {
+				handleResize(canvas, page, currentPanel);
+			}
+		});
+
+		if (swiperRef.current) {
+			const swiper = swiperRef.current;
+			swiper.allowSlideNext = shouldAllowSlideNext(
+				swiper,
+				psychoClient.book.pages,
+				panelIdxRefs.current
+			);
+			swiper.allowSlidePrev = shouldAllowSlidePrev(
+				swiper,
+				psychoClient.book.pages,
+				panelIdxRefs.current
+			);
+		}
+	};
+
+	const debouncedResize = debounce(doResize, 100);
+
 	useEffect(() => {
 		const handleResizeEvent = () => {
 			const canvas =
@@ -83,7 +110,39 @@ export const usePsychoClient = (
 					canvas.getContext('2d');
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 			}
-			debounce(doResize, 100)();
+			debouncedResize();
+		};
+
+		const handleFullscreenEvent = () => {
+			handleResizeEvent();
+		};
+
+		window.addEventListener('resize', handleResizeEvent);
+		document.addEventListener('fullscreenchange', handleFullscreenEvent);
+
+		return () => {
+			window.removeEventListener('resize', handleResizeEvent);
+			document.removeEventListener('fullscreenchange', handleFullscreenEvent);
+		};
+	}, [
+		psychoClient,
+		canvasRefs,
+		panelIdxRefs,
+		getPageInfo,
+		swiperRef,
+		debouncedResize,
+	]);
+
+	useEffect(() => {
+		const handleResizeEvent = () => {
+			const canvas =
+				canvasRefs.current[swiperRef.current?.activeIndex]?.current;
+			if (canvas) {
+				const ctx: CanvasRenderingContext2D | null | undefined =
+					canvas.getContext('2d');
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+			}
+			debouncedResize();
 		};
 
 		const handleFullscreenEvent = () => {
@@ -116,13 +175,20 @@ export const usePsychoClient = (
 		};
 
 		window.addEventListener('resize', handleResizeEvent);
-		document.addEventListener('fullscreenchange', handleFullscreenEvent);
+		document.addEventListener('fullscreenchange', handleResizeEvent);
 
 		return () => {
 			window.removeEventListener('resize', handleResizeEvent);
-			document.removeEventListener('fullscreenchange', handleFullscreenEvent);
+			document.removeEventListener('fullscreenchange', handleResizeEvent);
 		};
-	}, [psychoClient, canvasRefs, panelIdxRefs, getPageInfo, swiperRef]);
+	}, [
+		psychoClient,
+		canvasRefs,
+		panelIdxRefs,
+		getPageInfo,
+		swiperRef,
+		debouncedResize,
+	]);
 
 	const isValidPage = (book: Book, index: number) => {
 		return index >= 0 && index < book.pages.length;
