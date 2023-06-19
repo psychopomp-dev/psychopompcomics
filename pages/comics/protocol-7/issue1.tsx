@@ -1,10 +1,114 @@
 import React from 'react';
 import styled from 'styled-components';
 import { InferGetServerSidePropsType } from 'next';
-import PsychoReader from '../../../components/comicReader/PsychoReader';
+import PsychoReader, {
+	FullscreenButton,
+	StyledSwiperContainer,
+	StyledSwiperElement,
+} from '../../../components/comicReader/PsychoReader';
 import PsychoReaderConfig from '../../../components/comicReader/PsychoReaderConfig';
 import { IConfig } from '../../../components/comicReader/IConfig';
 import MotionMain from '../../../components/styles/MotionMain.styled';
+
+// extending existing styles
+const CustomFullscreenButton = styled(FullscreenButton)`
+	position: absolute;
+	bottom: ${({ theme }) => theme.spaces.md};
+	right: ${({ theme }) => theme.spaces.xl};
+	z-index: 10;
+`;
+
+const customHandleFullscreen = (swiperContainerRef: React.RefObject<any>) => {
+	console.log('called custom fullscreen');
+	if (swiperContainerRef.current) {
+		const changeFullscreenClass = () => {
+			if (
+				document.fullscreenElement === swiperContainerRef.current ||
+				(document as any).webkitFullscreenElement === swiperContainerRef.current
+			) {
+				// We're in fullscreen mode
+				swiperContainerRef.current.classList.add('fullscreen');
+			} else {
+				// We've exited fullscreen mode
+				swiperContainerRef.current.classList.remove('fullscreen');
+			}
+		};
+
+		// Listen for fullscreen changes
+		document.addEventListener('fullscreenchange', changeFullscreenClass);
+		document.addEventListener('webkitfullscreenchange', changeFullscreenClass);
+
+		// Make sure to clean up the event listeners when done
+		return () => {
+			document.removeEventListener('fullscreenchange', changeFullscreenClass);
+			document.removeEventListener(
+				'webkitfullscreenchange',
+				changeFullscreenClass
+			);
+		};
+	}
+};
+
+const CustomSwiperContainer = styled(StyledSwiperContainer)`
+	&.fullscreen {
+		z-index: var(--z-index-fullscreen);
+		background: ${({ theme }) => theme.texturedBackground};
+		background-size: ${({ theme }) => theme.texturedBackgroundSize};
+
+		&::after {
+			position: absolute;
+			content: '';
+			background: linear-gradient(
+				rgba(${({ theme }) => Object.values(theme.surface1.rgb).join(',')}, 1),
+				rgba(
+					${({ theme }) => Object.values(theme.surface1.rgb).join(',')},
+					0.75
+				)
+			);
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+		}
+	}
+`;
+
+const CustomStyledSwiper = styled(StyledSwiperElement)`
+	.swiper-button-prev,
+	.swiper-button-next {
+		&::after {
+			color: var(--brand);
+			top: 50%;
+			position: absolute;
+			z-index: 11;
+
+			@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+				top: initial;
+				bottom: ${({ theme }) => theme.spaces.xxl};
+			}
+		}
+		top: 0;
+		bottom: 0;
+		height: 100%;
+
+		&:active {
+			background-color: rgba(
+				${({ theme }) => Object.values(theme.colorOpposite.rgb).join(',')},
+				0.05
+			);
+			transition: background-color 0.2s ease-in-out;
+		}
+	}
+
+	.swiper-button-prev::after {
+		content: '‹';
+	}
+
+	.swiper-button-next::after {
+		content: '›';
+	}
+`;
 
 const PsychoReaderMain = styled(MotionMain)`
 	position: relative;
@@ -35,7 +139,16 @@ const Home = (
 	return (
 		<>
 			<PsychoReaderMain>
-				<PsychoReader psychoReaderConfig={psychoReaderConfig} />
+				<PsychoReader
+					psychoReaderConfig={psychoReaderConfig}
+					CustomSwiperContainer={CustomSwiperContainer}
+					CustomSwiperElement={CustomStyledSwiper}
+					fullscreen={{
+						enable: true,
+						ButtonComponent: CustomFullscreenButton,
+						handleFullscreen: customHandleFullscreen,
+					}}
+				/>
 			</PsychoReaderMain>
 		</>
 	);
