@@ -9,18 +9,9 @@ import 'swiper/css/pagination';
 import { Canvas } from './Canvas';
 import { IConfig } from './IConfig';
 import styled from 'styled-components';
-import FullScreenToggle, {
-	FullscreenButton as BaseFullscreenButton,
-} from '../FullScreenToggle';
+import FullScreenToggle, { FullscreenButton } from '../FullScreenToggle';
 
-const FullscreenButton = styled(BaseFullscreenButton)`
-	position: absolute;
-	bottom: ${({ theme }) => theme.spaces.md};
-	right: ${({ theme }) => theme.spaces.xl};
-	z-index: 10;
-`;
-
-const SwiperContainer = styled.div`
+const StyledSwiperContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	align-items: stretch;
@@ -31,85 +22,42 @@ const SwiperContainer = styled.div`
 		display: flex;
 		justify-content: center;
 	}
-
-	&.fullscreen {
-		z-index: var(--z-index-fullscreen);
-		background: ${({ theme }) => theme.texturedBackground};
-		background-size: 4rem 6rem;
-
-		&::after {
-			position: absolute;
-			content: '';
-			background: linear-gradient(
-				rgba(
-					${({ theme }) => theme.surface1.rgb.r},
-					${({ theme }) => theme.surface1.rgb.g},
-					${({ theme }) => theme.surface1.rgb.b},
-					1
-				),
-				rgba(
-					${({ theme }) => theme.surface1.rgb.r},
-					${({ theme }) => theme.surface1.rgb.g},
-					${({ theme }) => theme.surface1.rgb.b},
-					0.75
-				)
-			);
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			z-index: -1;
-		}
-	}
 `;
 
-const StyledSwiper = styled(SwiperElement)`
+const StyledSwiperElement = styled(SwiperElement)`
 	width: 100%;
 	height: 100%;
-
-	.swiper-button-prev,
-	.swiper-button-next {
-		&::after {
-			color: var(--brand);
-			top: 50%;
-			position: absolute;
-			z-index: 11;
-
-			@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-				top: initial;
-				bottom: ${({ theme }) => theme.spaces.xxl};
-			}
-		}
-		top: 0;
-		bottom: 0;
-		height: 100%;
-
-		&:active {
-			background-color: rgba(
-				${({ theme }) => Object.values(theme.colorOpposite.rgb).join(',')},
-				0.05
-			);
-			transition: background-color 0.2s ease-in-out;
-		}
-	}
-
-	.swiper-button-prev::after {
-		content: '‹';
-	}
-
-	.swiper-button-next::after {
-		content: '›';
-	}
 `;
 
+interface FullscreenOptions {
+	enable?: boolean;
+	ButtonComponent?: React.ElementType;
+	handleFullscreen?: (containerRef: React.RefObject<any>) => void;
+}
 interface PsychoReaderProps {
 	psychoReaderConfig: IConfig;
 	debug?: boolean;
+	onNavigationNext?: (swiper: any, psychoClient: any) => void;
+	onNavigationPrev?: (swiper: any, psychoClient: any) => void;
+	onSlideChangeEnd?: (swiper: any, psychoClient: any) => void;
+	onSwiperMove?: (swiper: any, psychoClient: any) => void;
+	CustomSwiperContainer?: React.ElementType;
+	CustomSwiperElement?: React.ElementType;
+	CustomFullscreenButton?: React.ElementType;
+	fullscreen?: boolean | FullscreenOptions;
 }
 
 export const PsychoReader = ({
 	psychoReaderConfig,
 	debug = true,
+	onNavigationNext,
+	onNavigationPrev,
+	onSlideChangeEnd,
+	onSwiperMove,
+	CustomSwiperContainer = StyledSwiperContainer,
+	CustomSwiperElement = StyledSwiperElement,
+	fullscreen = false,
+	...swiperProps
 }: PsychoReaderProps) => {
 	const {
 		canvasRefs,
@@ -125,57 +73,39 @@ export const PsychoReader = ({
 	const swiperContainerRef = useRef(null);
 
 	const handleFullscreen = () => {
-		const onFullscreenChange = () => {
-			if (
-				document.fullscreenElement === swiperContainerRef.current ||
-				(document as any).webkitFullscreenElement === swiperContainerRef.current
-			) {
-				// We're in fullscreen mode
-				swiperContainerRef.current.classList.add('fullscreen');
-			} else {
-				// We've exited fullscreen mode
-				swiperContainerRef.current.classList.remove('fullscreen');
-				// Clean up the event listener
-				document.removeEventListener('fullscreenchange', onFullscreenChange);
-				document.removeEventListener(
-					'webkitfullscreenchange',
-					onFullscreenChange
-				);
-			}
-		};
+		if (!swiperContainerRef.current) return;
 
-		if (swiperContainerRef.current) {
-			if (isFullScreenRef.current) {
-				// Exit fullscreen mode
-				if (document.exitFullscreen) {
-					document.exitFullscreen();
-				} else if ((document as any).webkitExitFullscreen) {
-					/* Safari */
-					(document as any).webkitExitFullscreen();
-				}
-			} else {
-				// Enter fullscreen mode
-				if (swiperContainerRef.current.requestFullscreen) {
-					swiperContainerRef.current.requestFullscreen();
-				} else if (
-					(swiperContainerRef.current as any).webkitRequestFullscreen
-				) {
-					/* Safari */
-					(swiperContainerRef.current as any).webkitRequestFullscreen();
-				}
-			}
-			// We're toggling, so just invert the current value
-			isFullScreenRef.current = !isFullScreenRef.current;
-
-			// Add event listener to wait for the transition
-			document.addEventListener('fullscreenchange', onFullscreenChange);
-			document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+		if (isFullScreenRef.current) {
+			// Exit fullscreen mode
+			document.exitFullscreen?.();
+			(document as any).webkitExitFullscreen?.(); // Safari
+		} else {
+			// Enter fullscreen mode
+			swiperContainerRef.current.requestFullscreen?.();
+			(swiperContainerRef.current as any).webkitRequestFullscreen?.(); // Safari
 		}
+
+		// We're toggling, so just invert the current value
+		isFullScreenRef.current = !isFullScreenRef.current;
 	};
 
+	let enableFullscreen = false;
+	let CustomFullscreenButton = FullscreenButton;
+	let customHandleFullscreen:
+		| ((containerRef: React.RefObject<any>) => void)
+		| null = null;
+
+	if (typeof fullscreen === 'boolean') {
+		enableFullscreen = fullscreen;
+	} else if (typeof fullscreen === 'object') {
+		enableFullscreen = fullscreen.enable || false;
+		CustomFullscreenButton = fullscreen.ButtonComponent || FullscreenButton;
+		customHandleFullscreen = fullscreen.handleFullscreen || null;
+	}
+
 	return (
-		<SwiperContainer ref={swiperContainerRef}>
-			<StyledSwiper
+		<CustomSwiperContainer ref={swiperContainerRef}>
+			<CustomSwiperElement
 				allowTouchMove={false}
 				modules={[Navigation, Pagination, A11y]}
 				navigation={true}
@@ -188,19 +118,32 @@ export const PsychoReader = ({
 				onNavigationNext={(swiper) => {
 					debug && console.log(`**********onNavigationNext**********`);
 					handleOnNavigationNext(swiper, psychoClient);
+					if (onNavigationNext) {
+						onNavigationNext(swiper, psychoClient);
+					}
 				}}
 				onNavigationPrev={(swiper) => {
 					debug && console.log(`**********onNavigationPrev**********`);
 					handleOnNavigationPrev(swiper, psychoClient);
+					if (onNavigationPrev) {
+						onNavigationPrev(swiper, psychoClient);
+					}
 				}}
 				onSlideChangeTransitionEnd={(swiper) => {
 					debug && console.log(`onSlideChangeTransitionEnd`);
 					handleOnSlideChangeEnd(swiper, psychoClient);
+					if (onSlideChangeEnd) {
+						onSlideChangeEnd(swiper, psychoClient);
+					}
 				}}
 				onSliderMove={(swiper) => {
 					handleOnSwiperMove(swiper, psychoClient);
+					if (onSwiperMove) {
+						onSwiperMove(swiper, psychoClient);
+					}
 				}}
 				slidesPerView={1}
+				{...swiperProps}
 			>
 				{!!psychoClient.book &&
 					psychoClient.book.pages.map((page: Page, index: number) => {
@@ -223,13 +166,21 @@ export const PsychoReader = ({
 						);
 					})}
 				{/* <SwiperSlide /> */}
-				<FullScreenToggle
-					ButtonComponent={FullscreenButton}
-					handleFullscreen={handleFullscreen}
-				/>
-			</StyledSwiper>
-		</SwiperContainer>
+				{enableFullscreen && (
+					<FullScreenToggle
+						ButtonComponent={CustomFullscreenButton}
+						handleFullscreen={() => {
+							handleFullscreen();
+							if (customHandleFullscreen) {
+								customHandleFullscreen(swiperContainerRef);
+							}
+						}}
+					/>
+				)}
+			</CustomSwiperElement>
+		</CustomSwiperContainer>
 	);
 };
 
 export default PsychoReader;
+export { FullscreenButton, StyledSwiperContainer, StyledSwiperElement };
