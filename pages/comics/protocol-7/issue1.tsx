@@ -33,19 +33,26 @@ const customHandleFullscreen = (swiperContainerRef: React.RefObject<any>) => {
 				swiperContainerRef.current.classList.remove('fullscreen');
 			}
 		};
-
-		// Listen for fullscreen changes
-		document.addEventListener('fullscreenchange', changeFullscreenClass);
-		document.addEventListener('webkitfullscreenchange', changeFullscreenClass);
-
-		// Make sure to clean up the event listeners when done
-		return () => {
-			document.removeEventListener('fullscreenchange', changeFullscreenClass);
-			document.removeEventListener(
+		// @todo figure out how to get this value from the theme
+		if (window.innerWidth < 768) {
+			swiperContainerRef.current.classList.toggle('fullscreen');
+		} else {
+			// Listen for fullscreen changes
+			document.addEventListener('fullscreenchange', changeFullscreenClass);
+			document.addEventListener(
 				'webkitfullscreenchange',
 				changeFullscreenClass
 			);
-		};
+
+			// Make sure to clean up the event listeners when done
+			return () => {
+				document.removeEventListener('fullscreenchange', changeFullscreenClass);
+				document.removeEventListener(
+					'webkitfullscreenchange',
+					changeFullscreenClass
+				);
+			};
+		}
 	}
 };
 
@@ -54,6 +61,17 @@ const CustomSwiperContainer = styled(StyledSwiperContainer)`
 		z-index: var(--z-index-fullscreen);
 		background: ${({ theme }) => theme.texturedBackground};
 		background-size: ${({ theme }) => theme.texturedBackgroundSize};
+
+		@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+			// Adjust this value based on your needs
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+		}
 
 		&::after {
 			position: absolute;
@@ -118,6 +136,14 @@ const PsychoReaderMain = styled(MotionMain)`
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 12.5rem);
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+		height: calc(100vh - 15rem);
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+		height: calc(100vh - 8rem);
+	}
 `;
 
 export async function getServerSideProps() {
