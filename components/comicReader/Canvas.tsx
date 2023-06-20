@@ -35,8 +35,8 @@ export const Canvas = (props: CanvasProps) => {
 	} = props;
 
 	useEffect(() => {
-		console.log('useEffect canvas start');
-		console.log(`src ${src}`);
+		// console.log('useEffect canvas start');
+		// console.log(`src ${src}`);
 		let current: HTMLCanvasElement | null = canvasRef?.current;
 
 		drawCanvas(current, page, -1);
