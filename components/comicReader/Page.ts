@@ -67,7 +67,7 @@ class Page {
 	goToNextPanel(currentPanel: number): number {
 		if (this.hasNextPanel(currentPanel)) {
 			currentPanel = this.nextPanel(currentPanel);
-			console.log('currentPanel NOW: ' + currentPanel);
+			// console.log('currentPanel NOW: ' + currentPanel);
 			return currentPanel;
 		}
 	}
@@ -75,7 +75,7 @@ class Page {
 	goToPrevPanel(currentPanel: number): number {
 		if (this.hasPrevPanel(currentPanel)) {
 			currentPanel = this.prevPanel(currentPanel);
-			console.log('currentPanel NOW: ' + currentPanel);
+			// console.log('currentPanel NOW: ' + currentPanel);
 			return currentPanel;
 		}
 	}
@@ -94,7 +94,7 @@ class Page {
 			);
 			zoomPan(this.ref.current, this.imageUrl, canvasPropsOld, canvasPropsNew);
 			// this.currentPanel = to;
-			console.log('currentPanel NOW: ' + to);
+			// console.log('currentPanel NOW: ' + to);
 			return to;
 		}
 	}
@@ -112,7 +112,7 @@ class Page {
 	}
 
 	hasPrevPanel(currentPanel: number) {
-		return currentPanel >= 0;
+		return currentPanel > -1;
 	}
 
 	// setPanel(panelIdx: number) {
@@ -148,7 +148,7 @@ class Page {
 
 	goToWholePagePanel(currentPanel: number): number {
 		this.goToPanel(currentPanel, -1);
-		console.log('currentPanel NOW whole page Panel: ' + -1);
+		// console.log('currentPanel NOW whole page Panel: ' + -1);
 		return -1;
 	}
 
@@ -157,7 +157,7 @@ class Page {
 			throw new Error(
 				`Panel index out of range, given ${panelIdx}, must be between 0 and ${this.panels.length}`
 			);
-		console.log(this.ref.current);
+		// console.log(this.ref.current);
 		this.goToPanel(panelIdx, panelIdx);
 
 		return panelIdx;

@@ -1,7 +1,7 @@
 import React, { createRef, useRef } from 'react';
 import { usePsychoClient } from '../../hooks/usePsychoClient';
 import { Swiper as SwiperElement, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, A11y } from 'swiper';
+import Swiper, { Navigation, Pagination, A11y, Keyboard } from 'swiper';
 import Page from './Page';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -40,7 +40,8 @@ interface PsychoReaderProps {
 	onNavigationNext?: (swiper: any, psychoClient: any) => void;
 	onNavigationPrev?: (swiper: any, psychoClient: any) => void;
 	onSlideChangeEnd?: (swiper: any, psychoClient: any) => void;
-	onSwiperMove?: (swiper: any, psychoClient: any) => void;
+	onTouchStart?: (swiper: any, psychoClient: any) => void;
+	onTouchEnd?: (swiper: any, psychoClient: any) => void;
 	CustomSwiperContainer?: React.ElementType;
 	CustomSwiperElement?: React.ElementType;
 	CustomFullscreenButton?: React.ElementType;
@@ -49,11 +50,12 @@ interface PsychoReaderProps {
 
 export const PsychoReader = ({
 	psychoReaderConfig,
-	debug = true,
+	debug = false,
 	onNavigationNext,
 	onNavigationPrev,
 	onSlideChangeEnd,
-	onSwiperMove,
+	onTouchStart,
+	onTouchEnd,
 	CustomSwiperContainer = StyledSwiperContainer,
 	CustomSwiperElement = StyledSwiperElement,
 	fullscreen = false,
@@ -64,9 +66,9 @@ export const PsychoReader = ({
 		psychoClient,
 		swiperRef,
 		handleOnSlideChangeEnd,
-		handleOnNavigationNext,
-		handleOnNavigationPrev,
-		handleOnSwiperMove,
+		navigateToPanel,
+		handleOnSliderStart,
+		handleOnSliderEnd,
 	} = usePsychoClient(psychoReaderConfig, debug);
 
 	const isFullScreenRef = useRef(false);
@@ -106,43 +108,50 @@ export const PsychoReader = ({
 	return (
 		<CustomSwiperContainer ref={swiperContainerRef}>
 			<CustomSwiperElement
-				allowTouchMove={false}
+				allowTouchMove={true}
 				modules={[Navigation, Pagination, A11y]}
 				navigation={true}
 				pagination={{
 					type: 'fraction',
 				}}
-				onSwiper={(swiper) => {
+				onSwiper={(swiper: Swiper) => {
 					swiperRef.current = swiper;
 				}}
-				onNavigationNext={(swiper) => {
+				onNavigationNext={(swiper: Swiper) => {
 					debug && console.log(`**********onNavigationNext**********`);
-					handleOnNavigationNext(swiper, psychoClient);
+					navigateToPanel(swiper, psychoClient, 'next');
 					if (onNavigationNext) {
 						onNavigationNext(swiper, psychoClient);
 					}
 				}}
-				onNavigationPrev={(swiper) => {
+				onNavigationPrev={(swiper: Swiper) => {
 					debug && console.log(`**********onNavigationPrev**********`);
-					handleOnNavigationPrev(swiper, psychoClient);
+					navigateToPanel(swiper, psychoClient, 'prev');
 					if (onNavigationPrev) {
 						onNavigationPrev(swiper, psychoClient);
 					}
 				}}
-				onSlideChangeTransitionEnd={(swiper) => {
+				onSlideChangeTransitionEnd={(swiper: Swiper) => {
 					debug && console.log(`onSlideChangeTransitionEnd`);
 					handleOnSlideChangeEnd(swiper, psychoClient);
 					if (onSlideChangeEnd) {
 						onSlideChangeEnd(swiper, psychoClient);
 					}
 				}}
-				onSliderMove={(swiper) => {
-					handleOnSwiperMove(swiper, psychoClient);
-					if (onSwiperMove) {
-						onSwiperMove(swiper, psychoClient);
+				onTouchStart={(swiper: Swiper) => {
+					handleOnSliderStart(swiper);
+					if (onTouchStart) {
+						onTouchStart(swiper, psychoClient);
+					}
+				}}
+				onTouchEnd={(swiper: Swiper) => {
+					handleOnSliderEnd(swiper);
+					if (onTouchEnd) {
+						onTouchEnd(swiper, psychoClient);
 					}
 				}}
 				slidesPerView={1}
+				centeredSlides={true}
 				{...swiperProps}
 			>
 				{!!psychoClient.book &&
