@@ -42,10 +42,13 @@ interface PsychoReaderProps {
 	onSlideChangeEnd?: (swiper: any, psychoClient: any) => void;
 	onTouchStart?: (swiper: any, psychoClient: any) => void;
 	onTouchEnd?: (swiper: any, psychoClient: any) => void;
+	onSlideChange?: (slideNumber: number, panelNumber: number) => void;
 	CustomSwiperContainer?: React.ElementType;
 	CustomSwiperElement?: React.ElementType;
 	CustomFullscreenButton?: React.ElementType;
 	fullscreen?: boolean | FullscreenOptions;
+	initialSlide: number;
+	initialPanel: number;
 }
 
 export const PsychoReader = ({
@@ -56,9 +59,12 @@ export const PsychoReader = ({
 	onSlideChangeEnd,
 	onTouchStart,
 	onTouchEnd,
+	onSlideChange,
 	CustomSwiperContainer = StyledSwiperContainer,
 	CustomSwiperElement = StyledSwiperElement,
 	fullscreen = false,
+	initialSlide = 0,
+	initialPanel = -1,
 	...swiperProps
 }: PsychoReaderProps) => {
 	const {
@@ -69,7 +75,13 @@ export const PsychoReader = ({
 		navigateToPanel,
 		handleOnSliderStart,
 		handleOnSliderEnd,
-	} = usePsychoClient(psychoReaderConfig, debug);
+	} = usePsychoClient(
+		psychoReaderConfig,
+		debug,
+		onSlideChange,
+		initialSlide,
+		initialPanel
+	);
 
 	const isFullScreenRef = useRef(false);
 	const swiperContainerRef = useRef(null);
@@ -150,9 +162,11 @@ export const PsychoReader = ({
 						onTouchEnd(swiper, psychoClient);
 					}
 				}}
-				slidesPerView={1}
-				centeredSlides={true}
 				{...swiperProps}
+				slidesPerView={1}
+				spaceBetween={0}
+				centeredSlides={true}
+				initialSlide={initialSlide}
 			>
 				{!!psychoClient.book &&
 					psychoClient.book.pages.map((page: Page, index: number) => {
@@ -170,6 +184,7 @@ export const PsychoReader = ({
 									objectPosition='contain'
 									page={page}
 									canvasRef={ref}
+									initialPanel={index === initialSlide ? initialPanel : -1}
 								/>
 							</SwiperSlide>
 						);

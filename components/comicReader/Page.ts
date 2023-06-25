@@ -122,7 +122,7 @@ class Page {
 	getPanel(panelIdx: number): Panel {
 		if (this.panels[panelIdx] === undefined)
 			throw new Error(
-				`Panel index out of range, given ${panelIdx}, must be between 0 and ${this.panels.length} on page with url ${this.imageUrl}`
+				`Panel index out of range, given ${panelIdx}, must be between 0 and ${this.panels.length}`
 			);
 		return this.panels[panelIdx];
 	}
