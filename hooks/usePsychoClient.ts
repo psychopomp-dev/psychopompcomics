@@ -12,7 +12,7 @@ import { drawCanvas } from '../utils/CanvasHelper';
 import debounce from '../utils/debounce';
 import { useKeyPress } from './useKeyPress';
 
-const wholePageIndex = -1;
+const wholePageIndex = -1; // @todo: export this
 
 // @todo: check if it's a valid page
 function handleResize(
