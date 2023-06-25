@@ -17,6 +17,7 @@ interface BaseImageProps {
 	objectPosition: string;
 	page: Page;
 	canvasRef: React.RefObject<HTMLCanvasElement>;
+	initialPanel?: number;
 }
 
 interface CanvasProps extends PropsWithRef<BaseImageProps> {}
@@ -31,6 +32,7 @@ export const Canvas = (props: CanvasProps) => {
 		layout,
 		objectPosition,
 		page,
+		initialPanel,
 		...other
 	} = props;
 
@@ -38,8 +40,9 @@ export const Canvas = (props: CanvasProps) => {
 		// console.log('useEffect canvas start');
 		// console.log(`src ${src}`);
 		let current: HTMLCanvasElement | null = canvasRef?.current;
-
-		drawCanvas(current, page, -1);
+		const panelIndex =
+			page.panels[initialPanel] === undefined ? -1 : initialPanel;
+		drawCanvas(current, page, panelIndex);
 
 		return () => {
 			let ctx: CanvasRenderingContext2D | null | undefined =
@@ -48,7 +51,7 @@ export const Canvas = (props: CanvasProps) => {
 				ctx.clearRect(0, 0, current.width, current.height);
 			}
 		};
-	}, [canvasRef, page, src]);
+	}, [canvasRef, initialPanel, page, src]);
 
 	/**
 	 * Click to zoom functionality

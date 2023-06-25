@@ -1,5 +1,5 @@
 // usePsychoClient.ts
-import { useEffect, useRef, useCallback, useState } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import {
 	Client,
 	PsychoReaderClient,
@@ -14,7 +14,7 @@ import { useKeyPress } from './useKeyPress';
 
 const wholePageIndex = -1;
 
-// @todo: move this to a helper and check if it's a valid page
+// @todo: check if it's a valid page
 function handleResize(
 	canvas: HTMLCanvasElement,
 	page: Page,
@@ -52,10 +52,41 @@ function shouldAllowSlidePrev(
 	}
 }
 
+function setSwiperSlidePermissions(
+	swiper: Swiper,
+	book: Book,
+	panelIdxRefs: number[]
+) {
+	swiper.allowSlidePrev = shouldAllowSlidePrev(
+		swiper,
+		book.getPages(),
+		panelIdxRefs
+	);
+	swiper.allowSlideNext = shouldAllowSlideNext(
+		swiper,
+		book.getPages(),
+		panelIdxRefs
+	);
+}
+
+function setOnSlideChange(
+	slideNumber: number,
+	panelIdxRefs: number[],
+	onSlideChange: (slideNumber: number, panelNumber: number) => void
+) {
+	const panelNumber =
+		typeof panelIdxRefs[slideNumber] !== 'undefined'
+			? panelIdxRefs[slideNumber]
+			: wholePageIndex;
+	onSlideChange(slideNumber, panelNumber);
+}
+
 export const usePsychoClient = (
 	psychoReaderConfig: IConfig,
 	debug: boolean,
-	onSlideChange: (slideNumber: number, panelNumber: number) => void
+	onSlideChange: (slideNumber: number, panelNumber: number) => void,
+	initialSlideNumber?: number,
+	initialPanelNumber?: number
 ) => {
 	const psychoClientRef = useRef<PsychoReaderClient>();
 	if (!psychoClientRef.current) {
@@ -68,7 +99,6 @@ export const usePsychoClient = (
 	const swiperRef = useRef<Swiper | null>(null);
 
 	useEffect(() => {
-		debug && console.log(`canvasRefs `, canvasRefs);
 		canvasRefs.current = canvasRefs.current.slice(
 			0,
 			psychoClient.book.pages.length
@@ -76,7 +106,25 @@ export const usePsychoClient = (
 		panelIdxRefs.current = new Array(psychoClient.book.pages.length).fill(
 			wholePageIndex
 		);
-	}, [debug, psychoClient]);
+		// Verify the initialPanelNumber is a valid panel on the given initialSlideNumber (page)
+		if (
+			initialSlideNumber >= 0 &&
+			initialSlideNumber < psychoClient.book.pages.length &&
+			initialPanelNumber >= 0 &&
+			initialPanelNumber <
+				psychoClient.book.pages[initialSlideNumber].panels.length
+		) {
+			panelIdxRefs.current[initialSlideNumber] = initialPanelNumber;
+			if (swiperRef.current) {
+				const swiper = swiperRef.current;
+				setSwiperSlidePermissions(
+					swiper,
+					psychoClient.book,
+					panelIdxRefs.current
+				);
+			}
+		}
+	}, [debug, initialPanelNumber, initialSlideNumber, psychoClient]);
 
 	const getPageInfo = useCallback((book: Book, pageIdx: number) => {
 		const currentPage = book.getCurrentPage(pageIdx);
@@ -96,14 +144,9 @@ export const usePsychoClient = (
 
 		if (swiperRef.current) {
 			const swiper = swiperRef.current;
-			swiper.allowSlideNext = shouldAllowSlideNext(
+			setSwiperSlidePermissions(
 				swiper,
-				psychoClient.book.pages,
-				panelIdxRefs.current
-			);
-			swiper.allowSlidePrev = shouldAllowSlidePrev(
-				swiper,
-				psychoClient.book.pages,
+				psychoClient.book,
 				panelIdxRefs.current
 			);
 		}
@@ -149,25 +192,31 @@ export const usePsychoClient = (
 
 	const handleOnSlideChangeEnd = useCallback(
 		(swiper: Swiper, { book }: { book: Book }) => {
-			if (!isValidPage(book, swiper.activeIndex)) return;
+			// Check if the panelIndexRefs entry for the current slide index is not undefined
+			if (typeof panelIdxRefs.current[swiper.activeIndex] !== 'undefined') {
+				setOnSlideChange(
+					swiper.activeIndex,
+					panelIdxRefs.current,
+					onSlideChange
+				);
+				if (!isValidPage(book, swiper.activeIndex)) return;
 
-			swiper.allowSlidePrev = shouldAllowSlidePrev(
-				swiper,
-				book.getPages(),
-				panelIdxRefs.current
-			);
-			swiper.allowSlideNext = shouldAllowSlideNext(
-				swiper,
-				book.getPages(),
-				panelIdxRefs.current
-			);
+				setSwiperSlidePermissions(swiper, book, panelIdxRefs.current);
+			}
 		},
-		[]
+		[onSlideChange]
 	);
 
 	const navigateToPanel = useCallback(
 		(swiper: Swiper, { book }: { book: Book }, direction: 'next' | 'prev') => {
-			if (!isValidPage(book, swiper.activeIndex)) return;
+			if (!isValidPage(book, swiper.activeIndex)) {
+				setOnSlideChange(
+					swiper.activeIndex,
+					panelIdxRefs.current,
+					onSlideChange
+				);
+				return;
+			}
 
 			const { currentPage, currentPageIndex } = getPageInfo(
 				book,
@@ -188,24 +237,22 @@ export const usePsychoClient = (
 				currentPanelIndex = panelIdxRefs.current[currentPageIndex];
 			}
 
-			swiper.allowSlidePrev = shouldAllowSlidePrev(
-				swiper,
-				book.getPages(),
-				panelIdxRefs.current
-			);
-			swiper.allowSlideNext = shouldAllowSlideNext(
-				swiper,
-				book.getPages(),
-				panelIdxRefs.current
-			);
+			setSwiperSlidePermissions(swiper, book, panelIdxRefs.current);
+			setOnSlideChange(swiper.activeIndex, panelIdxRefs.current, onSlideChange);
 		},
-		[getPageInfo]
+		[getPageInfo, onSlideChange]
 	);
 
 	const handleOnNavigationIgnorePanels = useCallback(
 		(swiper: Swiper, { book }: { book: Book }, direction: 'next' | 'prev') => {
-			console.log('handleOnNavigationIgnorePanels');
-			if (!isValidPage(book, swiper.activeIndex)) return;
+			if (!isValidPage(book, swiper.activeIndex)) {
+				setOnSlideChange(
+					swiper.activeIndex,
+					panelIdxRefs.current,
+					onSlideChange
+				);
+				return;
+			}
 			if (
 				(direction === 'next' && !swiper.isEnd) ||
 				(direction === 'prev' && !swiper.isBeginning)
@@ -219,19 +266,11 @@ export const usePsychoClient = (
 				swiper.allowSlidePrev = direction === 'prev';
 				swiper.allowSlideNext = direction === 'next';
 				direction === 'next' ? swiper.slideNext() : swiper.slidePrev();
-				swiper.allowSlidePrev = shouldAllowSlidePrev(
-					swiper,
-					book.getPages(),
-					panelIdxRefs.current
-				);
-				swiper.allowSlideNext = shouldAllowSlideNext(
-					swiper,
-					book.getPages(),
-					panelIdxRefs.current
-				);
+				setSwiperSlidePermissions(swiper, book, panelIdxRefs.current);
 			}
+			setOnSlideChange(swiper.activeIndex, panelIdxRefs.current, onSlideChange);
 		},
-		[]
+		[onSlideChange]
 	);
 
 	// ArrowRight handler
@@ -314,7 +353,6 @@ export const usePsychoClient = (
 	const previousSlideRef = useRef(-1);
 
 	const handleOnSliderStart = (swiper: Swiper) => {
-		console.log('handleOnSliderStart');
 		if (!swiper.isBeginning) {
 			swiper.allowSlidePrev = true;
 		}
@@ -323,11 +361,9 @@ export const usePsychoClient = (
 		}
 		sliderMoveTriggeredRef.current = true;
 		previousSlideRef.current = swiper.activeIndex;
-		console.log(previousSlideRef.current);
 	};
 
 	const handleOnSliderEnd = (swiper: Swiper) => {
-		console.log('handleOnSliderEnd');
 		if (
 			sliderMoveTriggeredRef.current &&
 			swiper.previousIndex !== swiper.activeIndex
@@ -335,13 +371,13 @@ export const usePsychoClient = (
 			// This is the previous page we navigated away from for some reason
 			const page = psychoClient.book.pages[swiper.activeIndex];
 			if (page) {
-				console.log(`setting ${swiper.activeIndex} to whole page`);
 				panelIdxRefs.current[swiper.activeIndex] = page.goToWholePagePanel(
 					panelIdxRefs.current[swiper.activeIndex]
 				);
 			}
 		}
 		sliderMoveTriggeredRef.current = false;
+		setOnSlideChange(swiper.activeIndex, panelIdxRefs.current, onSlideChange);
 	};
 
 	return {

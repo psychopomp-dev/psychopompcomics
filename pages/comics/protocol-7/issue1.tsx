@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { InferGetServerSidePropsType } from 'next';
+import { useRouter } from 'next/router';
 import PsychoReader, {
 	FullscreenButton,
 	StyledSwiperContainer,
@@ -161,6 +162,23 @@ const Home = (
 	props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
 	const { psychoReaderConfig } = props;
+	const router = useRouter();
+
+	const handleSlideChange = (slideNumber: number, panelNumber: number) => {
+		const baseUrl = router.pathname;
+		let url = baseUrl;
+		// Add page to url only if slideNumber is not 0
+		if (slideNumber !== 0) {
+			url += `?page=${slideNumber}`;
+		}
+		// Add panel to url only if panelNumber is not less than 0
+		if (panelNumber >= 0) {
+			url += url.includes('?')
+				? `&panel=${panelNumber}`
+				: `?panel=${panelNumber}`;
+		}
+		router.replace(url, undefined, { shallow: true });
+	};
 
 	return (
 		<>
@@ -174,6 +192,9 @@ const Home = (
 						ButtonComponent: CustomFullscreenButton,
 						handleFullscreen: customHandleFullscreen,
 					}}
+					onSlideChange={handleSlideChange}
+					initialSlide={router.query.page ? Number(router.query.page) : 0}
+					initialPanel={router.query.panel ? Number(router.query.panel) : -1}
 				/>
 			</PsychoReaderMain>
 		</>
