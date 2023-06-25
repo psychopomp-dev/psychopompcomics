@@ -47,8 +47,8 @@ interface PsychoReaderProps {
 	CustomSwiperElement?: React.ElementType;
 	CustomFullscreenButton?: React.ElementType;
 	fullscreen?: boolean | FullscreenOptions;
-	initialSlide: number;
-	initialPanel: number;
+	initialSlide?: number;
+	initialPanel?: number;
 }
 
 export const PsychoReader = ({
