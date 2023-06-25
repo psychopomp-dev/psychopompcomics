@@ -10,6 +10,7 @@ import Page from '../components/comicReader/Page';
 import Swiper from 'swiper';
 import { drawCanvas } from '../utils/CanvasHelper';
 import debounce from '../utils/debounce';
+import { useKeyPress } from './useKeyPress';
 
 const wholePageIndex = -1;
 
@@ -252,39 +253,53 @@ export const usePsychoClient = (
 		[]
 	);
 
-	const handleKeypress = useCallback(
-		(event: KeyboardEvent) => {
-			if (!swiperRef.current) {
+	// ArrowRight handler
+	useKeyPress(
+		'ArrowRight',
+		() => {
+			if (!swiperRef.current || swiperRef.current.isEnd) {
 				return;
 			}
-			console.log('keypress', event.key);
-			if (event.key === 'ArrowRight') {
-				if (!swiperRef.current.isEnd) {
-					swiperRef.current.slideNext();
-					if (!swiperRef.current.allowSlideNext) {
-						navigateToPanel(
-							swiperRef.current,
-							{
-								book: psychoClient.book,
-							},
-							'next'
-						);
-					}
-				}
-			} else if (event.key === 'ArrowLeft') {
-				if (!swiperRef.current.isBeginning) {
-					swiperRef.current.slidePrev();
-					if (!swiperRef.current.allowSlidePrev) {
-						navigateToPanel(
-							swiperRef.current,
-							{
-								book: psychoClient.book,
-							},
-							'prev'
-						);
-					}
-				}
-			} else if (event.key === 'ArrowUp') {
+			swiperRef.current.slideNext();
+			if (!swiperRef.current.allowSlideNext) {
+				navigateToPanel(
+					swiperRef.current,
+					{
+						book: psychoClient.book,
+					},
+					'next'
+				);
+			}
+		},
+		() => {}
+	);
+
+	// ArrowLeft handler
+	useKeyPress(
+		'ArrowLeft',
+		() => {
+			if (!swiperRef.current || swiperRef.current.isBeginning) {
+				return;
+			}
+			swiperRef.current.slidePrev();
+			if (!swiperRef.current.allowSlidePrev) {
+				navigateToPanel(
+					swiperRef.current,
+					{
+						book: psychoClient.book,
+					},
+					'prev'
+				);
+			}
+		},
+		() => {}
+	);
+
+	// ArrowUp handler
+	useKeyPress(
+		'ArrowUp',
+		() => {
+			if (swiperRef.current) {
 				handleOnNavigationIgnorePanels(
 					swiperRef.current,
 					{
@@ -292,7 +307,16 @@ export const usePsychoClient = (
 					},
 					'prev'
 				);
-			} else if (event.key === 'ArrowDown') {
+			}
+		},
+		() => {}
+	);
+
+	// ArrowDown handler
+	useKeyPress(
+		'ArrowDown',
+		() => {
+			if (swiperRef.current) {
 				handleOnNavigationIgnorePanels(
 					swiperRef.current,
 					{
@@ -302,16 +326,8 @@ export const usePsychoClient = (
 				);
 			}
 		},
-		[swiperRef, navigateToPanel, handleOnNavigationIgnorePanels, psychoClient]
+		() => {}
 	);
-
-	useEffect(() => {
-		window.addEventListener('keydown', handleKeypress);
-
-		return () => {
-			window.removeEventListener('keydown', handleKeypress);
-		};
-	}, [handleKeypress]);
 
 	const sliderMoveTriggeredRef = useRef(false);
 	const previousSlideRef = useRef(-1);
