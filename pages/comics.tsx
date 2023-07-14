@@ -41,6 +41,18 @@ const ComicGridContainer = styled.div`
 	grid-gap: var(--space-lg);
 	overflow: visible;
 	margin-bottom: var(--space-ms);
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+		max-width: calc(60rem + (var(--space-lg) * 2));
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+		max-width: calc(40rem + (var(--space-lg)));
+		grid-template-columns: repeat(2, 1fr);
+		margin-left: auto;
+		margin-right: auto;
+	}
 `;
 
 const ComicGridCard = styled.article`
