@@ -2,93 +2,138 @@ import styled from 'styled-components';
 import dynamic from 'next/dynamic';
 const DynamicFooter = dynamic(() => import('../components/Footer'));
 import MotionMain from '../components/styles/MotionMain.styled';
-import CainIsComingHeader from '../components/styles/CainIsComingHeader.styled';
-const DynamicRadio = dynamic(() => import('../components/Radio'));
-const DynamicIntelReport = dynamic(() => import('../components/IntelReport'));
 import { useTheme } from 'styled-components';
 import Image from 'next/image';
-import cainIsComing from '../images/seed-of-cain/cain-is-coming.jpg';
+import p7Cover from '../images/comics/protocol-7/issue1/cover.jpg';
+import cAUCover from '../images/comics/comes-an-upsr/issue1/cover.jpg';
+import sOCCover from '../images/comics/seed-of-cain/issue1/cover.jpg';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
-import { TwoUp, TwoUpContainer } from '../components/styles/TwoUp.styled';
-import { m } from 'framer-motion';
-import { FadeInLeft } from '../components/themes/MotionVariants';
+import NoScrollLink from '../components/NoScrollLink';
 
-const IntelContainer = styled.div`
+const psychoShorts = [
+	{
+		src: p7Cover,
+		alt: 'Protocol 7',
+		uri: '/comics/protocol-7/issue1',
+	},
+	{
+		src: cAUCover,
+		alt: 'Comes an Upsr',
+		uri: '/comics/comes-an-upsr/issue1',
+	},
+];
+
+const comics = [
+	{
+		src: sOCCover,
+		alt: 'Seed Of Cain',
+		uri: '/seed-of-cain',
+	},
+];
+
+const ComicGridContainer = styled.div`
+	margin-top: var(--space-lg);
 	width: 100%;
+	max-width: calc(80rem + (var(--space-lg) * 3));
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: var(--space-lg);
+	overflow: visible;
+	margin-bottom: var(--space-ms);
+`;
+
+const ComicGridCard = styled.article`
+	background-color: var(--surface2);
+	box-shadow: var(--box-shadow-xs);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	padding-bottom: var(--space-md);
-	video {
-		max-width: 100%;
-		box-shadow: var(--box-shadow-md);
+
+	&:hover {
+		transition: all 0.2s ease-in-out;
+		box-shadow: var(--box-shadow-ms);
 	}
+
+	&:active {
+		transition: all 0.2s ease-in-out;
+		box-shadow: var(--box-shadow-xxs);
+	}
+
+	span {
+		flex-grow: 1;
+	}
+
+	img,
+	h4 {
+		cursor: pointer;
+		padding-left: var(--space-md);
+		padding-right: var(--space-md);
+	}
+`;
+
+const ComicGridImgContainer = styled.div`
+	position: relative;
+	aspect-ratio: 320/494;
 `;
 
 export default function Comics() {
 	const theme = useTheme();
-	const imageSizes = `(max-width: ${theme.breakpoints.xxs}) 89.7vw, (max-width: ${theme.breakpoints.xs}) 93.3vw, (max-width: ${theme.breakpoints.sm}) 95vw, (max-width: ${theme.breakpoints.md}) 96.1vw, (max-width: 1311px) 60.5vw, 952.3px`;
+
 	return (
 		<>
 			<MotionMain>
-				<CainIsComingHeader>
-					<Image
-						src={cainIsComing}
-						alt='Cain is coming'
-						layout='fill'
-						objectFit='cover'
-						objectPosition='bottom'
-						sizes='100vw'
-						placeholder='blur'
-					/>
-				</CainIsComingHeader>
 				<StyledSection>
 					<SectionContainer>
-						<TwoUpContainer>
-							<TwoUp twoUpWidth='33%'>
-								<m.h2
-									variants={FadeInLeft}
-									initial='hidden'
-									whileInView='visible'
-								>
-									Something is Here
-								</m.h2>
-								<p>{`As I sat at my desk my phone started going off. News notifications, texts from friends and mentions. Something big had happened with Levitron Systems' Cogs in MY CITY. Our internet was out so I poured myself a whiskey and pulled out the emergency Radio. For once growing up in a prepper household paid off. Many of the stations were offline but I found a newsbroadcast on 1120am. I should probably check the other stations for news.`}</p>
-							</TwoUp>
-							<TwoUp twoUpWidth='67%'>
-								<DynamicRadio sizes={imageSizes} />
-							</TwoUp>
-						</TwoUpContainer>
+						<h1>Psycho Shorts</h1>
+						<h4>
+							A collection of single issue stories in collaboration with
+							talented artists
+						</h4>
+						<ComicGridContainer>
+							{psychoShorts.map((comic) => (
+								<ComicGridCard key={comic.alt}>
+									<NoScrollLink href={comic.uri}>
+										<ComicGridImgContainer>
+											<Image
+												src={comic.src}
+												alt={comic.alt}
+												sizes={'20rem'}
+												placeholder='blur'
+											/>
+										</ComicGridImgContainer>
+									</NoScrollLink>
+									<NoScrollLink href={comic.uri}>
+										<h4>{comic.alt}</h4>
+									</NoScrollLink>
+								</ComicGridCard>
+							))}
+						</ComicGridContainer>
 					</SectionContainer>
 				</StyledSection>
-				<StyledSection xxxlTop>
+				<StyledSection>
 					<SectionContainer>
-						<TwoUpContainer reverseOnCollapse={true}>
-							<TwoUp twoUpWidth='67%'>
-								<IntelContainer>
-									<DynamicIntelReport sizes={imageSizes} />
-								</IntelContainer>
-							</TwoUp>
-							<TwoUp twoUpWidth='33%'>
-								<m.h2
-									variants={FadeInLeft}
-									initial='hidden'
-									whileInView='visible'
-								>
-									Collected Intel
-								</m.h2>
-								<p>
-									Things got bad, really bad. I lost track of time. I spent my
-									days, weeks and months scurrying from one hiding place to
-									another. When it was finally quiet outside I was able to do
-									some extended scavenging and exploring. I came across a
-									battlefield that had seen active combat until very recently. A
-									flashing green light caught my eye and I saw a disembodied arm
-									whose hand was still clutching a military communication
-									tablet. As I swiped through it, I realized that it held the
-									most accurate description of the events that lead us here that
-									I would ever read.
-								</p>
-							</TwoUp>
-						</TwoUpContainer>
+						<h1>Comics</h1>
+						<ComicGridContainer>
+							{comics.map((comic) => (
+								<ComicGridCard key={comic.alt}>
+									<NoScrollLink href={comic.uri}>
+										<ComicGridImgContainer>
+											<Image
+												src={comic.src}
+												alt={comic.alt}
+												sizes={'20rem'}
+												placeholder='blur'
+											/>
+										</ComicGridImgContainer>
+									</NoScrollLink>
+									<NoScrollLink href={comic.uri}>
+										<h4>{comic.alt}</h4>
+									</NoScrollLink>
+								</ComicGridCard>
+							))}
+						</ComicGridContainer>
 					</SectionContainer>
 				</StyledSection>
 			</MotionMain>
