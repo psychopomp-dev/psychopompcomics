@@ -7,6 +7,7 @@ import Image from 'next/image';
 import p7Cover from '../images/comics/protocol-7/issue1/cover.jpg';
 import cAUCover from '../images/comics/comes-an-upsr/issue1/cover.jpg';
 import sOCCover from '../images/comics/seed-of-cain/issue1/cover.jpg';
+import tPCover from '../images/comics/the-pilgrim/issue1/cover.jpg';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import NoScrollLink from '../components/NoScrollLink';
@@ -21,6 +22,11 @@ const psychoShorts = [
 		src: cAUCover,
 		alt: 'Comes an Upsr',
 		uri: '/comics/comes-an-upsr/issue1',
+	},
+	{
+		src: tPCover,
+		alt: 'The Pilgrim',
+		uri: '/comics/the-pilgrim/issue1',
 	},
 ];
 
