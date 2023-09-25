@@ -196,7 +196,15 @@
 		},
 		{
 			"imageUrl": "/the-pilgrim/issue1/7.jpg",
-			"panels": [],
+			"panels": [
+				{
+					"center": { "x": 3020, "y": 5563 },
+					"dimensions": { "w": 4352, "h": 6244 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				}
+			],
 			"pageDimensions": {
 				"w": 6000,
 				"h": 9273
