@@ -1,0 +1,214 @@
+{
+	"pages": [
+		{
+			"imageUrl": "/the-pilgrim/issue1/0.jpg",
+			"panels": [],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/1.jpg",
+			"panels": [],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/2.jpg",
+			"panels": [
+				{
+					"center": { "x": 3000, "y": 2374 },
+					"dimensions": { "w": 6000, "h": 4741 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 1488, "y": 5643 },
+					"dimensions": { "w": 3016, "h": 1800 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 4568, "y": 5627 },
+					"dimensions": { "w": 2784, "h": 1736 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 3000, "y": 7922 },
+					"dimensions": { "w": 6000, "h": 2710 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				}
+			],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/3.jpg",
+			"panels": [
+				{
+					"center": { "x": 1546, "y": 1370 },
+					"dimensions": { "w": 3110, "h": 2755 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 4582, "y": 1362 },
+					"dimensions": { "w": 2830, "h": 2723 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 3000, "y": 4089 },
+					"dimensions": { "w": 6000, "h": 2632 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 3000, "y": 7372 },
+					"dimensions": { "w": 6000, "h": 3816 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				}
+			],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/4.jpg",
+			"panels": [
+				{
+					"center": { "x": 1716, "y": 1542 },
+					"dimensions": { "w": 3452, "h": 3054 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 4732, "y": 1502 },
+					"dimensions": { "w": 2532, "h": 3014 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 2700, "y": 4604 },
+					"dimensions": { "w": 5412, "h": 3143 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 2996, "y": 7690 },
+					"dimensions": { "w": 6000, "h": 3134 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				}
+			],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/5.jpg",
+			"panels": [
+				{
+					"center": { "x": 3000, "y": 1566 },
+					"dimensions": { "w": 6000, "h": 3110 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 1716, "y": 4572 },
+					"dimensions": { "w": 3436, "h": 2855 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 1220, "y": 7650 },
+					"dimensions": { "w": 2468, "h": 3207 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 4180, "y": 7682 },
+					"dimensions": { "w": 3248, "h": 3127 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				}
+			],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/6.jpg",
+			"panels": [
+				{
+					"center": { "x": 3028, "y": 1478 },
+					"dimensions": { "w": 4752, "h": 2679 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 1916, "y": 4396 },
+					"dimensions": { "w": 3760, "h": 2967 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				},
+				{
+					"center": { "x": 2004, "y": 7618 },
+					"dimensions": { "w": 3896, "h": 3095 },
+					"shape": "Rectangle",
+					"transitionIn": "slide",
+					"transitionOut": "slide"
+				}
+			],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/7.jpg",
+			"panels": [],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		},
+		{
+			"imageUrl": "/the-pilgrim/issue1/8.jpg",
+			"panels": [],
+			"pageDimensions": {
+				"w": 6000,
+				"h": 9273
+			}
+		}
+	]
+}
