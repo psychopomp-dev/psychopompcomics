@@ -21,24 +21,15 @@
 			"panels": [
 				{
 					"center": { "x": 1084, "y": 371 },
-					"dimensions": { "w": 2160, "h": 732 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 732 }
 				},
 				{
 					"center": { "x": 973, "y": 1194 },
-					"dimensions": { "w": 1901, "h": 1229 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1901, "h": 1229 }
 				},
 				{
 					"center": { "x": 1080, "y": 2234 },
-					"dimensions": { "w": 2015, "h": 915 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2015, "h": 915 }
 				}
 			],
 			"pageDimensions": {
@@ -51,17 +42,11 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 756 },
-					"dimensions": { "w": 2160, "h": 1512 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1512 }
 				},
 				{
 					"center": { "x": 1081, "y": 2091 },
-					"dimensions": { "w": 2160, "h": 1236 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1236 }
 				}
 			],
 			"pageDimensions": {
@@ -82,24 +67,15 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 639 },
-					"dimensions": { "w": 2160, "h": 1269 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1269 }
 				},
 				{
 					"center": { "x": 1243, "y": 1551 },
-					"dimensions": { "w": 1522, "h": 1176 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1522, "h": 1176 }
 				},
 				{
 					"center": { "x": 1081, "y": 2097 },
-					"dimensions": { "w": 2160, "h": 1212 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1212 }
 				}
 			],
 			"pageDimensions": {
@@ -112,17 +88,11 @@
 			"panels": [
 				{
 					"center": { "x": 1085, "y": 581 },
-					"dimensions": { "w": 2157, "h": 1145 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2157, "h": 1145 }
 				},
 				{
 					"center": { "x": 1085, "y": 1865 },
-					"dimensions": { "w": 2155, "h": 1545 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2155, "h": 1545 }
 				}
 			],
 			"pageDimensions": {
@@ -135,17 +105,11 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 711 },
-					"dimensions": { "w": 2160, "h": 1422 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1422 }
 				},
 				{
 					"center": { "x": 1078, "y": 2031 },
-					"dimensions": { "w": 2160, "h": 1353 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1353 }
 				}
 			],
 			"pageDimensions": {
@@ -158,17 +122,11 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 723 },
-					"dimensions": { "w": 2160, "h": 1440 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1440 }
 				},
 				{
 					"center": { "x": 1078, "y": 2007 },
-					"dimensions": { "w": 2160, "h": 1383 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1383 }
 				}
 			],
 			"pageDimensions": {
@@ -181,17 +139,11 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 687 },
-					"dimensions": { "w": 2160, "h": 1371 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1371 }
 				},
 				{
 					"center": { "x": 1078, "y": 1758 },
-					"dimensions": { "w": 2160, "h": 1881 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1881 }
 				}
 			],
 			"pageDimensions": {
@@ -204,17 +156,11 @@
 			"panels": [
 				{
 					"center": { "x": 754, "y": 474 },
-					"dimensions": { "w": 1514, "h": 936 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1514, "h": 936 }
 				},
 				{
 					"center": { "x": 1078, "y": 1728 },
-					"dimensions": { "w": 2160, "h": 1956 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1956 }
 				}
 			],
 			"pageDimensions": {
@@ -227,17 +173,11 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 921 },
-					"dimensions": { "w": 2160, "h": 1842 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1842 }
 				},
 				{
 					"center": { "x": 1273, "y": 2055 },
-					"dimensions": { "w": 1760, "h": 1296 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1760, "h": 1296 }
 				}
 			],
 			"pageDimensions": {
@@ -250,17 +190,11 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 849 },
-					"dimensions": { "w": 2160, "h": 1695 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1695 }
 				},
 				{
 					"center": { "x": 1078, "y": 2037 },
-					"dimensions": { "w": 2160, "h": 1323 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1323 }
 				}
 			],
 			"pageDimensions": {
@@ -273,17 +207,11 @@
 			"panels": [
 				{
 					"center": { "x": 1297, "y": 624 },
-					"dimensions": { "w": 1724, "h": 1242 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1724, "h": 1242 }
 				},
 				{
 					"center": { "x": 1078, "y": 1992 },
-					"dimensions": { "w": 1260, "h": 1425 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1260, "h": 1425 }
 				}
 			],
 			"pageDimensions": {
@@ -296,17 +224,11 @@
 			"panels": [
 				{
 					"center": { "x": 1078, "y": 684 },
-					"dimensions": { "w": 2160, "h": 1371 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1371 }
 				},
 				{
 					"center": { "x": 1078, "y": 1995 },
-					"dimensions": { "w": 2160, "h": 1416 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1416 }
 				}
 			],
 			"pageDimensions": {
@@ -319,17 +241,11 @@
 			"panels": [
 				{
 					"center": { "x": 1193, "y": 366 },
-					"dimensions": { "w": 1404, "h": 731 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1404, "h": 731 }
 				},
 				{
 					"center": { "x": 1083, "y": 1593 },
-					"dimensions": { "w": 2152, "h": 1949 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2152, "h": 1949 }
 				}
 			],
 			"pageDimensions": {
@@ -342,24 +258,15 @@
 			"panels": [
 				{
 					"center": { "x": 562, "y": 456 },
-					"dimensions": { "w": 1139, "h": 909 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1139, "h": 909 }
 				},
 				{
 					"center": { "x": 1312, "y": 681 },
-					"dimensions": { "w": 1688, "h": 1359 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 1688, "h": 1359 }
 				},
 				{
 					"center": { "x": 1079, "y": 2047 },
-					"dimensions": { "w": 2160, "h": 1304 },
-					"shape": "Rectangle",
-					"transitionIn": "slide",
-					"transitionOut": "slide"
+					"dimensions": { "w": 2160, "h": 1304 }
 				}
 			],
 			"pageDimensions": {

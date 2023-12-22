@@ -1,0 +1,251 @@
+{
+	"pages": [
+		{
+			"imageUrl": "/shoebox/issue1/0.jpg",
+			"panels": [],
+			"pageDimensions": {
+				"w": 4126,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/1.jpg",
+			"panels": [
+				{
+					"center": { "x": 1030, "y": 527 },
+					"dimensions": { "w": 1836, "h": 727 }
+				},
+				{
+					"center": { "x": 1030, "y": 1235 },
+					"dimensions": { "w": 1836, "h": 691 }
+				},
+				{
+					"center": { "x": 1030, "y": 1946 },
+					"dimensions": { "w": 1836, "h": 685 }
+				},
+				{
+					"center": { "x": 1030, "y": 2657 },
+					"dimensions": { "w": 1836, "h": 691 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/2.jpg",
+			"panels": [
+				{
+					"center": { "x": 1027, "y": 548 },
+					"dimensions": { "w": 1836, "h": 691 }
+				},
+				{
+					"center": { "x": 1027, "y": 1241 },
+					"dimensions": { "w": 1836, "h": 685 }
+				},
+				{
+					"center": { "x": 1027, "y": 1952 },
+					"dimensions": { "w": 1836, "h": 685 }
+				},
+				{
+					"center": { "x": 1027, "y": 2654 },
+					"dimensions": { "w": 1836, "h": 679 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/3.jpg",
+			"panels": [
+				{
+					"center": { "x": 1028, "y": 522 },
+					"dimensions": { "w": 1834, "h": 735 }
+				},
+				{
+					"center": { "x": 1038, "y": 1234 },
+					"dimensions": { "w": 1818, "h": 689 }
+				},
+				{
+					"center": { "x": 1036, "y": 1942 },
+					"dimensions": { "w": 1820, "h": 687 }
+				},
+				{
+					"center": { "x": 1038, "y": 2654 },
+					"dimensions": { "w": 1826, "h": 705 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/4.jpg",
+			"panels": [
+				{
+					"center": { "x": 1024, "y": 527 },
+					"dimensions": { "w": 1839, "h": 724 }
+				},
+				{
+					"center": { "x": 1033, "y": 1223 },
+					"dimensions": { "w": 1842, "h": 715 }
+				},
+				{
+					"center": { "x": 1030, "y": 1937 },
+					"dimensions": { "w": 1836, "h": 691 }
+				},
+				{
+					"center": { "x": 1036, "y": 2654 },
+					"dimensions": { "w": 1839, "h": 700 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/5.jpg",
+			"panels": [
+				{
+					"center": { "x": 1027, "y": 521 },
+					"dimensions": { "w": 1836, "h": 727 }
+				},
+				{
+					"center": { "x": 1027, "y": 1226 },
+					"dimensions": { "w": 1830, "h": 685 }
+				},
+				{
+					"center": { "x": 1033, "y": 1937 },
+					"dimensions": { "w": 1833, "h": 694 }
+				},
+				{
+					"center": { "x": 1033, "y": 2651 },
+					"dimensions": { "w": 1842, "h": 691 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/6.jpg",
+			"panels": [
+				{
+					"center": { "x": 1028, "y": 535 },
+					"dimensions": { "w": 1814, "h": 679 }
+				},
+				{
+					"center": { "x": 1028, "y": 1229 },
+					"dimensions": { "w": 1814, "h": 681 }
+				},
+				{
+					"center": { "x": 1028, "y": 1935 },
+					"dimensions": { "w": 1814, "h": 683 }
+				},
+				{
+					"center": { "x": 1028, "y": 2653 },
+					"dimensions": { "w": 1814, "h": 681 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/7.jpg",
+			"panels": [
+				{
+					"center": { "x": 496, "y": 533 },
+					"dimensions": { "w": 664, "h": 706 }
+				},
+				{
+					"center": { "x": 937, "y": 1484 },
+					"dimensions": { "w": 1395, "h": 1366 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/8.jpg",
+			"panels": [
+				{
+					"center": { "x": 1021, "y": 884 },
+					"dimensions": { "w": 1827, "h": 1372 }
+				},
+				{
+					"center": { "x": 1202, "y": 2333 },
+					"dimensions": { "w": 1116, "h": 1255 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/9.jpg",
+			"panels": [
+				{
+					"center": { "x": 841, "y": 433 },
+					"dimensions": { "w": 1602, "h": 736 }
+				},
+				{
+					"center": { "x": 1003, "y": 2189 },
+					"dimensions": { "w": 1302, "h": 1639 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/10.jpg",
+			"panels": [
+				{
+					"center": { "x": 538, "y": 794 },
+					"dimensions": { "w": 961, "h": 1438 }
+				},
+				{
+					"center": { "x": 1467, "y": 836 },
+					"dimensions": { "w": 850, "h": 1330 }
+				},
+				{
+					"center": { "x": 574, "y": 2222 },
+					"dimensions": { "w": 865, "h": 1342 }
+				},
+				{
+					"center": { "x": 1452, "y": 2219 },
+					"dimensions": { "w": 888, "h": 1339 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		},
+		{
+			"imageUrl": "/shoebox/issue1/11.jpg",
+			"panels": [
+				{
+					"center": { "x": 1027, "y": 1261 },
+					"dimensions": { "w": 1533, "h": 1989 }
+				}
+			],
+			"pageDimensions": {
+				"w": 2063,
+				"h": 3131
+			}
+		}
+	]
+}
