@@ -8,6 +8,7 @@ import p7Cover from '../images/comics/protocol-7/issue1/cover.jpg';
 import cAUCover from '../images/comics/comes-an-upsr/issue1/cover.jpg';
 import sOCCover from '../images/comics/seed-of-cain/issue1/cover.jpg';
 import tPCover from '../images/comics/the-pilgrim/issue1/cover.jpg';
+import sBCover from '../images/comics/shoebox/issue1/cover.jpg';
 import StyledSection from '../components/styles/StyledSection.styled';
 import SectionContainer from '../components/styles/SectionContainer.styled';
 import NoScrollLink from '../components/NoScrollLink';
@@ -27,6 +28,11 @@ const psychoShorts = [
 		src: tPCover,
 		alt: 'The Pilgrim',
 		uri: '/comics/the-pilgrim/issue1',
+	},
+	{
+		src: sBCover,
+		alt: 'Shoebox',
+		uri: '/comics/shoebox/issue1',
 	},
 ];
 
@@ -66,8 +72,9 @@ const ComicGridCard = styled.article`
 	box-shadow: var(--box-shadow-xs);
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-end;
 	padding-bottom: var(--space-md);
+	align-self: end;
 
 	&:hover {
 		transition: all 0.2s ease-in-out;
@@ -93,7 +100,6 @@ const ComicGridCard = styled.article`
 
 const ComicGridImgContainer = styled.div`
 	position: relative;
-	aspect-ratio: 320/494;
 `;
 
 export default function Comics() {
