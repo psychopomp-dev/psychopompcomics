@@ -3,42 +3,29 @@ import { IPanel } from './IConfig';
 import { ShapeType } from './ShapeType';
 
 interface PanelDimension {
-    width: number;
-    height: number;
+	width: number;
+	height: number;
 }
 
 interface Point {
-    x: number;
-    y: number;
+	x: number;
+	y: number;
 }
 
 class Panel {
-    panelDimensions: PanelDimension;
-    center: Point;
-    shape: IShape;
-    transitionIn?: Function;
-    transitionOut?: Function;
+	panelDimensions: PanelDimension;
+	center: Point;
 
-    constructor(options: IPanel) {
-        this.panelDimensions = {
-            width: options.dimensions.w,
-            height: options.dimensions.h
-        };
-        this.center = {
-            x: options.center.x,
-            y: options.center.y
-        };
-
-        this.shape = {
-            shapeType: ShapeType[options.shape as keyof typeof ShapeType]
-        };
-        this.transitionIn = function () {
-            console.log('transitionIn');
-        };
-        this.transitionOut = function () {
-            console.log('transitionOu');
-        };
-    }
+	constructor(options: IPanel) {
+		this.panelDimensions = {
+			width: options.dimensions.w,
+			height: options.dimensions.h,
+		};
+		this.center = {
+			x: options.center.x,
+			y: options.center.y,
+		};
+	}
 }
 
 export default Panel;
