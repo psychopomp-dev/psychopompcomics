@@ -1,17 +1,43 @@
-import { m } from 'framer-motion';
-import styled, { useTheme } from 'styled-components';
-import { useMedia } from '../../hooks/useMedia';
+// Import necessary modules
+// import { useEffect, useRef } from 'react';
+import { useViewportScroll, useTransform, m } from 'framer-motion';
+import styled from 'styled-components';
 import Image from 'next/image';
-import SeedOfCainBanner from '../../images/seed-of-cain/banner.jpg';
-import SeedOfCainPillar from '../../images/seed-of-cain/pillar.jpg';
+
+// Import images
+import SeedOfCainSuperNear from '../../images/seed-of-cain/super-near.png';
+import SeedOfCainNear from '../../images/seed-of-cain/near.png';
+import SeedOfCainMid from '../../images/seed-of-cain/mid.png';
+import SeedOfCainFar from '../../images/seed-of-cain/far.png';
 import SeedOfCainLogo from '../../images/seed-of-cain/logo.png';
+
+// Styled components
+const ParallaxContainer = styled.section`
+	position: relative;
+	width: 100vw;
+	height: 85vh;
+	overflow: hidden;
+
+	${'' /* @media (min-aspect-ratio: 5/2) {
+		height: 90vh;
+	} */}
+`;
+
+// Updated styled component for ParallaxLayer
+const ParallaxLayer = styled(m.div)`
+	position: absolute;
+	height: 140vh; /* Taller than the container */
+	aspect-ratio: 3076 / 1649;
+	left: 50%;
+	top: ${({ topOffsetRem = 0 }) => `${topOffsetRem}vh`};
+`;
 
 const SeedOfCainLogoContainer = styled(m.div)`
 	position: absolute;
 	bottom: 25%;
 	right: 5%;
 	width: 33.3%;
-	z-idex: 2;
+	z-index: 5;
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
 		bottom: 10%;
@@ -22,30 +48,69 @@ const SeedOfCainLogoContainer = styled(m.div)`
 	}
 `;
 
+// Component
 export default function SeedOfCainHero() {
-	const theme = useTheme();
-	const { isMobile } = useMedia();
+	const { scrollY } = useViewportScroll();
+	// const refContainer = useRef(null);
+	const aspectRatio = 3076 / 1649;
+	const imageWidthVh = 140 * aspectRatio;
+	const imageWidth = `${imageWidthVh}vh`;
+
+	// Framer motion transforms for each layer
+	const superNearTransform = useTransform(scrollY, [0, 500], [0, -2000]);
+	const nearTransform = useTransform(scrollY, [0, 500], [0, -400]);
+	const midTransform = useTransform(scrollY, [0, 500], [0, -100]);
+	const farTransform = useTransform(scrollY, [0, 500], [0, -25]);
+
+	// useEffect(() => {
+	// 	const container = refContainer.current;
+	// 	if (container) {
+	// 		// Set up any additional effects or listeners
+	// 		// ...
+	// 	}
+	// }, []);
+
 	return (
-		<>
-			{isMobile ? (
+		<ParallaxContainer >
+			<ParallaxLayer
+				style={{ y: superNearTransform, zIndex: 4, translateX: '-50%' }}
+				topOffsetRem={50}
+			>
 				<Image
-					src={SeedOfCainPillar}
-					alt='Seed of Cain Promo Banner showing Colonel Frost standing in rubble with a Cog and the city behind him'
-					width={2700}
-					height={3600}
-					layout='responsive'
-					placeholder={'blur'}
+					src={SeedOfCainSuperNear}
+					alt='Specs and dust, top most image layer'
+					layout='fill'
+					objectFit='cover'
+					sizes={imageWidth}
 				/>
-			) : (
+			</ParallaxLayer>
+			<ParallaxLayer style={{ y: nearTransform, zIndex: 3, translateX: '-50%' }} topOffsetRem={10}>
 				<Image
-					src={SeedOfCainBanner}
-					alt='Seed of Cain Promo Banner showing Colonel Frost standing in rubble with a city behind him'
-					width={6075}
-					height={3417}
-					layout='responsive'
-					placeholder={'blur'}
+					src={SeedOfCainNear}
+					alt='Colonel Frost holding a pistol and standing in a pile of dead robots, second image layer'
+					layout='fill'
+					objectFit='cover'
+					sizes={imageWidth}
 				/>
-			)}
+			</ParallaxLayer>
+			<ParallaxLayer style={{ y: midTransform, zIndex: 2, translateX: '-50%' }}>
+				<Image
+					src={SeedOfCainMid}
+					alt='Robots stand menacingly in a row behind Colonel Frost, third image layer'
+					layout='fill'
+					objectFit='cover'
+					sizes={imageWidth}
+				/>
+			</ParallaxLayer>
+			<ParallaxLayer style={{ y: farTransform, zIndex: 1, translateX: '-50%' }}>
+				<Image
+					src={SeedOfCainFar}
+					alt='A city scape with a red sky and smoldering buildings, fourth image layer '
+					layout='fill'
+					objectFit='cover'
+					sizes={imageWidth}
+				/>
+			</ParallaxLayer>
 			<SeedOfCainLogoContainer
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -60,9 +125,8 @@ export default function SeedOfCainHero() {
 					layout='responsive'
 					width={3076}
 					height={1649}
-					sizes={`(max-width: ${theme.breakpoints.sm}) 25rem, 33.3%`}
 				/>
 			</SeedOfCainLogoContainer>
-		</>
+		</ParallaxContainer>
 	);
 }
