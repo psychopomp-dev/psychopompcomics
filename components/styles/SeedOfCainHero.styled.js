@@ -1,6 +1,4 @@
-// Import necessary modules
-// import { useEffect, useRef } from 'react';
-import { useViewportScroll, useTransform, m } from 'framer-motion';
+import { useScroll, useTransform, m } from 'framer-motion';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -18,9 +16,6 @@ const ParallaxContainer = styled.section`
 	height: 85vh;
 	overflow: hidden;
 
-	${'' /* @media (min-aspect-ratio: 5/2) {
-		height: 90vh;
-	} */}
 `;
 
 // Updated styled component for ParallaxLayer
@@ -29,7 +24,7 @@ const ParallaxLayer = styled(m.div)`
 	height: 140vh; /* Taller than the container */
 	aspect-ratio: 3076 / 1649;
 	left: 50%;
-	top: ${({ topOffsetRem = 0 }) => `${topOffsetRem}vh`};
+	top: ${({ topoffsetrem = 0 }) => `${topoffsetrem}vh`};
 `;
 
 const SeedOfCainLogoContainer = styled(m.div)`
@@ -50,8 +45,7 @@ const SeedOfCainLogoContainer = styled(m.div)`
 
 // Component
 export default function SeedOfCainHero() {
-	const { scrollY } = useViewportScroll();
-	// const refContainer = useRef(null);
+	const { scrollY } = useScroll();
 	const aspectRatio = 3076 / 1649;
 	const imageWidthVh = 140 * aspectRatio;
 	const imageWidth = `${imageWidthVh}vh`;
@@ -62,19 +56,11 @@ export default function SeedOfCainHero() {
 	const midTransform = useTransform(scrollY, [0, 500], [0, -100]);
 	const farTransform = useTransform(scrollY, [0, 500], [0, -25]);
 
-	// useEffect(() => {
-	// 	const container = refContainer.current;
-	// 	if (container) {
-	// 		// Set up any additional effects or listeners
-	// 		// ...
-	// 	}
-	// }, []);
-
 	return (
 		<ParallaxContainer >
 			<ParallaxLayer
 				style={{ y: superNearTransform, zIndex: 4, translateX: '-50%' }}
-				topOffsetRem={50}
+				topoffsetrem={50}
 			>
 				<Image
 					src={SeedOfCainSuperNear}
@@ -84,7 +70,7 @@ export default function SeedOfCainHero() {
 					sizes={imageWidth}
 				/>
 			</ParallaxLayer>
-			<ParallaxLayer style={{ y: nearTransform, zIndex: 3, translateX: '-50%' }} topOffsetRem={10}>
+			<ParallaxLayer style={{ y: nearTransform, zIndex: 3, translateX: '-50%' }} topoffsetrem={10}>
 				<Image
 					src={SeedOfCainNear}
 					alt='Colonel Frost holding a pistol and standing in a pile of dead robots, second image layer'
