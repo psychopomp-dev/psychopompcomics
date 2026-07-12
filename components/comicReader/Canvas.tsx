@@ -1,11 +1,36 @@
-import React, { MouseEvent, PropsWithRef, useEffect } from 'react';
+import React, { MouseEvent, PropsWithRef, useEffect, useState } from 'react';
 import Page from './Page';
 import { drawCanvas } from '../../utils/CanvasHelper';
 import styled from 'styled-components';
+import MotionLogo from '../styles/MotionLogo.styled';
+
+const CanvasContainer = styled.div`
+	position: relative;
+	width: 100%;
+	height: 100%;
+`;
 
 const StyledCanvas = styled.canvas`
 	width: 100%;
 	height: 100%;
+`;
+
+const LoadingOverlay = styled.div<{ $visible: boolean }>`
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--surface1);
+	pointer-events: none;
+	opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+	transition: opacity 0.3s ease;
+	z-index: 1;
+
+	svg {
+		width: 35%;
+		max-width: 12rem;
+	}
 `;
 
 interface BaseImageProps {
@@ -36,16 +61,35 @@ export const Canvas = (props: CanvasProps) => {
 		...other
 	} = props;
 
+	const [isLoading, setIsLoading] = useState(true);
+	const [showOverlay, setShowOverlay] = useState(true);
+
 	useEffect(() => {
-		// console.log('useEffect canvas start');
-		// console.log(`src ${src}`);
-		let current: HTMLCanvasElement | null = canvasRef?.current;
+		let cancelled = false;
+		setIsLoading(true);
+		setShowOverlay(true);
+
+		const current: HTMLCanvasElement | null = canvasRef?.current;
 		const panelIndex =
 			page.panels[initialPanel] === undefined ? -1 : initialPanel;
-		drawCanvas(current, page, panelIndex);
+
+		(async () => {
+			try {
+				if (current) {
+					await drawCanvas(current, page, panelIndex);
+				}
+			} catch (error) {
+				console.error('Failed to draw comic page:', error);
+			} finally {
+				if (!cancelled) {
+					setIsLoading(false);
+				}
+			}
+		})();
 
 		return () => {
-			let ctx: CanvasRenderingContext2D | null | undefined =
+			cancelled = true;
+			const ctx: CanvasRenderingContext2D | null | undefined =
 				current?.getContext('2d');
 			if (current && ctx) {
 				ctx.clearRect(0, 0, current.width, current.height);
@@ -53,11 +97,13 @@ export const Canvas = (props: CanvasProps) => {
 		};
 	}, [canvasRef, initialPanel, page, src]);
 
-	/**
-	 * Click to zoom functionality
-	 *
-	 * @param event
-	 */
+	useEffect(() => {
+		if (!isLoading) {
+			const timer = setTimeout(() => setShowOverlay(false), 300);
+			return () => clearTimeout(timer);
+		}
+	}, [isLoading]);
+
 	function handleOnClick(event: MouseEvent<HTMLCanvasElement>) {
 		const rect = canvasRef.current?.getBoundingClientRect();
 		if (rect) {
@@ -68,7 +114,16 @@ export const Canvas = (props: CanvasProps) => {
 	}
 
 	return (
-		<>
+		<CanvasContainer>
+			{showOverlay && (
+				<LoadingOverlay
+					$visible={isLoading}
+					aria-hidden='true'
+					data-testid='canvas-loading-overlay'
+				>
+					<MotionLogo loop />
+				</LoadingOverlay>
+			)}
 			<StyledCanvas
 				ref={canvasRef}
 				width={width}
@@ -76,6 +131,6 @@ export const Canvas = (props: CanvasProps) => {
 				onClick={handleOnClick}
 				{...other}
 			/>
-		</>
+		</CanvasContainer>
 	);
 };
