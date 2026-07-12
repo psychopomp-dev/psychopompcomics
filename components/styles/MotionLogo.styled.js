@@ -60,17 +60,89 @@ const circleVariants = {
 	},
 };
 
-export default function MotionLogo() {
+const loopSvgVariants = {
+	hidden: { opacity: 1 },
+	visible: { opacity: 1 },
+};
+
+const loopHexVariant = {
+	hidden: { opacity: 1, pathLength: 0 },
+	visible: {
+		opacity: 1,
+		pathLength: 1,
+		transition: { duration: 1.5, ease: 'easeInOut' },
+	},
+};
+
+const loopPathVariants = {
+	hidden: { opacity: 1, pathLength: 0 },
+	visible: {
+		opacity: 1,
+		pathLength: 1,
+		transition: { duration: 1, ease: 'easeInOut' },
+	},
+};
+
+const loopCircleVariants = {
+	hidden: { opacity: 1, scale: 0 },
+	visible: {
+		opacity: 1,
+		scale: 1,
+		transition: { duration: 0.5, ease: 'easeOut' },
+	},
+};
+
+const circleData = [
+	{ cx: '30.47', cy: '197.79', delay: 0.5 },
+	{ cx: '35.88', cy: '127.39', delay: 0.7 },
+	{ cx: '64.7', cy: '116.86', delay: 0.5 },
+	{ cx: '92.27', cy: '123.72', delay: 0.9 },
+	{ cx: '124.69', cy: '82.05', delay: 1.1 },
+	{ cx: '143.25', cy: '96.78', delay: 1.3 },
+	{ cx: '77.26', cy: '176.68', delay: 0.55 },
+	{ cx: '105.25', cy: '188.91', delay: 0.75 },
+	{ cx: '168.91', cy: '145.92', delay: 0.95 },
+	{ cx: '260.84', cy: '145.79', delay: 1.15 },
+	{ cx: '286.57', cy: '97.14', delay: 1.05 },
+	{ cx: '305.16', cy: '82.42', delay: 0.85 },
+	{ cx: '337.56', cy: '124.32', delay: 0.65 },
+	{ cx: '365.15', cy: '117.48', delay: 1.4 },
+	{ cx: '393.94', cy: '127.94', delay: 1.2 },
+	{ cx: '399.05', cy: '198.67', delay: 1 },
+	{ cx: '352.38', cy: '177.17', delay: 0.8 },
+	{ cx: '324.35', cy: '188.93', delay: 0.6 },
+];
+
+export default function MotionLogo({ loop = false }) {
 	const theme = useTheme();
+	const activeHexVariant = loop ? loopHexVariant : hexVariant;
+	const activePathVariants = loop ? loopPathVariants : pathVariants;
+	const activeCircleVariants = loop ? loopCircleVariants : circleVariants;
+	const logoAnimationProps = loop
+		? {
+				variants: loopSvgVariants,
+				initial: 'hidden',
+				animate: 'visible',
+				transition: {
+					repeat: Infinity,
+					repeatType: 'reverse',
+					duration: 3,
+					ease: 'easeInOut',
+				},
+		  }
+		: {
+				variants: svgVariants,
+				initial: 'hidden',
+				whileInView: 'visible',
+				viewport: { once: true },
+		  };
+
 	return (
 		<Logo
 			xmlns='http://www.w3.org/2000/svg'
 			viewBox='0 0 429.56 558.96'
 			role='img'
-			variants={svgVariants}
-			initial='hidden'
-			whileInView='visible'
-			viewport={{ once: true }}
+			{...logoAnimationProps}
 		>
 			<title>{`Psychopomp Comics`}</title>
 			<g>
@@ -80,7 +152,7 @@ export default function MotionLogo() {
 					fill='none'
 					strokeMiterlimit='10'
 					d='M323.65 422.55l101.41-57.67V124.75L214.78 5.18 4.5 124.75v239.13l101.74 58.34'
-					variants={hexVariant}
+					variants={activeHexVariant}
 				/>
 				<path
 					fill={theme.colorOpposite.hex}
@@ -110,7 +182,7 @@ export default function MotionLogo() {
 					fill='none'
 					strokeMiterlimit='10'
 					d='m 135.64,185.9 0.05,-37.19 7.63,-7.13 0.01,-44.99 m -7.86,117.78 33.49,-42.81 0.05,-25.54 m -91.82,30.92 v 27.36 l 9.05,23.02'
-					variants={pathVariants}
+					variants={activePathVariants}
 				/>
 				<m.path
 					strokeWidth='3.8'
@@ -118,7 +190,7 @@ export default function MotionLogo() {
 					fill='none'
 					strokeMiterlimit='10'
 					d='m 83.39,218.53 8.91,-8.31 -0.03,-87.01 M 54.48,231.16 30.31,212.55 30.6,197.27 m 276.29,78.17 0.1,-32.83 -13.26,-12.6 0.36,-81.1 -7.67,-7.09 0.17,-44.84'
-					variants={pathVariants}
+					variants={activePathVariants}
 				/>
 				<m.path
 					strokeWidth='3.8'
@@ -126,7 +198,7 @@ export default function MotionLogo() {
 					fill='none'
 					strokeMiterlimit='10'
 					d='M294.12 214.7l-33.41-42.97.08-26.24m44.22-63.25l9.47 16.73-.25 68.49-20.59 19.09m58.78-8.39v26.51l-7.96 19.91'
-					variants={pathVariants}
+					variants={activePathVariants}
 				/>
 				<m.path
 					strokeWidth='3.8'
@@ -134,7 +206,7 @@ export default function MotionLogo() {
 					fill='none'
 					strokeMiterlimit='10'
 					d='m 346.63,219.54 -9.35,-8.88 0.25,-86.24 m 37.09,98.68 0.56,-36.08 8.94,-8.09 v -42.7 l 10.16,-8.28 m 4.65,71.44 0.24,13.59 -24.37,18.7'
-					variants={pathVariants}
+					variants={activePathVariants}
 				/>
 				<m.path
 					strokeWidth='3.8'
@@ -142,7 +214,7 @@ export default function MotionLogo() {
 					fill='none'
 					strokeMiterlimit='10'
 					d='M54.31 216.09l.18-29.7-9.18-8.29.08-42.44-9.44-8.62'
-					variants={pathVariants}
+					variants={activePathVariants}
 				/>
 				<m.path
 					strokeWidth='3.8'
@@ -150,226 +222,27 @@ export default function MotionLogo() {
 					fill='none'
 					strokeMiterlimit='10'
 					d='M316.35 229.78l-1.57-4.02.19-27.64 9.33-8.69m-201.94 80.76l.11-27.83 13.26-12.46-.09-43.85-20.16-18.96-.02-68.51 8.94-15.95m-14.15 154.49l.57-2.18 3.87-9.52v-27.73l-9.37-8.79m-50.04 27.19l1.09-6.86 8.18-20.8-.08-72.81m310.24 101.4l-.72-3.92-.71-3.11-8.25-21 .22-71.05'
-					variants={pathVariants}
+					variants={activePathVariants}
 				/>
 			</g>
 			<g>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='30.47'
-					cy='197.79'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.5,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='35.88'
-					cy='127.39'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.7,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='64.7'
-					cy='116.86'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.5,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='92.27'
-					cy='123.72'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.9,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='124.69'
-					cy='82.05'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 1.1,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='143.25'
-					cy='96.78'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 1.3,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='77.26'
-					cy='176.68'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.55,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='105.25'
-					cy='188.91'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.75,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='168.91'
-					cy='145.92'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.95,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='260.84'
-					cy='145.79'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 1.15,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='286.57'
-					cy='97.14'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 1.05,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='305.16'
-					cy='82.42'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.85,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='337.56'
-					cy='124.32'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.65,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='365.15'
-					cy='117.48'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 1.4,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='393.94'
-					cy='127.94'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 1.2,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='399.05'
-					cy='198.67'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 1,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='352.38'
-					cy='177.17'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.8,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
-				<m.circle
-					fill={theme.colorOpposite.hex}
-					cx='324.35'
-					cy='188.93'
-					r='4.67'
-					variants={circleVariants}
-					transition={{
-						delay: 0.6,
-						duration: 0.5,
-						ease: 'easeOut',
-					}}
-				/>
+				{circleData.map(({ cx, cy, delay }) => (
+					<m.circle
+						key={`${cx}-${cy}`}
+						fill={theme.colorOpposite.hex}
+						cx={cx}
+						cy={cy}
+						r='4.67'
+						variants={activeCircleVariants}
+						{...(!loop && {
+							transition: {
+								delay,
+								duration: 0.5,
+								ease: 'easeOut',
+							},
+						})}
+					/>
+				))}
 			</g>
 		</Logo>
 	);
