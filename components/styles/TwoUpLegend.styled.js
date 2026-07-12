@@ -41,9 +41,9 @@ export default function LegendTwoUpContainer() {
 						className='styled-img'
 						src={twitterVanth}
 						alt='Vanth Symbol'
-						width='1080'
-						height='1080'
-						layout='responsive'
+						width={1080}
+						height={1080}
+						style={{ width: '100%', height: 'auto' }}
 						sizes={`(max-width: ${theme.breakpoints.sm}) 100vw, 57.6rem`}
 						placeholder='blur'
 					/>

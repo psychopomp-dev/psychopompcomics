@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM node:20-alpine AS deps
+FROM node:20.19-alpine AS deps
 
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
@@ -9,7 +9,7 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # Rebuild the source code only when needed
-FROM node:20-alpine AS builder
+FROM node:20.19-alpine AS builder
 RUN apk add --no-cache libc6-compat
 RUN corepack enable
 WORKDIR /app
@@ -24,14 +24,14 @@ ENV HUSKY=0
 RUN pnpm build \
 	&& pnpm pkg delete scripts.prepare \
 	&& pnpm prune --prod \
-	&& pnpm add sharp@0.33.1 --config.platform=linux --config.arch=x64 --config.libc=musl --save-prod --ignore-scripts \
+	&& pnpm add sharp@0.35.3 --config.platform=linux --config.arch=x64 --config.libc=musl --save-prod --ignore-scripts \
 	&& pnpm rebuild sharp
 
 # Production image, copy all the files and run next
-FROM node:20-alpine AS runner
+FROM node:20.19-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
@@ -52,12 +52,12 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT=3000
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry.
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["node_modules/.bin/next", "start"]

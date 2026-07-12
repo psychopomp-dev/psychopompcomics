@@ -212,9 +212,8 @@ export default function Radio({ sizes }) {
 				<Image
 					src={radioImg}
 					alt='Radio'
-					layout='fill'
-					objectFit='cover'
-					objectPosition='bottom'
+					fill
+					style={{ objectFit: 'cover', objectPosition: 'bottom' }}
 					sizes={sizes}
 					placeholder='blur'
 				/>
@@ -222,9 +221,8 @@ export default function Radio({ sizes }) {
 					className='lights'
 					src={radioOnImg}
 					alt='Radio'
-					layout='fill'
-					objectFit='cover'
-					objectPosition='bottom'
+					fill
+					style={{ objectFit: 'cover', objectPosition: 'bottom' }}
 					sizes={sizes}
 					placeholder='blur'
 				/>
@@ -284,9 +282,8 @@ export default function Radio({ sizes }) {
 					<Image
 						src={radioKnobImg}
 						alt='Radio'
-						layout='fill'
-						objectFit='cover'
-						objectPosition='bottom'
+						fill
+						style={{ objectFit: 'cover', objectPosition: 'bottom' }}
 						sizes={`(max-width: 1000px)26vw, 26rem`}
 						placeholder='blur'
 					/>
@@ -294,9 +291,8 @@ export default function Radio({ sizes }) {
 						className='lights'
 						src={radioKnobOnImg}
 						alt='Radio'
-						layout='fill'
-						objectFit='cover'
-						objectPosition='bottom'
+						fill
+						style={{ objectFit: 'cover', objectPosition: 'bottom' }}
 						sizes={`(max-width: 1000px)26vw, 26rem`}
 						placeholder='blur'
 					/>

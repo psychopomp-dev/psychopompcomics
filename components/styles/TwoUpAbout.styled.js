@@ -3,7 +3,7 @@ import CoreTeam from './CoreTeam.styled';
 
 export default function TwoUpAbout() {
 	return (
-		<TwoUpContainer divided>
+		<TwoUpContainer $divided>
 			<TwoUp>
 				<h3>{'Spirit Guide to Another Realm. . .'}</h3>
 				<p>

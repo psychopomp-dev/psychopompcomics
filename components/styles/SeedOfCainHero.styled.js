@@ -25,6 +25,10 @@ const ParallaxLayer = styled(m.div)`
 	aspect-ratio: 3076 / 1649;
 	left: 50%;
 	top: ${({ topoffsetrem = 0 }) => `${topoffsetrem}vh`};
+
+	& > img {
+		object-fit: cover;
+	}
 `;
 
 const SeedOfCainLogoContainer = styled(m.div)`
@@ -65,8 +69,7 @@ export default function SeedOfCainHero() {
 				<Image
 					src={SeedOfCainSuperNear}
 					alt='Specs and dust, top most image layer'
-					layout='fill'
-					objectFit='cover'
+					fill
 					sizes={imageWidth}
 				/>
 			</ParallaxLayer>
@@ -74,8 +77,7 @@ export default function SeedOfCainHero() {
 				<Image
 					src={SeedOfCainNear}
 					alt='Colonel Frost holding a pistol and standing in a pile of dead robots, second image layer'
-					layout='fill'
-					objectFit='cover'
+					fill
 					sizes={imageWidth}
 				/>
 			</ParallaxLayer>
@@ -83,8 +85,7 @@ export default function SeedOfCainHero() {
 				<Image
 					src={SeedOfCainMid}
 					alt='Robots stand menacingly in a row behind Colonel Frost, third image layer'
-					layout='fill'
-					objectFit='cover'
+					fill
 					sizes={imageWidth}
 				/>
 			</ParallaxLayer>
@@ -92,8 +93,7 @@ export default function SeedOfCainHero() {
 				<Image
 					src={SeedOfCainFar}
 					alt='A city scape with a red sky and smoldering buildings, fourth image layer '
-					layout='fill'
-					objectFit='cover'
+					fill
 					sizes={imageWidth}
 				/>
 			</ParallaxLayer>
@@ -108,9 +108,9 @@ export default function SeedOfCainHero() {
 				<Image
 					src={SeedOfCainLogo}
 					alt='Seed of Cain Logo'
-					layout='responsive'
 					width={3076}
 					height={1649}
+					style={{ width: '100%', height: 'auto' }}
 				/>
 			</SeedOfCainLogoContainer>
 		</ParallaxContainer>

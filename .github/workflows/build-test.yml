@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     name: Checkout and Install and Test
@@ -32,3 +35,6 @@ jobs:
 
       - name: Jest Test
         run: pnpm test-ci
+
+      - name: Production build
+        run: pnpm build

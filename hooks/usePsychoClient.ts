@@ -88,11 +88,11 @@ export const usePsychoClient = (
 	initialSlideNumber?: number,
 	initialPanelNumber?: number
 ) => {
-	const psychoClientRef = useRef<PsychoReaderClient>();
+	const psychoClientRef = useRef<PsychoReaderClient | null>(null);
 	if (!psychoClientRef.current) {
 		psychoClientRef.current = Client(psychoReaderConfig);
 	}
-	const psychoClient = psychoClientRef.current;
+	const psychoClient = psychoClientRef.current!;
 
 	const canvasRefs = useRef<Array<React.RefObject<HTMLCanvasElement>>>([]);
 	const panelIdxRefs = useRef<Array<number>>([]);

@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Navigation, Keyboard } from 'swiper';
+import { A11y, Navigation, Keyboard } from 'swiper/modules';
 import Image from 'next/image';
 import TabImg from '../images/intel-reports/intel-tablet.png';
 import TabGreenLightImg from '../images/intel-reports/intel-tablet-green-light.png';
@@ -52,16 +52,16 @@ export default function IntelReport({ sizes }) {
 				<Image
 					src={TabImg}
 					alt='Intel Tablet'
-					layout='fill'
-					objectFit='cover'
+					fill
+					style={{ objectFit: 'cover' }}
 					sizes={sizes}
 				/>
 				<Image
 					className='blink'
 					src={TabGreenLightImg}
 					alt='Intel Tablet Flashing Green Light'
-					layout='fill'
-					objectFit='cover'
+					fill
+					style={{ objectFit: 'cover' }}
 					sizes={sizes}
 				/>
 				<Swiper
@@ -102,8 +102,8 @@ export default function IntelReport({ sizes }) {
 				<Image
 					src={TabScreenOverlayImg}
 					alt='Intel Tablet Screen Overlay'
-					layout='fill'
-					objectFit='cover'
+					fill
+					style={{ objectFit: 'cover' }}
 					sizes={sizes}
 				/>
 				<SwiperButtonPrev onClick={handlePrev}>Next</SwiperButtonPrev>

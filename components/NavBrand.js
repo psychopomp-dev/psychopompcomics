@@ -29,10 +29,8 @@ const NavBrandContainer = styled.div`
 export const NavBrand = ({ onClick }) => {
 	return (
 		<NavBrandContainer>
-			<NoScrollLink href='/'>
-				<a onClick={onClick}>
-					<MotionLogo />
-				</a>
+			<NoScrollLink href='/' onClick={onClick}>
+				<MotionLogo />
 			</NoScrollLink>
 		</NavBrandContainer>
 	);

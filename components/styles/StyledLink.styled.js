@@ -68,8 +68,8 @@ const StyledPrimaryLinkXl = styled(StyledPrimaryLink)`
 export function PrimaryLink(props) {
 	return (
 		<StyledPrimaryLink>
-			<Link href={props.href}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<Link href={props.href} onClick={props.onClick}>
+				{props.children}
 			</Link>
 		</StyledPrimaryLink>
 	);
@@ -78,8 +78,8 @@ export function PrimaryLink(props) {
 export function PrimaryLinkLg(props) {
 	return (
 		<StyledPrimaryLinkLg>
-			<Link href={props.href}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<Link href={props.href} onClick={props.onClick}>
+				{props.children}
 			</Link>
 		</StyledPrimaryLinkLg>
 	);
@@ -88,8 +88,8 @@ export function PrimaryLinkLg(props) {
 export function PrimaryLinkXs(props) {
 	return (
 		<StyledPrimaryLinkXs>
-			<Link href={props.href}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<Link href={props.href} onClick={props.onClick}>
+				{props.children}
 			</Link>
 		</StyledPrimaryLinkXs>
 	);
@@ -98,8 +98,8 @@ export function PrimaryLinkXs(props) {
 export function PrimaryLinkSm(props) {
 	return (
 		<StyledPrimaryLinkSm>
-			<Link href={props.href}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<Link href={props.href} onClick={props.onClick}>
+				{props.children}
 			</Link>
 		</StyledPrimaryLinkSm>
 	);
@@ -108,8 +108,8 @@ export function PrimaryLinkSm(props) {
 export function PrimaryLinkMd(props) {
 	return (
 		<StyledPrimaryLinkMd>
-			<Link href={props.href}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<Link href={props.href} onClick={props.onClick}>
+				{props.children}
 			</Link>
 		</StyledPrimaryLinkMd>
 	);
@@ -118,8 +118,8 @@ export function PrimaryLinkMd(props) {
 export function PrimaryLinkNoScroll(props) {
 	return (
 		<StyledPrimaryLink>
-			<NoScrollLink href={props.href} passHref={props.passHref}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<NoScrollLink href={props.href} onClick={props.onClick}>
+				{props.children}
 			</NoScrollLink>
 		</StyledPrimaryLink>
 	);
@@ -128,8 +128,8 @@ export function PrimaryLinkNoScroll(props) {
 export function PrimaryLinkXsNoScroll(props) {
 	return (
 		<StyledPrimaryLinkXs>
-			<NoScrollLink href={props.href} passHref={props.passHref}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<NoScrollLink href={props.href} onClick={props.onClick}>
+				{props.children}
 			</NoScrollLink>
 		</StyledPrimaryLinkXs>
 	);
@@ -138,8 +138,8 @@ export function PrimaryLinkXsNoScroll(props) {
 export function PrimaryLinkSmNoScroll(props) {
 	return (
 		<StyledPrimaryLinkSm>
-			<NoScrollLink href={props.href} passHref={props.passHref}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<NoScrollLink href={props.href} onClick={props.onClick}>
+				{props.children}
 			</NoScrollLink>
 		</StyledPrimaryLinkSm>
 	);
@@ -148,8 +148,8 @@ export function PrimaryLinkSmNoScroll(props) {
 export function PrimaryLinkMdNoScroll(props) {
 	return (
 		<StyledPrimaryLinkMd>
-			<NoScrollLink href={props.href} passHref={props.passHref}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<NoScrollLink href={props.href} onClick={props.onClick}>
+				{props.children}
 			</NoScrollLink>
 		</StyledPrimaryLinkMd>
 	);
@@ -158,8 +158,8 @@ export function PrimaryLinkMdNoScroll(props) {
 export function PrimaryLinkLgNoScroll(props) {
 	return (
 		<StyledPrimaryLinkLg>
-			<NoScrollLink href={props.href} passHref={props.passHref}>
-				<a onClick={props.onClick}>{props.children}</a>
+			<NoScrollLink href={props.href} onClick={props.onClick}>
+				{props.children}
 			</NoScrollLink>
 		</StyledPrimaryLinkLg>
 	);

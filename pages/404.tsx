@@ -81,7 +81,7 @@ export default function FourZeroFour() {
 				</FourZeroFourContainer>
 				<p>{`Wondering astray, looking for what can't be found`}</p>
 				<LinkPrimaryOutline href='/'>
-					<a>Let us guide you back</a>
+					Let us guide you back
 				</LinkPrimaryOutline>
 			</MotionContainer>
 		</FourZeroFourMain>

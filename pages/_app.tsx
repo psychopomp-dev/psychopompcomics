@@ -58,10 +58,7 @@ export default function App({ Component, pageProps }) {
           `,
 				}}
 			/>
-			<ThemeProvider
-				theme={theme == 'light' ? themeLight : themeDark}
-				setTheme={setTheme}
-			>
+			<ThemeProvider theme={theme == 'light' ? themeLight : themeDark}>
 				<GlobalStyle />
 				<LazyMotion strict features={domAnimation}>
 					<MotionConfig reducedMotion='user'>
@@ -69,7 +66,7 @@ export default function App({ Component, pageProps }) {
 							<MotionNavbar />
 						</MenuProvider>
 						<AnimatePresence
-							exitBeforeEnter
+							mode='wait'
 							onExitComplete={handleExitComplete}
 						>
 							<Component {...pageProps} canonical={url} key={router.route} />

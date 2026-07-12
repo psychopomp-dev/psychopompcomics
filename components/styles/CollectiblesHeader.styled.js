@@ -44,9 +44,8 @@ export default function StyledCollectiblesHeader() {
 			<Image
 				src={ruinsImg}
 				alt='Ancient ruins at sunset'
-				layout='fill'
-				objectFit='cover'
-				objectPosition='bottom'
+				fill
+				style={{ objectFit: 'cover', objectPosition: 'bottom' }}
 				sizes='100vw'
 				placeholder='blur'
 			/>

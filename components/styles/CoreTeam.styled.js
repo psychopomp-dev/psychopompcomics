@@ -87,11 +87,10 @@ export default function CoreTeam() {
 			<CoreTeamMember variants={childrenTCoreTeamVariants}>
 				<CoreTeamMemberImage>
 					<Image
-						width='75'
-						height='75'
+						width={75}
+						height={75}
 						src={roninPic}
 						alt='Ian'
-						layout='fixed'
 						placeholder='blur'
 					/>
 				</CoreTeamMemberImage>
@@ -110,11 +109,10 @@ export default function CoreTeam() {
 			<CoreTeamMember variants={childrenTCoreTeamVariants}>
 				<CoreTeamMemberImage>
 					<Image
-						width='75'
-						height='75'
+						width={75}
+						height={75}
 						src={alaricPic}
 						alt='Caleb'
-						layout='fixed'
 						placeholder='blur'
 					/>
 				</CoreTeamMemberImage>
@@ -133,11 +131,10 @@ export default function CoreTeam() {
 			<CoreTeamMember variants={childrenTCoreTeamVariants}>
 				<CoreTeamMemberImage>
 					<Image
-						width='75'
-						height='75'
+						width={75}
+						height={75}
 						src={nfterPic}
 						alt='Spencer'
-						layout='fixed'
 						placeholder='blur'
 					/>
 				</CoreTeamMemberImage>
@@ -156,11 +153,10 @@ export default function CoreTeam() {
 			<CoreTeamMember variants={childrenTCoreTeamVariants}>
 				<CoreTeamMemberImage>
 					<Image
-						width='75'
-						height='75'
+						width={75}
+						height={75}
 						src={tr3mulantPic}
 						alt='Scott'
-						layout='fixed'
 						placeholder='blur'
 					/>
 				</CoreTeamMemberImage>

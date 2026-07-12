@@ -1,0 +1,14 @@
+{
+	"pages": [
+		{
+			"imageUrl": "/images/test/page-1.jpg",
+			"pageDimensions": { "w": 1000, "h": 1500 },
+			"panels": [
+				{
+					"center": { "x": 500, "y": 750 },
+					"dimensions": { "w": 1000, "h": 1500 }
+				}
+			]
+		}
+	]
+}

@@ -43,6 +43,9 @@ jest.mock('framer-motion', () => {
 		__esModule: true,
 		motion: motion,
 		AnimatePresence: FakeAnimatePresence,
+		LazyMotion: ({ children }) => children,
+		MotionConfig: ({ children }) => children,
+		domAnimation: {},
 		default: jest.fn(),
 	};
 });

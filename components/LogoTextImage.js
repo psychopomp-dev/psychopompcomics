@@ -11,16 +11,21 @@ export default function LogoTextImage(props) {
 		height = 541,
 		src = logo,
 		alt = 'Psychopomp Compics',
-		layout = 'intrinsic',
+		fill,
 		...other
 	} = props;
+
+	if (fill) {
+		return <Image src={src} alt={alt} fill {...other} />;
+	}
+
 	return (
 		<Image
 			width={width}
 			height={height}
-			src={logo}
+			src={src}
 			alt={alt}
-			layout={layout}
+			style={{ width: '100%', height: 'auto' }}
 			{...other}
 		/>
 	);

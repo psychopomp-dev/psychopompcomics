@@ -61,14 +61,12 @@ export default function VanthTwoUpContainer() {
 						whileInView='visible'
 						viewport='viewport'
 					>
-						<LinkPrimary href='#'>
-							<a
-								href='https://exchange.art/collections/Vanth/nfts'
-								target='_blank'
-								rel='noreferrer'
-							>
-								Find your spirit guide
-							</a>
+						<LinkPrimary
+							href='https://exchange.art/collections/Vanth/nfts'
+							target='_blank'
+							rel='noreferrer'
+						>
+							Find your spirit guide
 						</LinkPrimary>
 					</m.div>
 				</div>
@@ -77,9 +75,9 @@ export default function VanthTwoUpContainer() {
 				<Image
 					src={vanthImg}
 					alt='Vanth Symbol'
-					width='1080'
-					height='1080'
-					layout='responsive'
+					width={1080}
+					height={1080}
+					style={{ width: '100%', height: 'auto' }}
 					sizes={`(max-width: ${theme.breakpoints.sm}) 25.6rem, 30.4rem`}
 				/>
 			</TwoUp>

@@ -33,9 +33,8 @@ export default function Comics() {
 					<Image
 						src={cainIsComing}
 						alt='Cain is coming'
-						layout='fill'
-						objectFit='cover'
-						objectPosition='bottom'
+						fill
+						style={{ objectFit: 'cover', objectPosition: 'bottom' }}
 						sizes='100vw'
 						placeholder='blur'
 					/>
@@ -43,7 +42,7 @@ export default function Comics() {
 				<StyledSection>
 					<SectionContainer>
 						<TwoUpContainer>
-							<TwoUp twoUpWidth='33%'>
+							<TwoUp $twoUpWidth='33%'>
 								<m.h2
 									variants={FadeInLeft}
 									initial='hidden'
@@ -53,7 +52,7 @@ export default function Comics() {
 								</m.h2>
 								<p>{`As I sat at my desk my phone started going off. News notifications, texts from friends and mentions. Something big had happened with Levitron Systems' Cogs in MY CITY. Our internet was out so I poured myself a whiskey and pulled out the emergency Radio. For once growing up in a prepper household paid off. Many of the stations were offline but I found a newsbroadcast on 1120am. I should probably check the other stations for news.`}</p>
 							</TwoUp>
-							<TwoUp twoUpWidth='67%'>
+							<TwoUp $twoUpWidth='67%'>
 								<DynamicRadio sizes={imageSizes} />
 							</TwoUp>
 						</TwoUpContainer>
@@ -61,13 +60,13 @@ export default function Comics() {
 				</StyledSection>
 				<StyledSection xxxlTop>
 					<SectionContainer>
-						<TwoUpContainer reverseOnCollapse={true}>
-							<TwoUp twoUpWidth='67%'>
+						<TwoUpContainer $reverseOnCollapse>
+							<TwoUp $twoUpWidth='67%'>
 								<IntelContainer>
 									<DynamicIntelReport sizes={imageSizes} />
 								</IntelContainer>
 							</TwoUp>
-							<TwoUp twoUpWidth='33%'>
+							<TwoUp $twoUpWidth='33%'>
 								<m.h2
 									variants={FadeInLeft}
 									initial='hidden'

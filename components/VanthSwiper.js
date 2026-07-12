@@ -1,6 +1,6 @@
 import styled, { useTheme } from 'styled-components';
 import { m } from 'framer-motion';
-import { A11y, Autoplay } from 'swiper';
+import { A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
 import bunnyImg from '../images/vanth/Bunny 2.jpeg';
@@ -173,9 +173,8 @@ export default function VanthSwiper() {
 						<Image
 							src={VanthImage.src}
 							alt={VanthImage.alt}
-							layout='fill'
-							objectFit='cover'
-							objectPosition='center'
+							fill
+							style={{ objectFit: 'cover', objectPosition: 'center' }}
 							sizes={`(max-width: ${theme.breakpoints.xxs}) 35rem,
 								(max-width: ${theme.breakpoints.xs}) 54.3rem,
 								(max-width: ${theme.breakpoints.sm}) 29.2rem,

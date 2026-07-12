@@ -6,13 +6,13 @@ const TwoUpContainer = styled.div`
 	flex-wrap: wrap;
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-		flex-direction: ${(props) =>
-			props.reverseOnCollapse ? 'column-reverse' : 'column'};
+		flex-direction: ${({ $reverseOnCollapse }) =>
+			$reverseOnCollapse ? 'column-reverse' : 'column'};
 	}
 
 	& > *:first-child {
-		border-right: ${(props) =>
-			props.divided ? '0.1rem solid var(--surface4)' : 'none'};
+		border-right: ${({ $divided }) =>
+			$divided ? '0.1rem solid var(--surface4)' : 'none'};
 		@media (max-width: ${({ theme }) => theme.breakpoints.md}) {
 			border-right: none;
 		}
@@ -20,7 +20,7 @@ const TwoUpContainer = styled.div`
 `;
 
 const TwoUp = styled.article`
-	width: ${(props) => (props.twoUpWidth ? `${props.twoUpWidth}` : '50%')};
+	width: ${({ $twoUpWidth }) => ($twoUpWidth ? `${$twoUpWidth}` : '50%')};
 	padding-left: var(--space-xl);
 	padding-right: var(--space-xl);
 	margin-bottom: initial;

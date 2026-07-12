@@ -125,6 +125,7 @@ export default function Comics() {
 												alt={comic.alt}
 												sizes={'20rem'}
 												placeholder='blur'
+												style={{ width: '100%', height: 'auto' }}
 											/>
 										</ComicGridImgContainer>
 									</NoScrollLink>
@@ -149,6 +150,7 @@ export default function Comics() {
 												alt={comic.alt}
 												sizes={'20rem'}
 												placeholder='blur'
+												style={{ width: '100%', height: 'auto' }}
 											/>
 										</ComicGridImgContainer>
 									</NoScrollLink>

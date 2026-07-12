@@ -22,7 +22,7 @@ const Title = styled.h1`
 	z-index: 10;
 `;
 
-const FiveZeroZeroMain = styled.main`
+const FiveZeroZeroMain = styled(m.main)`
 	height: 100%;
 	max-width: 100%;
 	display: flex;
@@ -81,7 +81,7 @@ export default function FiveZeroZero() {
 					</FiveZeroZeroContainer>
 					<p>{`Wondering astray, looking for what can't be found`}</p>
 					<LinkPrimaryOutline href='/'>
-						<a>Let us guide you back</a>
+						Let us guide you back
 					</LinkPrimaryOutline>
 				</MotionContainer>
 			</FiveZeroZeroMain>

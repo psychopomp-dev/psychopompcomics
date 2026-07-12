@@ -18,7 +18,7 @@ export default function AboutHeaderContainer() {
 	return (
 		<AboutHeader>
 			<LogoContainer>
-				<LogoTextImage layout='responsive' sizes='64rem' />
+				<LogoTextImage sizes='64rem' />
 			</LogoContainer>
 		</AboutHeader>
 	);

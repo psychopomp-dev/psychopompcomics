@@ -1,7 +1,8 @@
 import React, { createRef, useRef } from 'react';
 import { usePsychoClient } from '../../hooks/usePsychoClient';
 import { Swiper as SwiperElement, SwiperSlide } from 'swiper/react';
-import Swiper, { Navigation, Pagination, A11y, Keyboard } from 'swiper';
+import Swiper from 'swiper';
+import { Navigation, Pagination, A11y, Keyboard } from 'swiper/modules';
 import Page from './Page';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -104,7 +105,7 @@ export const PsychoReader = ({
 	};
 
 	let enableFullscreen = false;
-	let CustomFullscreenButton = FullscreenButton;
+	let CustomFullscreenButton: React.ElementType = FullscreenButton;
 	let customHandleFullscreen:
 		| ((containerRef: React.RefObject<any>) => void)
 		| null = null;
