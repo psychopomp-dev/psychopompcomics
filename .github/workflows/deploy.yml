@@ -19,9 +19,6 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v3
 
-      - name: yarn install
-        run: yarn
-
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
@@ -33,7 +30,7 @@ jobs:
       - name: Docker Compose build the production app (IMAGE_NAME) and server-certbot (IMAGE_NAME_SERVER)
         run: |
           export APP_ENV=prod IMAGE_NAME=$(echo $IMAGE_NAME) IMAGE_NAME_SERVER=$(echo $IMAGE_NAME_SERVER) REGISTRY=$(echo $REGISTRY) COMMIT=$(echo $GITHUB_SHA | head -c7) && \
-          docker-compose -f docker-compose.prod.yml build
+          docker compose -f docker-compose.prod.yml build
 
       - name: Push IMAGE_NAME:hash to registry
         run: docker push $(echo $REGISTRY)$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
@@ -79,13 +76,13 @@ jobs:
             cd psychopompcomics
 
             # Stops containers and removes containers, networks, volumes, and images created by up
-            docker-compose -f docker-compose.prod.yml down -v --remove-orphans
+            docker compose -f docker-compose.prod.yml down -v --remove-orphans
 
             # Lets login to our container registry in order for Docker to pull from the registry url
             doctl registry login --expiry-seconds 600
 
             #Lets pull our images down
-            docker-compose -f docker-compose.prod.yml pull
+            docker compose -f docker-compose.prod.yml pull
 
             # Starts the new containers from the new images
-            docker-compose -f docker-compose.prod.yml up -d
+            docker compose -f docker-compose.prod.yml up -d
