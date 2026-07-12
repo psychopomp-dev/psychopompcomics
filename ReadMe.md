@@ -2,10 +2,10 @@
 
 - [Install Docker Engine](https://docs.docker.com/engine/install/)
 - [Install Docker Compose](https://docs.docker.com/compose/install/)
-- `yarn install`
+- `pnpm install`
 
 # Run
 
 Build and run images (nextjs hot reload proxied by nginx)
 
-- `yarn doc-dev`
+- `pnpm doc-dev`

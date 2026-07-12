@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"author": "Caleb Nelson, Scott St. John",
 	"license": "MIT",
+	"packageManager": "pnpm@10.34.5",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/calebn/psychopompcomics.git"
@@ -18,7 +19,7 @@
 		"coverage": "jest --collectCoverage --",
 		"lint": "next lint",
 		"format": "prettier --write .",
-		"analyze": "cross-env ANALYZE=true yarn build",
+		"analyze": "cross-env ANALYZE=true pnpm build",
 		"doc-up": "docker-compose up -d --remove-orphans",
 		"doc-dev": "docker-compose down && docker-compose up -d --build --remove-orphans",
 		"doc-down": "docker-compose down",
@@ -102,5 +103,11 @@
 		"prettier-eslint": "^13.0.0",
 		"react-test-renderer": "^17.0.2",
 		"typescript": "^4.6.2"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"sharp",
+			"swiper"
+		]
 	}
 }
