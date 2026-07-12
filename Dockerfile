@@ -42,8 +42,11 @@ COPY --from=builder /app/images ./images
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+COPY docker-entrypoint.sh ./
 # Avoid shipping a poisoned next/image disk cache from the build host
-RUN rm -rf .next/cache
+RUN rm -rf .next/cache \
+	&& chmod +x docker-entrypoint.sh \
+	&& chown nextjs:nodejs docker-entrypoint.sh
 
 USER nextjs
 
@@ -56,4 +59,5 @@ ENV PORT 3000
 # Uncomment the following line in case you want to disable telemetry.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["node_modules/.bin/next", "start"]
