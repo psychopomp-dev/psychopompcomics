@@ -25,7 +25,8 @@ services:
     environment:
       - CERTBOT_EMAIL=webmaster@psychopompcomics.com
       - STAGING=0
-      - USE_ECDSA=1
+      # RSA / X1-anchored chain: Chrome does not yet trust Let's Encrypt Gen Y Root YE (ECDSA).
+      - USE_ECDSA=0
     ports:
       - 80:80
       - 443:443
